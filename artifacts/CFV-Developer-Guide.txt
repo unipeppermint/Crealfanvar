@@ -1,0 +1,47 @@
+Paperkin 1.0 development handoff
+
+Open Crealfanvar.xcodeproj. Use shared scheme Crealfanvar for the app, CFVValidation for UI tests.
+The existing app Bundle ID, Debug/Release build settings, signing configuration and iOS 15.0 target have not been changed. A separate UI-test target and shared schemes were added.
+The project directory was not a Git checkout at the start of work. No commit, branch or PR was created. An original project-file snapshot is retained in artifacts/validation/CFV-Original-project.pbxproj.
+
+Architecture:
+- GameCore/CFVGameCore.swift: UIKit-free tile identity, projection stacks, match union, deterministic turns, terminal outcomes and bounded/cancellable hint search.
+- Services/CFVRepository.swift: local catalog and level validation.
+- Services/CFVSaveStore.swift: version checks, exact-history replay validation, independent atomic saves and completion reconciliation.
+- Features/CFVAppCoordinator.swift: home, level book, collection, detail and completion flows.
+- Features/CFVGameController.swift / CFVBoardView.swift: state-driven native board, selection/swipes, crease hit zones, interactive edge folds, previews, commits, undo, hints and interruption handling.
+- Features/CFVVisuals.swift: paper texture, shape-distinct tiles and shared, size-aware PNG creature presentation.
+- Features/CFVSettingsController.swift: settings, paged offline help, privacy/support information.
+- Services/CFVSettings.swift: per-app UserDefaults preferences and AVFoundation audio.
+
+Core validation:
+  ./tools/CFVRunCoreTests.sh
+The test harness compiles the exact production Swift files on macOS. It is deliberately independent of UIKit and does not require a simulator.
+
+UI validation:
+  xcodebuild -project Crealfanvar.xcodeproj -scheme CFVValidation \
+    -destination 'platform=iOS Simulator,id=YOUR_TEST_DEVICE_ID' \
+    -only-testing:CFVUITests/CFVUITests/testFullChineseJourneyAndRecovery \
+    CODE_SIGNING_ALLOWED=NO test
+Use a dedicated clean simulator for full-journey tests. They preserve app progress, so replaying the same first-install test requires an empty install on that dedicated test device. Release tour and small-layout tests expect the 12-level journey to have been completed through the normal UI on that test device first. No test-only bypass exists inside the app.
+
+Resources:
+- 12 frozen level JSON files; runtime never randomizes them.
+- 18 imagegen-authored transparent PNG creature stages in Resources/Creatures. Stage 0: ivory locked appearance; stage 1: partially folded; stage 2: completed color artwork. The shared view replays these authored stages and respects Reduce Motion.
+- 7 generated original audio resources (6 effects + 1 loop).
+- English / Simplified Chinese Localizable.strings and InfoPlist.strings.
+- AppIcon + PrivacyInfo.xcprivacy.
+
+Authoring scripts are offline developer tools. Do not run CFVBuildLevels.py casually after shipping: any content changes require versioning, validation and save-compatibility review.
+Rebuild localization with tools/CFVBuildLocalization.py after copy changes. Keys include the English and Chinese pair to prevent short navigation labels from colliding with long page titles.
+
+Release preparation:
+- Unsigned device archive: artifacts/CFV-Paperkin-Artwork-Unsigned.xcarchive.
+- Check packaged content: python3 tools/CFVReleaseCheck.py.
+- --strict intentionally fails while genuine external release conditions remain.
+- Configure genuine HTTPS CFVPrivacyURL and CFVSupportURL in Info.plist only after their pages are deployed. Local descriptions remain readable offline.
+- Store drafts, review notes, policy/support drafts and provenance are in artifacts/release-materials.
+- No developer account, release territory, contact address or public URL was invented.
+- Do not submit the unsigned archive. Complete the external gates in the acceptance record, sign using the existing authorized team, run TestFlight, then have the developer approve submission.
+
+Artwork revision: generated with built-in imagegen using the v2 prototype as reference. Prompt set and exact source paths are retained in artifacts/CFV-Artwork-Prompts.json. Run swift -module-cache-path /tmp/CFVSwiftCache tools/CFVRenderArtwork.swift to regenerate the QA contact sheet. CFVBuildArtwork.py now regenerates audio only; it cannot overwrite the creature art. The prior app icon remains unchanged.

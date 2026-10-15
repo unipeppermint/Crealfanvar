@@ -1,0 +1,13 @@
+App Review notes — draft for the final signed build
+
+Paperkin is an offline, turn-based puzzle game combining adjacent tile swaps with paper folding. No login, purchases or external hardware are required.
+
+From Home, tap Start Folding. Level 1 introduces matching; Level 2 introduces folding. Tap the crease button (for example Right 2 cols) or the dashed crease to preview the visible surface, then tap Confirm Fold. You can also drag inward from the paper edge. Previews do not spend moves. Only tiles on the top paper layer match, including the rule that blank paper covers lower tiles. The paper unfolds after resolution.
+
+Hollow diamond marks identify the targets. The marks follow tiles during swaps. Clear all marked tiles to finish. There are no random refills. Undo is free and restores the previous board and move count. Hint first identifies an action type, then Show move reveals the exact action.
+
+The release contains 12 levels in one level book and six collectible creatures. Complete two levels per creature. Unlocks occur at 2, 4, 6, 8, 10 and 12. Every puzzle can be completed through the normal UI. No review-only gameplay exists.
+
+Settings on Home include music, effects, haptics, reduced motion, language, offline help and privacy/support information. Local progress resumes after reopening the app.
+
+Before submission: fill genuine developer contact, deploy and configure public privacy/support URLs, complete signed-device and TestFlight validation, and select screenshots from the final submitted build. Do not submit the unsigned archive supplied with this development delivery.

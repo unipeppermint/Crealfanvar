@@ -1,0 +1,288 @@
+[
+  {
+    "level": 1,
+    "attempt": 162,
+    "targets": [
+      25
+    ],
+    "solution": [
+      {
+        "type": "swap",
+        "first": 31,
+        "second": 32
+      }
+    ],
+    "temptingLosingAction": null,
+    "initialBlankCoveredTargets": []
+  },
+  {
+    "level": 2,
+    "attempt": 187,
+    "targets": [
+      23
+    ],
+    "solution": [
+      {
+        "type": "fold",
+        "creaseID": "right-4"
+      }
+    ],
+    "temptingLosingAction": null,
+    "initialBlankCoveredTargets": []
+  },
+  {
+    "level": 3,
+    "attempt": 234,
+    "targets": [
+      12,
+      26
+    ],
+    "solution": [
+      {
+        "type": "fold",
+        "creaseID": "left-2"
+      },
+      {
+        "type": "swap",
+        "first": 31,
+        "second": 32
+      }
+    ],
+    "temptingLosingAction": null,
+    "initialBlankCoveredTargets": []
+  },
+  {
+    "level": 4,
+    "attempt": 169,
+    "targets": [
+      2,
+      13
+    ],
+    "solution": [
+      {
+        "type": "swap",
+        "first": 2,
+        "second": 8
+      },
+      {
+        "type": "fold",
+        "creaseID": "right-4"
+      }
+    ],
+    "temptingLosingAction": {
+      "type": "fold",
+      "creaseID": "top-2"
+    },
+    "initialBlankCoveredTargets": []
+  },
+  {
+    "level": 5,
+    "attempt": 4391,
+    "targets": [
+      12,
+      17
+    ],
+    "solution": [
+      {
+        "type": "swap",
+        "first": 17,
+        "second": 23
+      },
+      {
+        "type": "fold",
+        "creaseID": "right-4"
+      }
+    ],
+    "temptingLosingAction": null,
+    "initialBlankCoveredTargets": []
+  },
+  {
+    "level": 6,
+    "attempt": 114,
+    "targets": [
+      6,
+      26
+    ],
+    "solution": [
+      {
+        "type": "fold",
+        "creaseID": "bottom-4"
+      },
+      {
+        "type": "swap",
+        "first": 13,
+        "second": 14
+      }
+    ],
+    "temptingLosingAction": null,
+    "initialBlankCoveredTargets": []
+  },
+  {
+    "level": 7,
+    "attempt": 125,
+    "targets": [
+      6,
+      23
+    ],
+    "solution": [
+      {
+        "type": "fold",
+        "creaseID": "right-4"
+      },
+      {
+        "type": "swap",
+        "first": 12,
+        "second": 13
+      }
+    ],
+    "temptingLosingAction": null,
+    "initialBlankCoveredTargets": []
+  },
+  {
+    "level": 8,
+    "attempt": 1947,
+    "targets": [
+      7,
+      29
+    ],
+    "solution": [
+      {
+        "type": "fold",
+        "creaseID": "bottom-4"
+      },
+      {
+        "type": "fold",
+        "creaseID": "left-2"
+      }
+    ],
+    "temptingLosingAction": null,
+    "initialBlankCoveredTargets": []
+  },
+  {
+    "level": 9,
+    "attempt": 297,
+    "targets": [
+      2,
+      13,
+      16,
+      18,
+      26
+    ],
+    "solution": [
+      {
+        "type": "swap",
+        "first": 24,
+        "second": 25
+      },
+      {
+        "type": "fold",
+        "creaseID": "top-2"
+      },
+      {
+        "type": "fold",
+        "creaseID": "right-4"
+      }
+    ],
+    "temptingLosingAction": null,
+    "initialBlankCoveredTargets": [
+      3,
+      9,
+      26
+    ]
+  },
+  {
+    "level": 10,
+    "attempt": 351,
+    "targets": [
+      8,
+      9,
+      14,
+      23
+    ],
+    "solution": [
+      {
+        "type": "swap",
+        "first": 28,
+        "second": 29
+      },
+      {
+        "type": "fold",
+        "creaseID": "bottom-4"
+      },
+      {
+        "type": "swap",
+        "first": 20,
+        "second": 26
+      }
+    ],
+    "temptingLosingAction": {
+      "type": "fold",
+      "creaseID": "right-4"
+    },
+    "initialBlankCoveredTargets": []
+  },
+  {
+    "level": 11,
+    "attempt": 631,
+    "targets": [
+      16,
+      18,
+      22,
+      24,
+      27
+    ],
+    "solution": [
+      {
+        "type": "fold",
+        "creaseID": "bottom-4"
+      },
+      {
+        "type": "swap",
+        "first": 3,
+        "second": 4
+      },
+      {
+        "type": "fold",
+        "creaseID": "left-2"
+      }
+    ],
+    "temptingLosingAction": null,
+    "initialBlankCoveredTargets": []
+  },
+  {
+    "level": 12,
+    "attempt": 5096,
+    "targets": [
+      8,
+      9,
+      25,
+      28,
+      31
+    ],
+    "solution": [
+      {
+        "type": "swap",
+        "first": 1,
+        "second": 2
+      },
+      {
+        "type": "fold",
+        "creaseID": "top-2"
+      },
+      {
+        "type": "swap",
+        "first": 26,
+        "second": 32
+      },
+      {
+        "type": "fold",
+        "creaseID": "right-4"
+      }
+    ],
+    "temptingLosingAction": {
+      "type": "fold",
+      "creaseID": "top-2"
+    },
+    "initialBlankCoveredTargets": []
+  }
+]

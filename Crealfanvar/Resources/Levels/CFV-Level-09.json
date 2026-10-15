@@ -1,0 +1,60 @@
+{
+  "levelID": "level-09",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "clever-overlaps",
+  "titleZH": "留白也有重量",
+  "titleEN": "The weight of blank paper",
+  "purposeZH": "空白纸格仍遮挡下层。预览并取消，看看哪些目标被盖住。",
+  "purposeEN": "Blank paper still covers tiles. Preview and cancel to inspect the hidden targets.",
+  "initialRows": [
+    "CTLT.T",
+    "TLLC.L",
+    "TCTLCC",
+    "CLCTTC",
+    "TCLTT.",
+    "CLTLCT"
+  ],
+  "targetCells": [
+    2,
+    13,
+    16,
+    18,
+    26
+  ],
+  "moveLimit": 3,
+  "folds": [
+    {
+      "creaseID": "right-4",
+      "axis": "vertical",
+      "boundary": 4,
+      "movingSide": "right"
+    },
+    {
+      "creaseID": "top-2",
+      "axis": "horizontal",
+      "boundary": 2,
+      "movingSide": "top"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "swap",
+      "first": 24,
+      "second": 25
+    },
+    {
+      "type": "fold",
+      "creaseID": "top-2"
+    },
+    {
+      "type": "fold",
+      "creaseID": "right-4"
+    }
+  ],
+  "tutorialCells": [
+    24,
+    25
+  ],
+  "tutorialCrease": null
+}

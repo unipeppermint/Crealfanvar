@@ -1,0 +1,38 @@
+{
+  "levelID": "level-02",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "first-folds",
+  "titleZH": "折起一角",
+  "titleEN": "The first fold",
+  "purposeZH": "点按右侧折痕。先取消预览，再确认一次折叠。",
+  "purposeEN": "Tap the right crease. Cancel the preview, then preview and confirm.",
+  "initialRows": [
+    "CCTTLT",
+    "TTCTCC",
+    "TCTCLL",
+    "LCCLCC",
+    "CTCTCC",
+    "CCTLTT"
+  ],
+  "targetCells": [
+    23
+  ],
+  "moveLimit": 1,
+  "folds": [
+    {
+      "creaseID": "right-4",
+      "axis": "vertical",
+      "boundary": 4,
+      "movingSide": "right"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "fold",
+      "creaseID": "right-4"
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": "right-4"
+}

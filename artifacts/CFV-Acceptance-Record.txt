@@ -1,0 +1,92 @@
+折叠生物 / Paperkin 1.0 开发与验收记录
+日期：2026-10-15（Asia/Shanghai）
+唯一范围：docs/release-v1「1.0 规划基线 修订2」；12 关、6 种生物、18 个制作阶段。未采用旧 36 关方案。
+
+交付状态
+已完成可运行的 UIKit 应用和本地发布准备材料。当前交付不等于已满足全部发布门槛：真机、首次玩家观察、TestFlight、签名与真实支持/隐私地址仍待补齐。未上传、未提审、未发布。
+
+已实现
+- 6×6 固定纸面、叶片/三角/圆纹三种图案、相邻交换三消、无随机掉落补充。
+- 四向折叠投影；关卡配置一至两条折痕。按钮、折痕点按和边缘拖动均进入同一预览，确认后才扣步。没有匹配时禁用确认。
+- 移动纸面在上；空白纸格仍遮挡；按 tileID 消除；目标菱形随棋子移动；交叉匹配去重；最后一步优先成功；自动展开且不追加连锁。
+- 撤销、两层提示、参考路径优先及后台有限搜索，明确区分无解、超时与取消。无步数和无合法动作均支持免费恢复。
+- 首页、3×4 单页关卡册、游戏、预览、通关、2×3 可滚动图鉴、生物详情、暂停、失败恢复、设置及四页离线帮助。
+- 按 02/04/06/08/10/12 顺序解锁纸蝶、折翼鸟、纸鱼、纸兔、纸狐、纸鹿；重复完成不增加收藏；第 12 关没有第 13 关入口。
+- 一份活动对局；覆盖/重开确认；独立长期进度；完整撤销历史；原子保存、已验证备份、故障文件保留、版本检查及通关中断后的幂等协调。
+- 简体中文和英文；形状及目标边框不依赖颜色；点按替代拖动；VoiceOver 标签和自定义相邻交换动作；Dynamic Type；跟随系统/减少动画；浅色纸面主题。
+- 六种生物、18 个 imagegen 透明纸雕 PNG（已替换原先未达到原型质感的几何素材），共享尺寸适配组件、制作阶段回放、独立应用图标、纸面/棋子绘制、6 个合成音效和 1 段循环音乐。全部为本地资源。
+- UIKit / Core Animation / AVFoundation / Foundation，零第三方运行时依赖。保留现有 iPhone 竖屏、Bundle ID、签名及原有 App/Project Debug/Release 构建设置。
+
+实测证据
+1. 生产 Swift 核心检查：353 项通过。
+   artifacts/validation/CFV-Core-Test-Results.txt
+   覆盖 12 关参考解法、初始无匹配、四向及 1/2/3 格折面、纸格唯一性、空白遮挡、交叉去重、目标身份、无补充、无效动作、最后一步通关、无合法动作失败、撤销、三类提示结果与取消、目录 0–12 进度、重复奖励、损坏备份、写入失败、版本不兼容及跨文件完成协调。
+   参考解法和独立设计目的：artifacts/validation/CFV-Reference-Solutions.txt
+   错误路线和空白遮挡见证：artifacts/validation/CFV-Level-Design-Witnesses.json
+2. 中文正常字号 UI 全流程：12 关实际点击完成，通过；约 190 秒。
+   iPhone 17 Pro 尺寸，iOS 26.5 模拟器；含取消预览、第四关撤销、杀进程恢复、6/6 收藏与详情展开。
+   artifacts/validation/CFV-UI-Run1.xcresult / .log
+3. 英文小屏 UI 全流程：12 关实际点击完成，通过；约 178 秒。
+   iPhone SE 第三代尺寸，iOS 26.5 模拟器；最大辅助字号及减少动画；断言棋盘格子宽高至少 44 pt。
+   artifacts/validation/CFV-UI-Small1.xcresult / .log
+4. 小屏视觉修复回归：通过；约 29 秒。
+   修复大字体图标挤压后检查棋盘、折叠预览、分层提示、通关和图鉴。截图另经视觉复核。
+   artifacts/validation/CFV-UI-Small-Final.xcresult / .log
+5. Release 完整交互回归：通过；交付版本 87.896 秒，0 失败，另存 CFV-UI-Delivery。
+   覆盖四页帮助、步数耗尽失败/撤销、证明无解的提示、具体操作高亮、提交后后台返回、预览中后台返回、折痕直接点按、边缘拖动、通关、图鉴、详情及实际截图。
+   artifacts/validation/CFV-UI-Release-Verified.xcresult
+   artifacts/validation/CFV-UI-Delivery.xcresult / .log
+6. Release 设备构建与未签名归档：成功。
+   Xcode 26.6 (17F113)，iOS 26.5 SDK；打包 Info.plist 的 MinimumOSVersion 为 15.0。
+   artifacts/CFV-Paperkin-Artwork-Unsigned.xcarchive
+   artifacts/validation/CFV-Artwork-Archive.log
+   纸雕 PNG 替换后的未签名 app bundle 为 28,331,123 字节（约 28.3 MB）。此为文件大小统计，不是 App Store 下载/安装体积，也不是内存实测。
+7. 正文配色计算：深色正文/纸面 11.02:1，辅助文字/纸面 5.02:1，正文/卡片 9.91:1，白字/主按钮 5.56:1。
+   artifacts/validation/CFV-Text-Contrast.json
+   这不替代完整无障碍实机审核。
+8. 打包资源、配置保持、源码校验值及隐私清单语法已检查。
+   CFV-Release-Preflight.json、CFV-Configuration-Preservation.json、CFV-Artwork-Source-SHA256.json。
+
+发现并修复的问题
+- 顶部暂停控件无固定宽度，导致布局偏斜：限制为明确触控宽度。
+- 最大辅助字号把图标放大并挤压文字：固定图标尺寸，辅助字号优先保留按钮文字。
+- 直接点折痕被棋子触控抢占：增加独立折痕命中区；可访问的大按钮仍保留。
+- 拖动起点使用了手势识别后的坐标：改为按位移还原真正起点，保证边缘折叠判定。
+- 相同英文 key 对应不同中文短标签导致导航文案冲突：本地化键纳入双语文案对。
+- 暂停与预览动画中断可能留下不一致的交互状态：显式取消纸面动画、锁定预览输入并重建稳定状态。
+- 设置开关闭包可能形成引用环：改为弱引用。未据此声称已通过 Instruments 长时间内存验证。
+失败测试与修复前截图保留在 validation/ 和 screenshots/ 的 Run1/Run2 目录，不能当作最终提交截图。
+
+里程碑判定
+M1：规则及存档自动检查通过。
+M2：模拟器可玩交互通过；真机连续操作待验。
+M3：前四关已有双语言自动流程，首次玩家观察与两轮人工体验尚未完成，不能标记该人因门槛通过。
+M4：应用闭环及杀进程恢复在模拟器通过。
+M5：12 关、6 生物、18 素材和双语内容已齐全，参考解法通过；关卡时长/难度仍须首次玩家测试确认。
+M6：自动规则、存档、UI、小屏与大字体已覆盖；真机、最低系统、VoiceOver 实际通关、性能及长时间使用待验。
+M7：图标、真实应用截图、商店双语文案、审核说明、隐私及支持草稿、未签名归档已准备；签名上传验证、公开地址及真实商店字段待补齐。
+M8：不在此次执行授权内；未进行。
+
+尚未覆盖的验收与外部发布条件
+- iOS 15 真机、当前正式系统真机及 320 pt 最小屏实际设备；现有可用模拟器仅 iOS 26.5。
+- VoiceOver 实际完成 01/02/03/09 关；当前仅实现和检查了可访问元素/动作，不能等同操作验收。
+- 5–8 位首次玩家观察、前四关至少两轮人工体验、第九关空白遮挡理解及单关 2–5 分钟目标。
+- 真机断网全流程、静音/耳机切换/来电音频中断；应用代码不发起网络请求，但未将代码检查写成真机断网测试通过。
+- Instruments 测量启动时间、帧率、>100 ms 主线程停顿、峰值内存及长时间泄漏；没有捏造性能数字。
+- 现有开发者账号与签名权限、TestFlight、签名构建验证和真实升级安装回归。
+- 真实开发者身份、版权/名称查重、地区选择及适用地区发行材料、年龄分级问卷、免费价格配置和最终隐私标签。
+- 开发者维护的真实 HTTPS 隐私政策及支持地址/联系方式。需配置 Info.plist 的 CFVPrivacyURL / CFVSupportURL；当前显示明确离线说明，不使用虚假链接。
+- 最终签名版本的商店截图选择、实际上传验证，以及开发者决定是否提审/发布。
+
+使用入口与材料位置
+工程：Crealfanvar.xcodeproj；运行 Scheme：Crealfanvar；UI 测试 Scheme：CFVValidation。
+开发说明：artifacts/CFV-Developer-Guide.txt。
+最终真实 Release 截图：artifacts/screenshots/Artwork/（本次素材修正版；Delivery 为此前几何素材版本）。
+素材总览：artifacts/CFV-Artwork-18-Stages.png。
+商店资料、审核说明、素材来源与隐私/支持草稿：artifacts/release-materials/。
+
+2026-10-15 纸雕图片修正验收：
+原坐标几何素材未达到原型美术质感，已移出应用包并留档 artifacts/retired-polygon-art。新 18 张独立透明 PNG 由内置 imagegen 根据原型生成，包含纸张纤维、折面厚度、柔和阴影及原型配色。首页、游戏 HUD、通关、图鉴和详情共用同一图片组件。制作阶段通过原画帧回放；不再声称每个折面是独立几何动画部件。
+Debug 模拟器构建成功。Release 设备未签名归档成功。现有 Release UI 回归 testReleaseChineseScreensAndGestures 通过，87.145 秒，0 失败；证据 CFV-UI-Artwork.xcresult / .log。18 张 PNG 均为 RGBA 且短边至少 1024px；归档包含全部 18 张图片。纸雕修正版真实截图见 artifacts/screenshots/Artwork。
+
+视觉复核：18 张素材总览及真实首页/图鉴截图已检查；纸张质感、透明背景和等比缩放正常。图鉴沿用可滚动两列布局。自动化导出的 Release-07-fish-detail-zh 截图在点击“再次展开”后立即取得，记录的是动画首个象牙白阶段，不代表最终彩色完成态。

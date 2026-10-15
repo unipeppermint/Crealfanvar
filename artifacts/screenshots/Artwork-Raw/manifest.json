@@ -1,0 +1,80 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "B27464FE-A98F-43B7-B2A9-46F6A737CB42.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Release-07-fish-detail-zh_0_F5FC3CD3-93D2-478D-9293-14879D284B6E.png",
+        "timestamp" : 1792045864.898
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "856E296B-00F4-40DA-B7CE-D8FFBD787F5E.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Release-06-collection-zh_0_829886BA-D16D-436A-8111-05ACAED32B86.png",
+        "timestamp" : 1792045861.478
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "20C57EF9-8D91-4A63-9D96-76FEF7FEF16F.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Release-05-completion-zh_0_601BBCC0-C7E8-4D82-AD91-2CD3947E1C3D.png",
+        "timestamp" : 1792045858.485
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "6023275E-7B06-4F33-8B45-6A5DCBD1EA95.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Release-04-fold-preview-zh_0_EFAAC158-C4FA-4816-81F3-27DA593F0D45.png",
+        "timestamp" : 1792045840.081
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "47C58F6C-59E5-4DF8-BBA6-5CE912BEC804.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Release-03-gameplay-zh_0_79B5F902-5788-4F07-B773-9C7F1C61022F.png",
+        "timestamp" : 1792045835.441
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "9471AC98-CA1C-4A79-9A16-EB6D4B0437BD.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Release-failure-recovery-zh_0_57DFA565-7F88-4314-B9A3-BB364CE9111F.png",
+        "timestamp" : 1792045809.742
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "E2A67509-9B0E-4633-96F4-4E844C3E3366.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Release-02-level-book-zh_0_4F5C174E-AE46-4115-90E8-0521A74ED30E.png",
+        "timestamp" : 1792045783.662
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "BCBCBDD5-C86F-4022-AB7B-CD0F7DED3CA7.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Release-01-home-zh_0_DA5B9952-7AD7-449F-B22D-68F7A51CAF13.png",
+        "timestamp" : 1792045782.029
+      }
+    ],
+    "testIdentifier" : "CFVUITests/testReleaseChineseScreensAndGestures()",
+    "testIdentifierURL" : "test://com.apple.xcode/Crealfanvar/CFVUITests/CFVUITests/testReleaseChineseScreensAndGestures"
+  }
+]

@@ -1,0 +1,27 @@
+Paperkin 1.0 — App Store copy draft
+Prepared 2026-10-15. Name rights, territories and final store fields require developer confirmation.
+
+Name: Paperkin
+Subtitle: Fold paper. Match patterns.
+Keywords: origami,puzzle,match,paper,fold,offline,relaxing,creatures,logic
+Suggested category: Games / Puzzle
+Pricing baseline: Free. No purchases, advertisements, accounts or energy limits.
+
+Description:
+Discover a different way to match on a small sheet of paper.
+
+Swap adjacent patterns, or fold along a crease to bring distant patterns together. Plan around overlapping layers and complete each goal within the move limit.
+
+Explore 12 fixed puzzles and unfold six paper creatures, unlocking one after every two levels. Meet a butterfly, bird, fish, rabbit, fox and deer, each with three stages of creation and an unfolding animation to revisit.
+
+There is no timer and no random refill. Take your time, undo a move, ask for a two-stage hint, and continue where you left off. Every puzzle works offline, with no account required.
+
+Available in English and Simplified Chinese. Patterns use both shape and color. Tapping can replace dragging, and sound, haptics and motion have separate controls.
+
+Progress stays on this device. Cross-device sync is not included in this release.
+
+What's new:
+The first release includes all 12 puzzles, six paper creatures, fold previews, undo, hints and local progress saving.
+
+Unfilled fields:
+Support URL, privacy URL, developer contact, copyright owner, age-rating questionnaire, release territories and name availability.

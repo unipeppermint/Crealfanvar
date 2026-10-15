@@ -1,0 +1,49 @@
+{
+  "levelID": "level-08",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "new-directions",
+  "titleZH": "换个方向",
+  "titleEN": "A different direction",
+  "purposeZH": "水平与竖直折叠有不同的表面。先检查，再行动。",
+  "purposeEN": "Horizontal and vertical folds reveal different surfaces. Look before committing.",
+  "initialRows": [
+    "LLTLLT",
+    "TTLCTL",
+    "LLTTCT",
+    "LTCLTC",
+    "TLCTCL",
+    "CLLCTL"
+  ],
+  "targetCells": [
+    7,
+    29
+  ],
+  "moveLimit": 2,
+  "folds": [
+    {
+      "creaseID": "left-2",
+      "axis": "vertical",
+      "boundary": 2,
+      "movingSide": "left"
+    },
+    {
+      "creaseID": "bottom-4",
+      "axis": "horizontal",
+      "boundary": 4,
+      "movingSide": "bottom"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "fold",
+      "creaseID": "bottom-4"
+    },
+    {
+      "type": "fold",
+      "creaseID": "left-2"
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": "bottom-4"
+}

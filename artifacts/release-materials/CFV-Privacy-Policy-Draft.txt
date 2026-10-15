@@ -1,0 +1,16 @@
+折叠生物 / Paperkin 隐私说明草稿（尚未部署，不作为有效公开地址）
+
+本应用无需账号。应用不会通过自己的代码收集或上传用户信息，不含广告、分析或第三方运行时 SDK。
+关卡进度、收藏、最佳步数、当前对局、撤销历史和设置保存在本设备。应用不提供跨设备同步。设备自身的备份服务是否包含应用数据取决于系统及用户设置。
+删除应用可能删除这些本地记录。应用本身不提供开发者访问玩家存档的通道。
+核心玩法不联网。用户点击公开支持或隐私链接时，系统浏览器会打开所配置的网站，该网站需要另行披露其实际数据行为。
+
+发布前补充：开发者或数据控制者真实名称、支持联系方式、政策生效日期、实际支持网站行为及适用地区条款。部署后将 HTTPS 地址写入 Info.plist 的 CFVPrivacyURL。
+
+Privacy policy draft (not yet a public policy URL)
+Paperkin does not require an account and does not collect or upload personal information through its own code. It contains no advertising, analytics or third-party runtime SDKs.
+Level completion, creatures, best move counts, the active game, undo history and preferences are stored on this device. The app does not provide cross-device sync. Device backup behavior depends on the operating system and the user's settings.
+Deleting the app may delete these records. The app provides no channel for the developer to access player saves.
+Core gameplay does not use the network. Opening a configured privacy or support link uses the system browser; the website's actual data practices must be disclosed separately.
+
+Before publication, add the genuine developer/controller identity, support contact, effective date, website data practices and applicable regional terms. Deploy the policy and configure its HTTPS URL using the CFVPrivacyURL Info.plist key.

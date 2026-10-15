@@ -1,0 +1,35 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "6B88706F-62C4-477F-A789-88507464724E",
+        "deviceName" : "Paperkin SE QA",
+        "exportedFileName" : "019346B0-44BF-46B7-87D3-1E7F970F0699.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Final-small-collection-large-text_0_D9E8891C-83C1-4D0A-9A2C-20CE78759B73.png",
+        "timestamp" : 1792038680.802
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "6B88706F-62C4-477F-A789-88507464724E",
+        "deviceName" : "Paperkin SE QA",
+        "exportedFileName" : "2FBDC157-4A0E-42C9-BEBD-26FA59256A5A.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Final-small-preview-large-text_0_25CA570B-9438-416B-90A8-BEB496C84921.png",
+        "timestamp" : 1792038660.762
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "6B88706F-62C4-477F-A789-88507464724E",
+        "deviceName" : "Paperkin SE QA",
+        "exportedFileName" : "52310054-4F41-41D8-B1EB-695F8BD64C9C.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Final-small-game-large-text_0_DB8E8138-88F4-4986-84B9-212C6BD6FBC3.png",
+        "timestamp" : 1792038659.12
+      }
+    ],
+    "testIdentifier" : "CFVUITests/testSmallLayoutRegression()",
+    "testIdentifierURL" : "test://com.apple.xcode/Crealfanvar/CFVUITests/CFVUITests/testSmallLayoutRegression"
+  }
+]

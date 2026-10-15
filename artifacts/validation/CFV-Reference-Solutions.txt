@@ -1,0 +1,161 @@
+Paperkin 1.0 — 12 关参考解法（坐标从 1 开始）
+以下路径已由生产 Swift 引擎重放。
+
+level-01 · 初见菱形 / A little diamond
+交换高亮的相邻图案，让菱形目标加入三连。
+步数：1；目标：1
+盘面：
+LLTTCC
+LTLTCL
+TTCCLL
+CCTLCC
+CCTTLC
+TTCLTT
+1. 交换 (6,2) ↔ (6,3)
+
+level-02 · 折起一角 / The first fold
+点按右侧折痕。先取消预览，再确认一次折叠。
+步数：1；目标：1
+盘面：
+CCTTLT
+TTCTCC
+TCTCLL
+LCCLCC
+CTCTCC
+CCTLTT
+1. 预览并确认折痕 right-4
+
+level-03 · 表面之下 / Beneath the surface
+折叠只消除最上层图案。展开后，找出留下的目标。
+步数：2；目标：2
+盘面：
+TLTTLC
+LTLTLL
+CCLLCC
+LTCLTL
+TLCTLC
+CCTCLL
+1. 预览并确认折痕 left-2
+2. 交换 (6,2) ↔ (6,3)
+
+level-04 · 再试一次 / Another possibility
+预览两条折痕，比较结果。可以撤销已提交的动作，再选择路线。
+步数：2；目标：2
+盘面：
+TCCLLT
+LCTCCL
+TLTTLL
+TCCTTC
+CTCLCL
+LTTLTL
+1. 交换 (1,3) ↔ (2,3)
+2. 预览并确认折痕 right-4
+
+level-05 · 先换后折 / Before the fold
+先交换，安排折后相邻的图案，再沿右侧折痕折叠。
+步数：2；目标：2
+盘面：
+LLTCCT
+TCCLLC
+CCLCLT
+LTCTTC
+CTLCLT
+LCTLLT
+1. 交换 (3,6) ↔ (4,6)
+2. 预览并确认折痕 right-4
+
+level-06 · 向上相遇 / Meeting above
+从下边缘向上折。横向折痕也遵循同样的遮挡规则。
+步数：2；目标：2
+盘面：
+CLCCLT
+TTLLCC
+LTCCTC
+LCTTCL
+TLTCTL
+TLLCLC
+1. 预览并确认折痕 bottom-4
+2. 交换 (3,2) ↔ (3,3)
+
+level-07 · 一列或两列 / One or two
+比较右侧一列与两列的投影。每次只折一个面。
+步数：2；目标：2
+盘面：
+TTCTLL
+LTLCCT
+CLLCTL
+LCCTCC
+CLTLLT
+LTTLCC
+1. 预览并确认折痕 right-4
+2. 交换 (3,1) ↔ (3,2)
+
+level-08 · 换个方向 / A different direction
+水平与竖直折叠有不同的表面。先检查，再行动。
+步数：2；目标：2
+盘面：
+LLTLLT
+TTLCTL
+LLTTCT
+LTCLTC
+TLCTCL
+CLLCTL
+1. 预览并确认折痕 bottom-4
+2. 预览并确认折痕 left-2
+
+level-09 · 留白也有重量 / The weight of blank paper
+空白纸格仍遮挡下层。预览并取消，看看哪些目标被盖住。
+步数：3；目标：5
+盘面：
+CTLT.T
+TLLC.L
+TCTLCC
+CLCTTC
+TCLTT.
+CLTLCT
+1. 交换 (5,1) ↔ (5,2)
+2. 预览并确认折痕 top-2
+3. 预览并确认折痕 right-4
+
+level-10 · 留下关键一枚 / Save a key piece
+并非每次三消都有帮助。保留后续折叠需要的图案。
+步数：3；目标：4
+盘面：
+CTLCLC
+CLCCTL
+TTCTCC
+CLLTTL
+TTCLLT
+TCTCCL
+1. 交换 (5,5) ↔ (5,6)
+2. 预览并确认折痕 bottom-4
+3. 交换 (4,3) ↔ (5,3)
+
+level-11 · 散落的星点 / Scattered diamonds
+目标分布在不同位置。在三步之内让它们相遇。
+步数：3；目标：5
+盘面：
+LCLCTC
+CLTTCT
+CTCLCL
+LLTCLC
+CTLTCC
+TTLTLL
+1. 预览并确认折痕 bottom-4
+2. 交换 (1,4) ↔ (1,5)
+3. 预览并确认折痕 left-2
+
+level-12 · 最后一页 / The final page
+安排交换、折叠和遮挡顺序，展开最后一只纸鹿。
+步数：4；目标：5
+盘面：
+LCLLTT
+TCCLTT
+LLCTCC
+TCLLTT
+LCTLCC
+CTCTTL
+1. 交换 (1,2) ↔ (1,3)
+2. 预览并确认折痕 top-2
+3. 交换 (5,3) ↔ (6,3)
+4. 预览并确认折痕 right-4

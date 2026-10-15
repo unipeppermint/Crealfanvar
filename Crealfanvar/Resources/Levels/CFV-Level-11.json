@@ -1,0 +1,57 @@
+{
+  "levelID": "level-11",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "clever-overlaps",
+  "titleZH": "散落的星点",
+  "titleEN": "Scattered diamonds",
+  "purposeZH": "目标分布在不同位置。在三步之内让它们相遇。",
+  "purposeEN": "Targets are scattered across the paper. Reach them in three moves.",
+  "initialRows": [
+    "LCLCTC",
+    "CLTTCT",
+    "CTCLCL",
+    "LLTCLC",
+    "CTLTCC",
+    "TTLTLL"
+  ],
+  "targetCells": [
+    16,
+    18,
+    22,
+    24,
+    27
+  ],
+  "moveLimit": 3,
+  "folds": [
+    {
+      "creaseID": "left-2",
+      "axis": "vertical",
+      "boundary": 2,
+      "movingSide": "left"
+    },
+    {
+      "creaseID": "bottom-4",
+      "axis": "horizontal",
+      "boundary": 4,
+      "movingSide": "bottom"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "fold",
+      "creaseID": "bottom-4"
+    },
+    {
+      "type": "swap",
+      "first": 3,
+      "second": 4
+    },
+    {
+      "type": "fold",
+      "creaseID": "left-2"
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": "bottom-4"
+}

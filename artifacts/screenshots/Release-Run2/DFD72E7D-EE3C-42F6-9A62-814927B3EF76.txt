@@ -1,0 +1,64 @@
+Application, 0x10674b340, pid: 7085, label: '折叠生物' <App element pid: 7085>
+  Window (Main), 0x10674a440, {{0.0, 0.0}, {402.0, 874.0}} <AX element pid: 7085, elementOrHash.elementID: 4335011840.4>
+    Other, 0x10674a300, {{0.0, 0.0}, {402.0, 874.0}} <AX element pid: 7085, elementOrHash.elementID: 4392622080.5>
+      Other, 0x10674aa80, {{0.0, 0.0}, {402.0, 874.0}} <AX element pid: 7085, elementOrHash.elementID: 4393650688.6>
+        Other, 0x10674b480, {{0.0, 0.0}, {402.0, 874.0}} <AX element pid: 7085, elementOrHash.elementID: 4392257728.7>
+          Other, 0x10674b5c0, {{0.0, 0.0}, {402.0, 874.0}} <AX element pid: 7085, elementOrHash.elementID: 4392262208.8>
+            Other, 0x10674abc0, {{0.0, 0.0}, {402.0, 874.0}} <AX element pid: 7085, elementOrHash.elementID: 4392262656.9>
+              Other, 0x10674ad00, {{0.0, 0.0}, {402.0, 874.0}} <AX element pid: 7085, elementOrHash.elementID: 4336378624.708>
+                Other, 0x10674ae40, {{0.0, 0.0}, {402.0, 874.0}} <AX element pid: 7085, elementOrHash.elementID: 4336856000.709>
+                  ScrollView, 0x10674af80, {{0.0, 62.0}, {402.0, 701.7}} <AX element pid: 7085, elementOrHash.elementID: 4334750208.710>
+                    Other, 0x10674b0c0, {{20.0, 74.0}, {362.0, 557.7}} <AX element pid: 7085, elementOrHash.elementID: 4336858688.712>
+                      Other, 0x106748dc0, {{20.0, 74.0}, {362.0, 31.3}} <AX element pid: 7085, elementOrHash.elementID: 4336858240.718>
+                        StaticText, 0x106748f00, {{20.0, 74.0}, {362.0, 31.3}}, label: '关卡册' <AX element pid: 7085, elementOrHash.elementID: 4335478400.731>
+                      StaticText, 0x106749900, {{20.0, 121.3}, {362.0, 19.3}}, label: '全部关卡 · 已完成 12 / 12' <AX element pid: 7085, elementOrHash.elementID: 4335475712.719>
+                      Other, 0x106749180, {{20.0, 156.7}, {362.0, 76.0}} <AX element pid: 7085, elementOrHash.elementID: 4336845696.720>
+                        Button, 0x106749540, {{20.0, 156.7}, {114.0, 76.0}}, identifier: 'level-1', label: '第 01 关, 初见菱形', value: 已完成 <AX element pid: 7085, elementOrHash.elementID: 4731257600.732>
+                          StaticText, 0x106749cc0, {{85.3, 185.0}, {17.7, 19.3}}, label: '01' <AX element pid: 7085, elementOrHash.elementID: 4335479296.750>
+                        Button, 0x106749680, {{144.0, 156.7}, {114.0, 76.0}}, identifier: 'level-2', label: '第 02 关, 折起一角', value: 已完成 <AX element pid: 7085, elementOrHash.elementID: 4731261440.733>
+                          StaticText, 0x1067497c0, {{208.3, 185.0}, {19.7, 19.3}}, label: '02' <AX element pid: 7085, elementOrHash.elementID: 4335480192.751>
+                        Button, 0x106749e00, {{268.0, 156.7}, {114.0, 76.0}}, identifier: 'level-3', label: '第 03 关, 表面之下', value: 已完成 <AX element pid: 7085, elementOrHash.elementID: 4731260672.734>
+                          StaticText, 0x10674a800, {{332.3, 185.0}, {20.3, 19.3}}, label: '03' <AX element pid: 7085, elementOrHash.elementID: 4335483776.752>
+                      Other, 0x106748500, {{20.0, 248.7}, {362.0, 76.0}} <AX element pid: 7085, elementOrHash.elementID: 4336547392.721>
+                        Button, 0x106749b80, {{20.0, 248.7}, {114.0, 76.0}}, identifier: 'level-4', label: '第 04 关, 再试一次', value: 已完成 <AX element pid: 7085, elementOrHash.elementID: 4731259904.735>
+                          StaticText, 0x10674a080, {{84.3, 277.0}, {20.3, 19.3}}, label: '04' <AX element pid: 7085, elementOrHash.elementID: 4335481088.753>
+                        Button, 0x106749400, {{144.0, 248.7}, {114.0, 76.0}}, identifier: 'level-5', label: '第 05 关, 先换后折', value: 已完成 <AX element pid: 7085, elementOrHash.elementID: 4731258368.736>
+                          StaticText, 0x10674b700, {{208.3, 277.0}, {20.0, 19.3}}, label: '05' <AX element pid: 7085, elementOrHash.elementID: 4335481984.754>
+                        Button, 0x10674b840, {{268.0, 248.7}, {114.0, 76.0}}, identifier: 'level-6', label: '第 06 关, 向上相遇', value: 已完成 <AX element pid: 7085, elementOrHash.elementID: 4731259136.737>
+                          StaticText, 0x10674b980, {{332.3, 277.0}, {20.3, 19.3}}, label: '06' <AX element pid: 7085, elementOrHash.elementID: 4335473920.755>
+                      Other, 0x10674bac0, {{20.0, 340.7}, {362.0, 76.0}} <AX element pid: 7085, elementOrHash.elementID: 4336721344.722>
+                        Button, 0x10674bc00, {{20.0, 340.7}, {114.0, 76.0}}, identifier: 'level-7', label: '第 07 关, 一列或两列', value: 已完成 <AX element pid: 7085, elementOrHash.elementID: 4731272192.738>
+                          StaticText, 0x10674bd40, {{85.0, 369.0}, {19.0, 19.3}}, label: '07' <AX element pid: 7085, elementOrHash.elementID: 4335477504.756>
+                        Button, 0x10674be80, {{144.0, 340.7}, {114.0, 76.0}}, identifier: 'level-8', label: '第 08 关, 换个方向', value: 已完成 <AX element pid: 7085, elementOrHash.elementID: 4731271424.739>
+                          StaticText, 0x102e37c00, {{208.3, 369.0}, {20.3, 19.3}}, label: '08' <AX element pid: 7085, elementOrHash.elementID: 4335470336.757>
+                        Button, 0x102e37d40, {{268.0, 340.7}, {114.0, 76.0}}, identifier: 'level-9', label: '第 09 关, 留白也有重量', value: 已完成 <AX element pid: 7085, elementOrHash.elementID: 4731270656.740>
+                          StaticText, 0x102e37e80, {{332.3, 369.0}, {20.3, 19.3}}, label: '09' <AX element pid: 7085, elementOrHash.elementID: 4335473024.758>
+                      Other, 0x102e37ac0, {{20.0, 432.7}, {362.0, 76.0}} <AX element pid: 7085, elementOrHash.elementID: 4391737472.723>
+                        Button, 0x102e37980, {{20.0, 432.7}, {114.0, 76.0}}, identifier: 'level-10', label: '第 10 关, 留下关键一枚', value: 已完成 <AX element pid: 7085, elementOrHash.elementID: 4731269888.741>
+                          StaticText, 0x102e37840, {{85.3, 461.0}, {17.7, 19.3}}, label: '10' <AX element pid: 7085, elementOrHash.elementID: 4335469440.759>
+                        Button, 0x102e37700, {{144.0, 432.7}, {114.0, 76.0}}, identifier: 'level-11', label: '第 11 关, 散落的星点', value: 已完成 <AX element pid: 7085, elementOrHash.elementID: 4731269120.742>
+                          StaticText, 0x102e375c0, {{211.0, 461.0}, {15.0, 19.3}}, label: '11' <AX element pid: 7085, elementOrHash.elementID: 4335476608.760>
+                        Button, 0x102e37480, {{268.0, 432.7}, {114.0, 76.0}}, identifier: 'level-12', label: '第 12 关, 最后一页', value: 已完成 <AX element pid: 7085, elementOrHash.elementID: 4731262976.743>
+                          StaticText, 0x102e37340, {{334.0, 461.0}, {17.0, 19.3}}, label: '12' <AX element pid: 7085, elementOrHash.elementID: 4335472128.761>
+                      StaticText, 0x102e37200, {{20.0, 524.7}, {362.0, 50.3}}, label: '01—04 初次展开
+05—08 换个方向
+09—12 巧妙遮挡' <AX element pid: 7085, elementOrHash.elementID: 4335474816.724>
+                      StaticText, 0x102e370c0, {{20.0, 591.0}, {362.0, 40.7}}, label: '每完成 2 关，解锁一种生物
+12 关 · 6 种纸雕生物' <AX element pid: 7085, elementOrHash.elementID: 4335471232.725>
+                    Other, 0x102e36f80, {{369.0, 62.0}, {30.0, 701.7}}, label: '垂直滚动条, 1页', value: 0% <AX element pid: 7085, elementOrHash.elementID: 4409179136.713>
+                      Other, 0x102e36e40, {{396.0, 753.7}, {3.0, 7.0}} <AX element pid: 7085, elementOrHash.elementID: 4391729152.726>
+                    Other, 0x106424780, {{0.0, 730.7}, {402.0, 30.0}}, label: '水平滚动条, 1页', value: 0% <AX element pid: 7085, elementOrHash.elementID: 4409177600.714>
+                      Other, 0x106425a40, {{392.0, 757.7}, {7.0, 3.0}} <AX element pid: 7085, elementOrHash.elementID: 4336383552.727>
+                    Other, 0x106425b80, {{369.0, 62.0}, {30.0, 701.7}}, label: '垂直滚动条, 1页', value: 0% <AX element pid: 7085, elementOrHash.elementID: 4409179136.713>
+                      Other, 0x1064261c0, {{396.0, 753.7}, {3.0, 7.0}} <AX element pid: 7085, elementOrHash.elementID: 4391729152.726>
+                    Other, 0x106425e00, {{0.0, 730.7}, {402.0, 30.0}}, label: '水平滚动条, 1页', value: 0% <AX element pid: 7085, elementOrHash.elementID: 4409177600.714>
+                      Other, 0x106424140, {{392.0, 757.7}, {7.0, 3.0}} <AX element pid: 7085, elementOrHash.elementID: 4336383552.727>
+                  Other, 0x106424280, {{16.0, 771.7}, {370.0, 62.3}} <AX element pid: 7085, elementOrHash.elementID: 4336844800.711>
+                    Button, 0x1064243c0, {{16.0, 771.7}, {118.0, 62.3}}, label: '首页' <AX element pid: 7085, elementOrHash.elementID: 4731262208.715>
+                      StaticText, 0x106424500, {{79.0, 793.0}, {32.0, 19.3}}, label: '首页' <AX element pid: 7085, elementOrHash.elementID: 4335482880.728>
+                    Button, 0x106424640, {{142.0, 771.7}, {118.0, 62.3}}, label: '关卡' <AX element pid: 7085, elementOrHash.elementID: 4731256832.716>
+                      StaticText, 0x106425f40, {{202.0, 793.0}, {32.0, 19.3}}, label: '关卡' <AX element pid: 7085, elementOrHash.elementID: 4731208576.729>
+                    Button, 0x106425040, {{268.0, 771.7}, {118.0, 62.3}}, label: '生物图鉴' <AX element pid: 7085, elementOrHash.elementID: 4731263744.717>
+                      StaticText, 0x106427e80, {{330.3, 783.7}, {32.0, 38.3}}, label: '生物图鉴' <AX element pid: 7085, elementOrHash.elementID: 4731209472.730>
+            Other, 0x106427d40, {{0.0, 0.0}, {402.0, 874.0}} <AX element pid: 7085, elementOrHash.elementID: 4392618496.10>
+              Other, 0x106427c00, {{0.0, 0.0}, {402.0, 874.0}} <AX element pid: 7085, elementOrHash.elementID: 4392620544.12>

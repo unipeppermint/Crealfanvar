@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": 1,
+  "contentVersion": 1,
+  "levelID": "example-fold-right",
+  "purpose": "规则说明样例，不计入正式12关",
+  "rows": 6,
+  "columns": 6,
+  "moveLimit": 1,
+  "symbolLegend": {
+    "L": "leaf",
+    "T": "triangle",
+    "C": "circle"
+  },
+  "initialRows": [
+    "LTCLCT",
+    "CLTCLC",
+    "LLCTLL",
+    "LTCLTC",
+    "CLTCLT",
+    "TCLTCL"
+  ],
+  "idConvention": "cellID = r{row}c{column}; tileID = tile-r{row}c{column}; zero-based",
+  "targetCellIDs": [
+    "r2c0",
+    "r2c5"
+  ],
+  "folds": [
+    {
+      "creaseID": "right-two",
+      "axis": "vertical",
+      "boundary": 4,
+      "movingSide": "right"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "fold",
+      "creaseID": "right-two"
+    }
+  ],
+  "expected": {
+    "projectedRows": [
+      "LTTC",
+      "CLCL",
+      "LLLL",
+      "LTCT",
+      "CLTL",
+      "TCLC"
+    ],
+    "removedTileIDs": [
+      "tile-r2c0",
+      "tile-r2c1",
+      "tile-r2c4",
+      "tile-r2c5"
+    ],
+    "remainingMoves": 0,
+    "removedTargets": 2,
+    "outcome": "won"
+  }
+}

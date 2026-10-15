@@ -1,0 +1,72 @@
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-folded-bird-0.png
+  pixelWidth: 1254
+  pixelHeight: 1254
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-folded-bird-1.png
+  pixelWidth: 1254
+  pixelHeight: 1254
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-folded-bird-2.png
+  pixelWidth: 1254
+  pixelHeight: 1254
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-paper-butterfly-0.png
+  pixelWidth: 1254
+  pixelHeight: 1254
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-paper-butterfly-1.png
+  pixelWidth: 1254
+  pixelHeight: 1254
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-paper-butterfly-2.png
+  pixelWidth: 1254
+  pixelHeight: 1254
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-paper-deer-0.png
+  pixelWidth: 1335
+  pixelHeight: 1178
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-paper-deer-1.png
+  pixelWidth: 1335
+  pixelHeight: 1178
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-paper-deer-2.png
+  pixelWidth: 1335
+  pixelHeight: 1178
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-paper-fish-0.png
+  pixelWidth: 1536
+  pixelHeight: 1024
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-paper-fish-1.png
+  pixelWidth: 1536
+  pixelHeight: 1024
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-paper-fish-2.png
+  pixelWidth: 1536
+  pixelHeight: 1024
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-paper-fox-0.png
+  pixelWidth: 1312
+  pixelHeight: 1199
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-paper-fox-1.png
+  pixelWidth: 1312
+  pixelHeight: 1199
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-paper-fox-2.png
+  pixelWidth: 1312
+  pixelHeight: 1199
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-paper-rabbit-0.png
+  pixelWidth: 1319
+  pixelHeight: 1192
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-paper-rabbit-1.png
+  pixelWidth: 1319
+  pixelHeight: 1192
+  hasAlpha: yes
+/Users/mac/Desktop/Projects/Crealfanvar/Crealfanvar/Resources/Creatures/CFV-paper-rabbit-2.png
+  pixelWidth: 1319
+  pixelHeight: 1192
+  hasAlpha: yes

@@ -1,0 +1,65 @@
+{
+  "levelID": "level-12",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "clever-overlaps",
+  "titleZH": "最后一页",
+  "titleEN": "The final page",
+  "purposeZH": "安排交换、折叠和遮挡顺序，展开最后一只纸鹿。",
+  "purposeEN": "Plan swaps, folds and overlaps to unfold the final paper deer.",
+  "initialRows": [
+    "LCLLTT",
+    "TCCLTT",
+    "LLCTCC",
+    "TCLLTT",
+    "LCTLCC",
+    "CTCTTL"
+  ],
+  "targetCells": [
+    8,
+    9,
+    25,
+    28,
+    31
+  ],
+  "moveLimit": 4,
+  "folds": [
+    {
+      "creaseID": "right-4",
+      "axis": "vertical",
+      "boundary": 4,
+      "movingSide": "right"
+    },
+    {
+      "creaseID": "top-2",
+      "axis": "horizontal",
+      "boundary": 2,
+      "movingSide": "top"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "swap",
+      "first": 1,
+      "second": 2
+    },
+    {
+      "type": "fold",
+      "creaseID": "top-2"
+    },
+    {
+      "type": "swap",
+      "first": 26,
+      "second": 32
+    },
+    {
+      "type": "fold",
+      "creaseID": "right-4"
+    }
+  ],
+  "tutorialCells": [
+    1,
+    2
+  ],
+  "tutorialCrease": null
+}

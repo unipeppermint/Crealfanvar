@@ -1,0 +1,235 @@
+{
+  "mode": "Built-in image_gen",
+  "reference": "docs/release-v1/prototypes/CFV-Paperkin-Fold-Collection-v2.png",
+  "base": "Use case: stylized-concept. Asset type: standalone transparent PNG creature artwork for the Paperkin UIKit app. Reference image is the supplied app prototype: use ONLY its creature art as visual guidance, do not reproduce any UI. Match the exquisite tactile handmade folded paper sculpture aesthetic exactly: warm ivory fibrous washi paper, delicate visible fibers and creases, overlapping thick paper planes, softly shaded recessed folds, muted sage green, dusty lavender and restrained terracotta accents. Soft warm upper-left studio light, subtle ambient occlusion/contact shadow within sculpture, transparent exterior. Single isolated creature, centered square composition, full silhouette and appendages inside frame, fills about 85% of canvas. No text, UI, card, border, scenery, ground plane, floating confetti, extra creatures or flat vector polygons. ",
+  "completedSpecies": [
+    [
+      "bird2",
+      "Create the completed FOLDED BIRD matching top-right collection card: left-facing small pointed beak, tiny dark eye on terracotta triangular head, tall sage folded chest, ivory angular body, one soaring lavender pleated wing diagonally upward to right, smaller sage wing behind, long ivory/sage/lavender pointed tail toward lower right with terracotta tip. Exact original silhouette, no legs."
+    ],
+    [
+      "fish2",
+      "Create the completed PAPER FISH matching the large center completion fish and middle-left collection card: left-facing pointed ivory head, round small terracotta paper disk eye with dark center, broad ivory diamond-like body layered over sage folded gill, upper lavender dorsal fin, flowing lower sage and lavender fins, large fan tail at right with ivory/sage upper half and lavender lower half. Intricate convincingly folded washi, exquisite reference fidelity."
+    ],
+    [
+      "rabbit2",
+      "Create the completed PAPER RABBIT matching middle-right collection silhouette, now with restrained accents in reference palette: left-facing seated rabbit, two very long upright pointed folded ears, small angular muzzle with tiny dark eye, slender raised chest, large rounded angular haunch and folded feet. Predominantly warm ivory paper, muted lavender ear interiors and sage small haunch fold. Match delicate natural silhouette of reference, no cartoon."
+    ],
+    [
+      "fox2",
+      "Create the completed PAPER FOX matching bottom-left collection silhouette, now with restrained reference palette accents: left-facing seated fox with two tall triangular ears, long pointed muzzle and tiny dark eye, upright angular chest, slim front legs, large folded bushy tail curled at right. Predominantly ivory and muted terracotta paper with one subtle sage accent and lavender underside fold. Faithful intricate folded paper depth, not cartoon."
+    ],
+    [
+      "deer2",
+      "Create the completed PAPER DEER matching bottom-right collection silhouette, now with restrained reference palette accents: elegant left-facing standing deer, narrow pointed head and tiny dark eye, fine branched folded antlers, upright long neck, horizontal angular body, four very slim legs, little raised tail at right. Predominantly ivory fibrous paper, restrained sage shoulder and dusty lavender flank inset folds. Preserve delicate standing side-profile silhouette."
+    ]
+  ],
+  "butterflyCompleted": "Create the completed PAPER BUTTERFLY matching the top-left collection card of the reference. Symmetrical frontal moth-like butterfly, ivory slender folded body, two fine bent paper antennae, broad upper wings with sage green inset folded leaf panels, scalloped lower ivory wings with lavender folded panels and two small terracotta circular lower-wing eyespots. Elegant natural paper wing proportions and deep layered fine facets. Faithfully preserve this reference silhouette and color layout.",
+  "butterflyVariants": [
+    [
+      0,
+      "Change only colors: make this exact completed butterfly entirely warm ivory unprinted fibrous paper, including every green, lavender and orange panel, for the locked collection card. Keep exact silhouette, pose, intricate folds, thickness, antennae, proportions, camera, framing and soft occlusion shadows. A beautiful monochrome embossed paper sculpture, not gray faded art."
+    ],
+    [
+      1,
+      "Create the halfway folding stage of this exact butterfly: keep central ivory body and antennae, same paper materials/colors and centered scale, but the wings are partly folded inward, upper wings raised and lower wing tips still tucked toward the central body. Show a convincing recognizable partly assembled origami butterfly, about 65% of the final wing span; not a squeezed or warped finished image. Preserve intricate physical folds and layered thickness."
+    ]
+  ],
+  "variants": [
+    [
+      "bird0Prompt",
+      "Use case: precise-object-edit. Edit target: supplied completed Paperkin bird. Change ONLY all colored panels and the eye to warm ivory unprinted paper. Keep exact complete silhouette, framing, pose, intricate folds, camera, thickness and detail. Locked collection variant, beautiful monochrome ivory paper sculpture. Single creature isolated on a truly transparent background. NO colored glow, NO large shadow halo, NO backdrop, UI, text, props or extra objects. Limit shadow to tiny soft paper-edge occlusion."
+    ],
+    [
+      "bird1Prompt",
+      "Use case: precise-object-edit. Edit target: supplied completed Paperkin bird. Fold the raised lavender wing halfway down toward the sage chest, tuck the long tail inward slightly, keep bird head and beak visible. Recognizable partially assembled folded bird with real new folds, not a squeezed finished image. Preserve exactly the same paper fibers, ivory/sage/lavender/terracotta colors, lighting, creature identity and image scale. Single creature isolated on a truly transparent background. NO colored glow, NO large shadow halo, NO backdrop, UI, text, props or extra objects. Limit shadow to tiny soft paper-edge occlusion."
+    ],
+    [
+      "fish0Prompt",
+      "Use case: precise-object-edit. Edit target: supplied completed Paperkin fish. Change ONLY all colored panels and the eye to warm ivory unprinted paper. Keep exact complete silhouette, framing, pose, intricate folds, camera, thickness and detail. Locked collection variant, beautiful monochrome ivory paper sculpture. Single creature isolated on a truly transparent background. NO colored glow, NO large shadow halo, NO backdrop, UI, text, props or extra objects. Limit shadow to tiny soft paper-edge occlusion."
+    ],
+    [
+      "fish1Prompt",
+      "Use case: precise-object-edit. Edit target: supplied completed Paperkin fish. Keep ivory head, round terracotta eye and main body, but tail fan is still partly closed and triangular lower fins are tucked halfway under the body. A real half-finished paper fish with convincing layered folded geometry, not a squeezed finished image. Preserve exactly the same paper fibers, ivory/sage/lavender/terracotta colors, lighting, creature identity and image scale. Single creature isolated on a truly transparent background. NO colored glow, NO large shadow halo, NO backdrop, UI, text, props or extra objects. Limit shadow to tiny soft paper-edge occlusion."
+    ],
+    [
+      "fish2CleanPrompt",
+      "Use case: background-extraction. Precise edit target supplied paper creature. Keep the creature artwork itself pixel-faithful: exact shape, all folds, textures, colors, eye, pose, scale. REMOVE the entire large blurry exterior halo/glow/cloud around and behind the creature. Exterior must be fully transparent alpha right up to clean paper edges, including all gaps between appendages. Keep shadows ONLY within the folded creature itself, NO exterior cast shadow, NO surface, NO colored or gray glow, no backing shape. Single clean transparent cutout of the same exquisite paper creature."
+    ],
+    [
+      "fox2CleanPrompt",
+      "Use case: background-extraction. Precise edit target supplied paper creature. Keep the creature artwork itself pixel-faithful: exact shape, all folds, textures, colors, eye, pose, scale. REMOVE the entire large blurry exterior halo/glow/cloud around and behind the creature. Exterior must be fully transparent alpha right up to clean paper edges, including all gaps between appendages. Keep shadows ONLY within the folded creature itself, NO exterior cast shadow, NO surface, NO colored or gray glow, no backing shape. Single clean transparent cutout of the same exquisite paper creature."
+    ],
+    [
+      "deerVariantSpecs",
+      [
+        [
+          "deer2Clean",
+          "Keep exact completed deer, colors, intricate folds, fibers, antlers, thin legs and silhouette unchanged. Remove ALL the large cloudy exterior halo and the entire floor underneath its hooves. All exterior and spaces between its legs MUST be completely transparent right up to the edges. NO external cast shadow, glow or backing shape."
+        ],
+        [
+          "deer0",
+          "Make the exact same complete deer sculpture entirely warm ivory unprinted paper, including green and lavender panels. Preserve silhouette, intricate folds, antlers, four legs, lighting, camera and size. Remove ALL exterior halo and floor; completely transparent around antlers and between legs, no external cast shadow. Locked monochrome ivory collection illustration."
+        ],
+        [
+          "deer1",
+          "Create a partially assembled stage of the exact deer, same head, antlers, fibers and ivory/sage/lavender palette: legs partly folded up beneath body and rump flap still partly raised, antler tips still tucked. Recognizable unfinished paper deer with real fold geometry, not squashed. Keep same canvas scale. Clean transparent background right up to silhouette, no exterior shadows, halo, floor or props."
+        ]
+      ]
+    ],
+    [
+      "foxVariantSpecs",
+      [
+        [
+          "fox0",
+          "Make this exact complete fox sculpture entirely warm ivory unprinted paper, including terracotta, green and lavender panels. Preserve silhouette, face, intricate folds, ears, body, bushy tail, lighting, camera and size. Remove ALL exterior halo and floor; clean transparent background right to edges, no exterior cast shadow. Locked monochrome ivory collection illustration."
+        ],
+        [
+          "fox1",
+          "Create the partially assembled stage of this exact fox, retaining head, ears, ivory/terracotta/sage/lavender palette and fibers: large bushy tail remains half folded inward against the haunch, front paws partially tucked under chest, lower body fold not fully opened. Recognizable partly folded fox with real fold geometry, not squashed. Keep original canvas scale. Remove ALL exterior cloudy halo. Clean transparent background right to edges, no exterior shadow, glow, floor or props."
+        ]
+      ]
+    ],
+    [
+      "rabbitVariantSpecs",
+      [
+        [
+          "rabbit0",
+          "Make this exact completed rabbit entirely warm ivory unprinted paper, including lavender and green panels. Preserve silhouette, face, tiny dark eye, intricate folds, tall ears, body, paws, lighting, camera and size. Locked monochrome ivory collection illustration."
+        ],
+        [
+          "rabbit1",
+          "Create the partially assembled stage of the exact rabbit: keep head, face, paper fibers and ivory/sage/lavender palette, fold the long ear tips halfway downward and leave the haunch side flap partly open with hind feet tucked in. Recognizable half-finished folded rabbit with actual physical folds, not a squashed finished image. Preserve original canvas scale."
+        ]
+      ]
+    ]
+  ],
+  "assets": [
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-b3ac7573-9aaa-497a-b5c3-bf86ece043ce.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-paper-butterfly-0.png",
+      "creature": "paper-butterfly",
+      "stage": 0,
+      "sha256": "8ce3b07322753838a59e7c7c270fcc9c882f6db2cb64dc68f39713a625f012d6"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-16103382-3514-47f3-98d4-c67e9df19cf8.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-paper-butterfly-1.png",
+      "creature": "paper-butterfly",
+      "stage": 1,
+      "sha256": "3977c8400868a9494e4cb458c845081d9a69aec3f957a6b31a81eb9bd8d7a5c1"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-2ea6dd83-9a34-437e-b8ed-15cd89c80fde.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-paper-butterfly-2.png",
+      "creature": "paper-butterfly",
+      "stage": 2,
+      "sha256": "6f7ae9006d54e44eb2ac4fd4016d2301a9055f7975a21d0c5eb8b31a3a890b8a"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-d5934b15-0b67-4d41-b606-97c3af386dfe.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-folded-bird-0.png",
+      "creature": "folded-bird",
+      "stage": 0,
+      "sha256": "4d2931b135182dbfac5c78d3f19fe16624a82eea274bf3641d50a1b1fdfbbfca"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-19755ab4-9524-4307-b253-5ae859380040.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-folded-bird-1.png",
+      "creature": "folded-bird",
+      "stage": 1,
+      "sha256": "c52222c752374687062443f6e509c6be5535609a31570eac106e1ae946c8c587"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-c01c84a8-1cf7-46c8-9ddd-e8dc9edde038.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-folded-bird-2.png",
+      "creature": "folded-bird",
+      "stage": 2,
+      "sha256": "6691861c3d5b27f9d94bee3709a75e991ef79f383c1691eee44ecac21698c792"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-0ce41aaa-ee7d-415b-aaf5-c771f6aca880.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-paper-fish-0.png",
+      "creature": "paper-fish",
+      "stage": 0,
+      "sha256": "5dd8a2a557f89f335e435e5d1bbd877637b5815cd1015e8ef64c3cf96b0e20a7"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-279cf015-353d-4f60-b81d-70086db6f6ee.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-paper-fish-1.png",
+      "creature": "paper-fish",
+      "stage": 1,
+      "sha256": "16678d8ecb20ea49563e3acc54cf2c08dd55dd307613cd3fce82c2138f9741f0"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-2f78f697-c42a-4c52-91b6-1abfe6065fad.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-paper-fish-2.png",
+      "creature": "paper-fish",
+      "stage": 2,
+      "sha256": "0d64ebf66c58a6a5141501a7729a5203c3dd2288e23500a733e74d4681c00b02"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-21b3a897-c4d1-4031-b35c-212896b2341e.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-paper-rabbit-0.png",
+      "creature": "paper-rabbit",
+      "stage": 0,
+      "sha256": "15af83e0c732a463b75d5f906ac86ecd31fd0c9a1c003b6af8fc5b747e9d79f0"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-5125f699-5f1a-48bd-8643-f1c44e1b4b4f.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-paper-rabbit-1.png",
+      "creature": "paper-rabbit",
+      "stage": 1,
+      "sha256": "d674d04761768740916f6a71c515f42e8991eaa426ef1fad42510800d7cd9fbd"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-d3fb24db-fcdf-4de2-91cc-344217b53476.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-paper-rabbit-2.png",
+      "creature": "paper-rabbit",
+      "stage": 2,
+      "sha256": "50f071f547596ebfab5549e83fb1d49ffad0034ac4a4db3c051ac38d5201c1dd"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-9b1a68e6-285c-4b5b-adb4-d64b31e38101.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-paper-fox-0.png",
+      "creature": "paper-fox",
+      "stage": 0,
+      "sha256": "35b5ee87924852095ea472c1811874e660bb0ecd05d04c6eea37cadc7eaa3631"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-1152979a-330d-40f1-958a-342364ef1bfb.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-paper-fox-1.png",
+      "creature": "paper-fox",
+      "stage": 1,
+      "sha256": "0ffa52cae7c05dc06fecf4c7edeb25ec349968213038e77ff177aefd31b29f53"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-c9f0c7e7-6b45-4237-afd4-2b5596afc0e4.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-paper-fox-2.png",
+      "creature": "paper-fox",
+      "stage": 2,
+      "sha256": "58303748604c22c6b29aa7fc30aa5a78fbfb01af4ba07f718a219c00bdaff01c"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-5742bf6e-8c6c-40ea-a969-63920b47a6f5.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-paper-deer-0.png",
+      "creature": "paper-deer",
+      "stage": 0,
+      "sha256": "8d2ac03f19524aa14dd1c509ceb0ca2efe66a553a978561f56180d3409384f82"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-90c664b0-b198-4ab0-b3a9-778b04340439.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-paper-deer-1.png",
+      "creature": "paper-deer",
+      "stage": 1,
+      "sha256": "3eaa6807bbc304cd7c905123716a938d92105e518874f27db983179acd6e64bf"
+    },
+    {
+      "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-73f70c72-99e9-4bf5-af62-bed03a1cf55c.png",
+      "destination": "Crealfanvar/Resources/Creatures/CFV-paper-deer-2.png",
+      "creature": "paper-deer",
+      "stage": 2,
+      "sha256": "937e5b17c6db5dd673d18c5efae3d88281e45317cb090c8dd9c67e7ba92cd1e2"
+    }
+  ]
+}

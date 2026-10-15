@@ -1,0 +1,25 @@
+{
+  "bundleID": "com.tumopa.Crealfanvar",
+  "minimumOS": "15.0",
+  "sdk": "iphoneos26.5",
+  "xcode": "2660",
+  "levels": 12,
+  "creatures": 6,
+  "stages": 18,
+  "audioFiles": 7,
+  "bundleBytes": 28331123,
+  "signed": false,
+  "uploaded": false,
+  "externalBlockers": [
+    "Developer signing identity and provisioning",
+    "Real-device iOS 15 and current-system QA",
+    "VoiceOver task completion and audio interruption on device",
+    "First-time-user observation (5\u20138 people, two rounds for levels 1\u20134 and blank-paper comprehension)",
+    "Instruments performance and long-session memory measurements",
+    "TestFlight regression and signed upload validation",
+    "Developer identity, name rights, regions and applicable regional materials",
+    "App Store age rating, pricing, privacy labels and final screenshot selection",
+    "Missing genuine HTTPS CFVPrivacyURL",
+    "Missing genuine HTTPS CFVSupportURL"
+  ]
+}

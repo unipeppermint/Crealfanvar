@@ -1,0 +1,43 @@
+# macOS
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+
+# Xcode build products and local user settings
+build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+*.hmap
+
+# Archives, exported apps, and debug symbols
+*.xcarchive/
+*.ipa
+*.app/
+*.dSYM/
+*.dSYM.zip
+
+# Test results and coverage
+*.xcresult/
+*.profdata
+*.profraw
+*.gcda
+*.gcno
+/artifacts/validation/*.log
+/artifacts/validation/save-fixtures-*/
+
+# Swift Package Manager build cache (keep Package.resolved)
+.build/
+
+# Python helper script caches
+__pycache__/
+*.py[cod]
+.venv/
+
+# Editor temporary files
+*.swp
+*.swo
+*~

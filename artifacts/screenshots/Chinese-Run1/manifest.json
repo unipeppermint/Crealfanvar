@@ -1,0 +1,89 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "E3571B3A-3792-45AD-9FC8-5B691DDDB0F6.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "06-detail-zh_0_188016C4-BC24-4ACE-970F-7DF78EE3F55A.png",
+        "timestamp" : 1792038392.544
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "F782BEBE-AD80-4F0C-949F-34D256C8A7FD.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "05-collection-zh_0_1B7375CE-E69D-4DB3-BC84-09FEC9EBC8BE.png",
+        "timestamp" : 1792038389.188
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "0AF98CEF-51B2-4877-BDA0-0225A5654B39.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "fold-preview_0_D2FFB5FB-FC3C-43D2-B9F2-92C7123517B2.png",
+        "timestamp" : 1792038330.006
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "8BE7ADA3-7CA3-4205-AE34-2200A3558844.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "fold-preview_0_E906AC92-0B47-41BF-BC7E-9A11E200F91D.png",
+        "timestamp" : 1792038323.104
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "883673FE-A8F2-46B7-AB85-61F0DD5A7F34.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "04-fish-unlocked-zh_0_AEC59E0B-DA08-4E88-98CE-44FEAD667A63.png",
+        "timestamp" : 1792038287.885
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "329C9437-EE00-4F34-A4D5-7BA92721A498.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "03-level05-zh_0_73A4D541-3295-4612-AC52-F1886B447B8D.png",
+        "timestamp" : 1792038267.983
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "98FB095B-F8B8-4E0A-9154-E3979BD9A883.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "fold-preview_0_99D63C77-988F-4524-875F-C1A99E771E65.png",
+        "timestamp" : 1792038224.592
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "ED14B281-2408-46CE-8239-C846227D2FC1.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "02-gameplay-zh_0_F0FA498C-25EC-4EBD-AE09-31E65DAB8DB2.png",
+        "timestamp" : 1792038213.385
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "5E79690B-1BA0-4071-9216-B8790911278C.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "01-home-zh_0_553B202A-5C77-455C-8070-D734A7F36B8A.png",
+        "timestamp" : 1792038208.668
+      }
+    ],
+    "testIdentifier" : "CFVUITests/testFullChineseJourneyAndRecovery()",
+    "testIdentifierURL" : "test://com.apple.xcode/Crealfanvar/CFVUITests/CFVUITests/testFullChineseJourneyAndRecovery"
+  }
+]

@@ -1,0 +1,17 @@
+Privacy / submission preflight review — 2026-10-15 (Asia/Shanghai)
+
+Implementation inventory:
+- UserDefaults: only CFV.language, CFV.music, CFV.sound, CFV.haptics and CFV.reduceMotion, in the app's standard domain.
+- Required reason declaration: NSPrivacyAccessedAPICategoryUserDefaults / CA92.1, for information accessible to the app itself. No App Group or managed-configuration access.
+- Session/progress: local Codable JSON in Application Support/Paperkin; atomic writes, independent files, validated backups and preserved damaged files.
+- No account, networking client, telemetry SDK, ads, in-app purchase SDK or fingerprinting code.
+- Optional privacy/support URLs open in the system browser after user interaction; genuine URLs are not supplied yet.
+- No tracking domains and no collected-data categories in bundled PrivacyInfo.xcprivacy.
+- App Store privacy answers must be confirmed against the final signed build and the eventual support site's behavior; this record is not an App Store submission.
+
+Official sources checked:
+https://developer.apple.com/documentation/bundleresources/app-privacy-configuration/nsprivacyaccessedapitypes/nsprivacyaccessedapitypereasons?language=objc
+https://developer.apple.com/documentation/technotes/tn3183-adding-required-reason-api-entries-to-your-privacy-manifest
+https://developer.apple.com/news/upcoming-requirements/
+
+The first source identifies CA92.1 for the app's own preferences. The SDK requirement page requires Xcode 26+ and iOS 26+ SDK for uploads from 2026-04-28. The local toolchain is Xcode 26.6 (17F113), with iOS 26.5 SDK. The app's deployment target remains iOS 15.0. Final upload eligibility and signing must still be validated through the developer account; no upload was performed.

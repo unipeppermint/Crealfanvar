@@ -1,0 +1,50 @@
+[
+  {
+    "file": "Release-07-fish-detail-zh.png",
+    "sha256": "c76429680267b08d076fa031c4dfe1fc02f6a2fc9b8acba83d920c9e5827ee4f",
+    "sourceResult": "CFV-UI-Artwork.xcresult",
+    "device": "Paperkin QA"
+  },
+  {
+    "file": "Release-06-collection-zh.png",
+    "sha256": "8614f0dca105b56e66d467d13fce99942a17b03e6bf8835041bf477115446d7b",
+    "sourceResult": "CFV-UI-Artwork.xcresult",
+    "device": "Paperkin QA"
+  },
+  {
+    "file": "Release-05-completion-zh.png",
+    "sha256": "15a9f872d930b44db65db42aee89bd1d479a1cbf030e860649e8727401bb754d",
+    "sourceResult": "CFV-UI-Artwork.xcresult",
+    "device": "Paperkin QA"
+  },
+  {
+    "file": "Release-04-fold-preview-zh.png",
+    "sha256": "fd04cc04a4f4dd59018a1dd9e1103ec5900030667dd3c5ae11ee718aebef4d4c",
+    "sourceResult": "CFV-UI-Artwork.xcresult",
+    "device": "Paperkin QA"
+  },
+  {
+    "file": "Release-03-gameplay-zh.png",
+    "sha256": "4e26ae6ca6dcfbda08e47f6af435a6f8ee9948504aa5752026466fcdff13808f",
+    "sourceResult": "CFV-UI-Artwork.xcresult",
+    "device": "Paperkin QA"
+  },
+  {
+    "file": "Release-failure-recovery-zh.png",
+    "sha256": "ce9c5bcc88a5f66efd28202f4a4800df34f5c9aa779ef47e36678152806f1aea",
+    "sourceResult": "CFV-UI-Artwork.xcresult",
+    "device": "Paperkin QA"
+  },
+  {
+    "file": "Release-02-level-book-zh.png",
+    "sha256": "34afeccb633e2b3e3e249caa28d33254884cd72404b858dbb73a55fd6b1e382a",
+    "sourceResult": "CFV-UI-Artwork.xcresult",
+    "device": "Paperkin QA"
+  },
+  {
+    "file": "Release-01-home-zh.png",
+    "sha256": "c873c7706528850e62758b78feaeef7a28db327312087a759cbb292839d06dd5",
+    "sourceResult": "CFV-UI-Artwork.xcresult",
+    "device": "Paperkin QA"
+  }
+]

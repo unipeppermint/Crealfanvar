@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "releasePlanRevision": 2,
+  "purpose": "首版范围与解锁关系规划；不含实际棋盘数据",
+  "totalLevels": 12,
+  "totalCreatures": 6,
+  "board": {
+    "rows": 6,
+    "columns": 6
+  },
+  "levelSelection": {
+    "layout": "single-page",
+    "columns": 3,
+    "rows": 4,
+    "chapterGates": false
+  },
+  "levelIDs": [
+    "level-01",
+    "level-02",
+    "level-03",
+    "level-04",
+    "level-05",
+    "level-06",
+    "level-07",
+    "level-08",
+    "level-09",
+    "level-10",
+    "level-11",
+    "level-12"
+  ],
+  "learningStages": [
+    {
+      "id": "first-folds",
+      "name": "初次展开",
+      "startLevel": 1,
+      "endLevel": 4
+    },
+    {
+      "id": "new-directions",
+      "name": "换个方向",
+      "startLevel": 5,
+      "endLevel": 8
+    },
+    {
+      "id": "clever-overlaps",
+      "name": "巧妙遮挡",
+      "startLevel": 9,
+      "endLevel": 12
+    }
+  ],
+  "creatures": [
+    {
+      "id": "paper-butterfly",
+      "name": "纸蝶",
+      "requiredLevelIDs": [
+        "level-01",
+        "level-02"
+      ],
+      "unlockLevel": 2
+    },
+    {
+      "id": "folded-bird",
+      "name": "折翼鸟",
+      "requiredLevelIDs": [
+        "level-03",
+        "level-04"
+      ],
+      "unlockLevel": 4
+    },
+    {
+      "id": "paper-fish",
+      "name": "纸鱼",
+      "requiredLevelIDs": [
+        "level-05",
+        "level-06"
+      ],
+      "unlockLevel": 6
+    },
+    {
+      "id": "paper-rabbit",
+      "name": "纸兔",
+      "requiredLevelIDs": [
+        "level-07",
+        "level-08"
+      ],
+      "unlockLevel": 8
+    },
+    {
+      "id": "paper-fox",
+      "name": "纸狐",
+      "requiredLevelIDs": [
+        "level-09",
+        "level-10"
+      ],
+      "unlockLevel": 10
+    },
+    {
+      "id": "paper-deer",
+      "name": "纸鹿",
+      "requiredLevelIDs": [
+        "level-11",
+        "level-12"
+      ],
+      "unlockLevel": 12
+    }
+  ],
+  "artwork": {
+    "stableStates": [
+      {
+        "completedLevels": 0,
+        "key": "unstarted"
+      },
+      {
+        "completedLevels": 1,
+        "key": "half-unfolded"
+      },
+      {
+        "completedLevels": 2,
+        "key": "complete"
+      }
+    ],
+    "stableAssetsPerCreature": 3,
+    "totalStableAssets": 18
+  },
+  "prototypeSnapshots": {
+    "entry": {
+      "completedLevels": 4,
+      "currentLevel": 5,
+      "currentCreatureID": "paper-fish",
+      "unlockedCreatures": 2
+    },
+    "completion": {
+      "completedLevels": 6,
+      "completedLevel": 6,
+      "newCreatureID": "paper-fish",
+      "unlockedCreatures": 3
+    }
+  }
+}

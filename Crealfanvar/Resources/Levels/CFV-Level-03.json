@@ -1,0 +1,44 @@
+{
+  "levelID": "level-03",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "first-folds",
+  "titleZH": "表面之下",
+  "titleEN": "Beneath the surface",
+  "purposeZH": "折叠只消除最上层图案。展开后，找出留下的目标。",
+  "purposeEN": "Only the top layer matches. Find the target that remains after unfolding.",
+  "initialRows": [
+    "TLTTLC",
+    "LTLTLL",
+    "CCLLCC",
+    "LTCLTL",
+    "TLCTLC",
+    "CCTCLL"
+  ],
+  "targetCells": [
+    12,
+    26
+  ],
+  "moveLimit": 2,
+  "folds": [
+    {
+      "creaseID": "left-2",
+      "axis": "vertical",
+      "boundary": 2,
+      "movingSide": "left"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "fold",
+      "creaseID": "left-2"
+    },
+    {
+      "type": "swap",
+      "first": 31,
+      "second": 32
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": "left-2"
+}

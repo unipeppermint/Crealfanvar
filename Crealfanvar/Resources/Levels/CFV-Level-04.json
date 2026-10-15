@@ -1,0 +1,53 @@
+{
+  "levelID": "level-04",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "first-folds",
+  "titleZH": "再试一次",
+  "titleEN": "Another possibility",
+  "purposeZH": "预览两条折痕，比较结果。可以撤销已提交的动作，再选择路线。",
+  "purposeEN": "Compare both creases. Undo a committed move to try another route.",
+  "initialRows": [
+    "TCCLLT",
+    "LCTCCL",
+    "TLTTLL",
+    "TCCTTC",
+    "CTCLCL",
+    "LTTLTL"
+  ],
+  "targetCells": [
+    2,
+    13
+  ],
+  "moveLimit": 2,
+  "folds": [
+    {
+      "creaseID": "right-4",
+      "axis": "vertical",
+      "boundary": 4,
+      "movingSide": "right"
+    },
+    {
+      "creaseID": "top-2",
+      "axis": "horizontal",
+      "boundary": 2,
+      "movingSide": "top"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "swap",
+      "first": 2,
+      "second": 8
+    },
+    {
+      "type": "fold",
+      "creaseID": "right-4"
+    }
+  ],
+  "tutorialCells": [
+    2,
+    8
+  ],
+  "tutorialCrease": null
+}

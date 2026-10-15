@@ -1,0 +1,50 @@
+{
+  "levelID": "level-07",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "new-directions",
+  "titleZH": "一列或两列",
+  "titleEN": "One or two",
+  "purposeZH": "比较右侧一列与两列的投影。每次只折一个面。",
+  "purposeEN": "Compare the one-column and two-column creases. Fold one at a time.",
+  "initialRows": [
+    "TTCTLL",
+    "LTLCCT",
+    "CLLCTL",
+    "LCCTCC",
+    "CLTLLT",
+    "LTTLCC"
+  ],
+  "targetCells": [
+    6,
+    23
+  ],
+  "moveLimit": 2,
+  "folds": [
+    {
+      "creaseID": "right-5",
+      "axis": "vertical",
+      "boundary": 5,
+      "movingSide": "right"
+    },
+    {
+      "creaseID": "right-4",
+      "axis": "vertical",
+      "boundary": 4,
+      "movingSide": "right"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "fold",
+      "creaseID": "right-4"
+    },
+    {
+      "type": "swap",
+      "first": 12,
+      "second": 13
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": "right-4"
+}

@@ -1,0 +1,494 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "16F61D50-39BE-45CF-BCC7-B2330C4F477E.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "App UI hierarchy for com.tumopa_0_2A576152-73AA-41A4-9257-5F734178F374.Crealfanvar",
+        "timestamp" : 1792038724.869
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "C939C36F-0FC7-48E4-A0B1-706C8CE97E12",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.32.04 下午",
+        "timestamp" : 1792038724.869
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "3312AAEC-93BE-43B8-BBBD-111678E1811F.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"confirm-fold\" Button`_0_50E1B124-BC2D-4560-8594-E4D0CB483FC5.txt",
+        "timestamp" : 1792038724.84
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "CF37AAA0-272B-49C1-B2DE-304DC11BC9E6.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"confirm-fold\" Button`_0_ACD05ECC-0129-4749-B1AD-6A756C0872EC.txt",
+        "timestamp" : 1792038723.928
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "E7F2951B-130D-4FE7-A081-B791B5895FC5.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"confirm-fold\" Button`_0_AF342596-186F-4C8A-91BE-25BEB67E74DE.txt",
+        "timestamp" : 1792038722.863
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "6F905171-2279-4802-B9C2-D741882B5DF5.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"confirm-fold\" Button`_0_DDF09B72-F430-4D68-B758-70B97C2DCC63.txt",
+        "timestamp" : 1792038721.906
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "7308479E-560F-4D21-B433-9256B3ADACD9",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.32.00 下午",
+        "timestamp" : 1792038720.509
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "4BE82C9F-E635-4AFC-BB99-214ED217044B",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.32.00 下午",
+        "timestamp" : 1792038720.816
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "C3574BFB-3360-407F-BFEC-EEDCDDB7DFCE",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.32.00 下午",
+        "timestamp" : 1792038720.178
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "1F035D77-DBED-4A38-AB5D-CBAE263359A9",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.32.00 下午",
+        "timestamp" : 1792038720.461
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "84B3F602-3429-4968-A604-B5F149985847.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Release-04-fold-preview-zh_0_E23D86B9-DE0E-4C8F-96DC-4F0E9C44BFCE.png",
+        "timestamp" : 1792038718.999
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "E956F52D-3656-4112-971C-EF67996D8FF3",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.58 下午",
+        "timestamp" : 1792038718.592
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "C07B25EC-6FCC-415F-B21C-82C34C2926F1",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.58 下午",
+        "timestamp" : 1792038718.88
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "5E66AA92-75A9-4725-A554-55057AE2B7CC",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.57 下午",
+        "timestamp" : 1792038717.077
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "A5704858-2A09-42B2-8061-A4818CDE96AD",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.57 下午",
+        "timestamp" : 1792038717.362
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "816BD30B-0650-43DF-91BC-08D50AFC236C",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.55 下午",
+        "timestamp" : 1792038715.598
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "811D7E1B-D931-4473-91AA-A7FCE9C28F24",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.55 下午",
+        "timestamp" : 1792038715.886
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "FF86B3C0-832E-466A-8963-DE9E4E893128.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Release-03-gameplay-zh_0_49ED3D45-ADE9-4019-AE6A-37DBA626B57F.png",
+        "timestamp" : 1792038714.427
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "4BFCF109-C06E-4991-859C-E13893FD74A2",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.54 下午",
+        "timestamp" : 1792038714.037
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "73FDC384-EA8F-4E9E-8156-16B5008832C5",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.54 下午",
+        "timestamp" : 1792038714.325
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "4CD6E703-6DBC-40B1-8151-C1304D7C6DBA",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.52 下午",
+        "timestamp" : 1792038712.464
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "321D1567-395F-47A2-BED9-5C41D7923116",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.52 下午",
+        "timestamp" : 1792038712.752
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "A9A97010-D03B-4B10-8355-DA24C6F22481",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.49 下午",
+        "timestamp" : 1792038709.834
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "7E86ECA4-C2C7-4373-B0BB-34D1EC77ADDD",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.50 下午",
+        "timestamp" : 1792038710.122
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "794B2D63-9BD9-4A24-A64B-8E309F681B1C",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.48 下午",
+        "timestamp" : 1792038708.141
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "CAB246F8-FBCE-4559-A76F-267D3CB7DFE3",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.48 下午",
+        "timestamp" : 1792038708.426
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "1ADEFC0E-7628-4D4C-AAF7-3D384FF662AA",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.44 下午",
+        "timestamp" : 1792038704.136
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "474F31AF-01A1-44CD-B293-662DA6B8EEEF",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.44 下午",
+        "timestamp" : 1792038704.426
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "3BD7F148-4056-434B-A043-4BBEAD97C1A7",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.42 下午",
+        "timestamp" : 1792038702.654
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "04245E9B-17EF-43F5-BFEB-57CFB9855987",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.42 下午",
+        "timestamp" : 1792038702.944
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "CE994B64-CA9A-4CB8-9BA3-220B8EFAA20A",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.40 下午",
+        "timestamp" : 1792038700.923
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "0D3682D8-D688-4831-A7B1-D620695B80BD",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.41 下午",
+        "timestamp" : 1792038701.212
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "5C91627C-FEF5-435E-84EF-0CFBEDA43AF9",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.38 下午",
+        "timestamp" : 1792038698.043
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "33C470AD-8019-4105-88D0-67A2C4105E6E",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.38 下午",
+        "timestamp" : 1792038698.33
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "2368D1B7-E482-4315-A2DD-D2C53DE88C2B",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.36 下午",
+        "timestamp" : 1792038696.446
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "D79215CD-1EF4-46C8-ACE2-48077DD098CE",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.36 下午",
+        "timestamp" : 1792038696.735
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "941E2661-7103-4FFD-AED4-888F76482843",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.34 下午",
+        "timestamp" : 1792038694.74
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "0498F747-10A5-40EA-9802-28429FF975AD",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.35 下午",
+        "timestamp" : 1792038695.03
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "4A88EB6F-28A3-4B54-9C28-DCB5EC2708E4",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.31 下午",
+        "timestamp" : 1792038691.765
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "C9B49B0B-D3CA-4374-BC73-FD557CB346F5",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.32 下午",
+        "timestamp" : 1792038692.053
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "F6ADEE80-78B5-481E-A3F0-75E03FE94476",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.30 下午",
+        "timestamp" : 1792038690.204
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "3436A141-D47C-4ABE-A64D-78C051BA4BAD",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.30 下午",
+        "timestamp" : 1792038690.489
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "A0B7D4AC-E913-4B96-8FAE-1CF2BECA74B8",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.27 下午",
+        "timestamp" : 1792038687.712
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "288F9DEA-0B1A-4257-B248-7873D1A2BD96",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.28 下午",
+        "timestamp" : 1792038688.004
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "C2BB5305-A178-4656-848B-AA2F9C02E855.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "App UI hierarchy for com.tumopa_0_4F05379E-F51C-4390-93CC-6788A7D89314.Crealfanvar",
+        "timestamp" : 1792038686.499
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "BCD4DDF0-B9D3-431D-AB44-06F7ADFED873",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.26 下午",
+        "timestamp" : 1792038686.499
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "D2F1EDD9-E7D3-4B47-B12E-CAC672250FF0.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"试试看\" Button`_0_BC91AB26-B09C-4300-8A87-7467AB655A79.txt",
+        "timestamp" : 1792038686.448
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "15DCA90F-E88B-4447-8A1E-09AB61A65C11",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.25 下午",
+        "timestamp" : 1792038685.125
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "DDD75CB6-B958-4658-B76A-409138D37B2C",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.25 下午",
+        "timestamp" : 1792038685.414
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "ED9EA308-1BCC-4CAD-B3C2-3401202B2E0C.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Release-02-level-book-zh_0_D7754AC2-7DBA-487C-8B0E-4789A107F4F0.png",
+        "timestamp" : 1792038683.882
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "E3AEF409-E859-4A31-8609-CFB391E527FE",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-10-15 at 12.31.23 下午",
+        "timestamp" : 1792038683.375
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "512ED3AE-E06D-4B34-9AB1-C6C482E14957",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-15 at 12.31.23 下午",
+        "timestamp" : 1792038683.78
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "345C352A-41D6-412D-A625-BBEA3CAA6E0D.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Release-01-home-zh_0_378CF889-788C-4807-B279-7C26AAC9C4EC.png",
+        "timestamp" : 1792038682.112
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "B0A87581-5C1E-48B4-B12E-A9BEB99FDE40",
+        "deviceName" : "Paperkin QA",
+        "exportedFileName" : "47EF8DC5-C8D4-4604-BBF8-A2BF85401C3A.mp4",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Screen Recording 2026-10-15 at 12.31.16 下午.mp4",
+        "timestamp" : 1792038676.774
+      }
+    ],
+    "testIdentifier" : "CFVUITests/testReleaseChineseScreensAndGestures()",
+    "testIdentifierURL" : "test://com.apple.xcode/Crealfanvar/CFVUITests/CFVUITests/testReleaseChineseScreensAndGestures"
+  }
+]

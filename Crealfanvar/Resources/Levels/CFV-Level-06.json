@@ -1,0 +1,44 @@
+{
+  "levelID": "level-06",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "new-directions",
+  "titleZH": "向上相遇",
+  "titleEN": "Meeting above",
+  "purposeZH": "从下边缘向上折。横向折痕也遵循同样的遮挡规则。",
+  "purposeEN": "Fold upward from the bottom. The same overlap rule applies.",
+  "initialRows": [
+    "CLCCLT",
+    "TTLLCC",
+    "LTCCTC",
+    "LCTTCL",
+    "TLTCTL",
+    "TLLCLC"
+  ],
+  "targetCells": [
+    6,
+    26
+  ],
+  "moveLimit": 2,
+  "folds": [
+    {
+      "creaseID": "bottom-4",
+      "axis": "horizontal",
+      "boundary": 4,
+      "movingSide": "bottom"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "fold",
+      "creaseID": "bottom-4"
+    },
+    {
+      "type": "swap",
+      "first": 13,
+      "second": 14
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": "bottom-4"
+}

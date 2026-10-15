@@ -1,0 +1,4 @@
+Query chain:
+ →Find: Target Application 'com.tumopa.Crealfanvar'
+  ↪︎Find: Descendants matching type Button
+    ↪︎Find: Elements matching predicate '"confirm-fold" IN identifiers'

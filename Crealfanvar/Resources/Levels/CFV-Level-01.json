@@ -1,0 +1,35 @@
+{
+  "levelID": "level-01",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "first-folds",
+  "titleZH": "初见菱形",
+  "titleEN": "A little diamond",
+  "purposeZH": "交换高亮的相邻图案，让菱形目标加入三连。",
+  "purposeEN": "Swap the highlighted neighbors to match the diamond target.",
+  "initialRows": [
+    "LLTTCC",
+    "LTLTCL",
+    "TTCCLL",
+    "CCTLCC",
+    "CCTTLC",
+    "TTCLTT"
+  ],
+  "targetCells": [
+    25
+  ],
+  "moveLimit": 1,
+  "folds": [],
+  "referenceSolution": [
+    {
+      "type": "swap",
+      "first": 31,
+      "second": 32
+    }
+  ],
+  "tutorialCells": [
+    31,
+    32
+  ],
+  "tutorialCrease": null
+}

@@ -1,0 +1,60 @@
+{
+  "levelID": "level-10",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "clever-overlaps",
+  "titleZH": "留下关键一枚",
+  "titleEN": "Save a key piece",
+  "purposeZH": "并非每次三消都有帮助。保留后续折叠需要的图案。",
+  "purposeEN": "Not every match helps. Save the patterns needed by a later fold.",
+  "initialRows": [
+    "CTLCLC",
+    "CLCCTL",
+    "TTCTCC",
+    "CLLTTL",
+    "TTCLLT",
+    "TCTCCL"
+  ],
+  "targetCells": [
+    8,
+    9,
+    14,
+    23
+  ],
+  "moveLimit": 3,
+  "folds": [
+    {
+      "creaseID": "right-4",
+      "axis": "vertical",
+      "boundary": 4,
+      "movingSide": "right"
+    },
+    {
+      "creaseID": "bottom-4",
+      "axis": "horizontal",
+      "boundary": 4,
+      "movingSide": "bottom"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "swap",
+      "first": 28,
+      "second": 29
+    },
+    {
+      "type": "fold",
+      "creaseID": "bottom-4"
+    },
+    {
+      "type": "swap",
+      "first": 20,
+      "second": 26
+    }
+  ],
+  "tutorialCells": [
+    28,
+    29
+  ],
+  "tutorialCrease": null
+}
