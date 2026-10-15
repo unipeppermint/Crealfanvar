@@ -26,8 +26,18 @@ xcuserdata/
 *.profraw
 *.gcda
 *.gcno
-/artifacts/validation/*.log
-/artifacts/validation/save-fixtures-*/
+# Generated QA media, logs, save fixtures, and reports stay local.
+/artifacts/screenshots/
+/artifacts/validation/*
+!/artifacts/validation/CFV-Level-Design-Witnesses.json
+!/artifacts/validation/CFV-Reference-Solutions.txt
+/artifacts/*.mp4
+/artifacts/*.mov
+/artifacts/*.png
+/artifacts/retired-polygon-art/
+/docs/*.zip
+/docs/archive/
+/design/prototypes/archive/
 
 # Swift Package Manager build cache (keep Package.resolved)
 .build/

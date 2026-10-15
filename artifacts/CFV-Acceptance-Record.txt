@@ -38,7 +38,7 @@
    artifacts/validation/CFV-UI-Delivery.xcresult / .log
 6. Release 设备构建与未签名归档：成功。
    Xcode 26.6 (17F113)，iOS 26.5 SDK；打包 Info.plist 的 MinimumOSVersion 为 15.0。
-   artifacts/CFV-Paperkin-Artwork-Unsigned.xcarchive
+   artifacts/CFV-Paperkin-Motion-Unsigned.xcarchive
    artifacts/validation/CFV-Artwork-Archive.log
    纸雕 PNG 替换后的未签名 app bundle 为 28,331,123 字节（约 28.3 MB）。此为文件大小统计，不是 App Store 下载/安装体积，也不是内存实测。
 7. 正文配色计算：深色正文/纸面 11.02:1，辅助文字/纸面 5.02:1，正文/卡片 9.91:1，白字/主按钮 5.56:1。
@@ -90,3 +90,5 @@ M8：不在此次执行授权内；未进行。
 Debug 模拟器构建成功。Release 设备未签名归档成功。现有 Release UI 回归 testReleaseChineseScreensAndGestures 通过，87.145 秒，0 失败；证据 CFV-UI-Artwork.xcresult / .log。18 张 PNG 均为 RGBA 且短边至少 1024px；归档包含全部 18 张图片。纸雕修正版真实截图见 artifacts/screenshots/Artwork。
 
 视觉复核：18 张素材总览及真实首页/图鉴截图已检查；纸张质感、透明背景和等比缩放正常。图鉴沿用可滚动两列布局。自动化导出的 Release-07-fish-detail-zh 截图在点击“再次展开”后立即取得，记录的是动画首个象牙白阶段，不代表最终彩色完成态。
+
+2026-10-15 设置与动画打磨：设置改为导航栈独立页；图鉴使用同一插画的连续折面展开，消除原三阶段跳帧与叠化重影；棋盘支持拖动接续、反向取消、动态图层阴影、交换平移、消除淡出后展开。原子保存先于动画，后台取消无过期回调。最终证据 CFV-UI-Motion-Final 两项 UI 回归 0 失败、CFV-Motion-Core-Results 353 检查通过、CFV-Motion-Archive 成功。最新归档 CFV-Paperkin-Motion-Unsigned.xcarchive。旧 Artwork 截图仅记录上一次素材版，动画版截图在 screenshots/Motion-Final。

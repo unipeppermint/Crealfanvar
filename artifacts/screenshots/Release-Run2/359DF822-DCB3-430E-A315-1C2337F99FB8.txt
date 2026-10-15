@@ -1,4 +1,0 @@
-Query chain:
- →Find: Target Application 'com.tumopa.Crealfanvar'
-  ↪︎Find: Descendants matching type Button
-    ↪︎Find: Elements matching predicate '"图鉴" IN identifiers'

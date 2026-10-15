@@ -238,9 +238,16 @@ final class CFVGameController: UIViewController {
     }
 
     private func cancelPreview() {
-        preview = nil
-        announce(CFVText("已取消预览，没有扣步。", "Preview cancelled. No move spent."))
+        guard !inputLocked, let fold = preview else { return }
+        inputLocked = true
         render()
+        board.animateUnfold(fold, state: state) { [weak self] in
+            guard let self else { return }
+            self.preview = nil
+            self.inputLocked = false
+            self.announce(CFVText("已取消预览，没有扣步。", "Preview cancelled. No move spent."))
+            self.render()
+        }
     }
 
     private func perform(_ action: CFVAction) {
@@ -256,6 +263,7 @@ final class CFVGameController: UIViewController {
             return
         }
         cancelHint()
+        let before = state
         var candidate = app.session!
         candidate.commit(turn, action: action)
         inputLocked = true
@@ -274,11 +282,11 @@ final class CFVGameController: UIViewController {
         }
         selected = nil
         highlights.removeAll()
-        preview = nil
-        render()
+        board.isUserInteractionEnabled = false
         CFVAudio.shared.play(action.type == "fold" ? "fold" : "swap")
-        UIView.transition(with: board, duration: CFVSettings.shared.reduceMotion ? 0.1 : 0.22, options: .transitionCrossDissolve, animations: { self.board.alpha = 1 }) { [weak self] _ in
+        board.animateTurn(action, before: before, after: turn.state, removedIDs: turn.removedIDs) { [weak self] in
             guard let self else { return }
+            self.preview = nil
             self.inputLocked = false
             CFVAudio.shared.play("match")
             self.announce(CFVText("纸面已展开。目标进度已保存。", "Paper unfolded. Target progress saved."))
@@ -369,7 +377,12 @@ final class CFVGameController: UIViewController {
         }
     }
 
-    private func leave() { cancelHint(); preview = nil; app.levels() }
+    private func leave() {
+        cancelHint()
+        board.cancelAnimation()
+        preview = nil
+        app.levels()
+    }
 
     private func pause() {
         guard presentedViewController == nil else { return }

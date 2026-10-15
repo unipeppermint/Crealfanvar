@@ -149,6 +149,7 @@ final class CFVUITests: XCTestCase {
         tap("fold-right-4")
         shot("Release-04-fold-preview-zh")
         tap("cancel-fold")
+        XCTAssertTrue(app.buttons["fold-right-4"].waitForExistence(timeout: 4))
         // Direct crease hit testing and edge dragging both open a noncommitting preview.
         let lower = app.buttons["cell-34"].frame
         app.coordinate(withNormalizedOffset: .zero).withOffset(CGVector(dx: lower.minX, dy: lower.midY)).tap()
@@ -193,6 +194,72 @@ final class CFVUITests: XCTestCase {
         tap("Back to level book")
         tap("Collection")
         shot("Final-small-collection-large-text")
+    }
+
+    func testMotionCancellationAndReducedMotion() {
+        app.launchArguments = ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"]
+        app.launch()
+        tap("settings")
+        let reduced = app.switches["减少动态效果"]
+        XCTAssertTrue(reduced.waitForExistence(timeout: 3))
+        let wasReduced = reduced.value as? String == "1"
+        if wasReduced { reduced.tap() }
+        tap("settings-back")
+        tap("关卡册")
+        tap("level-8")
+        if app.alerts["替换当前对局？"].waitForExistence(timeout: 1) { tap("继续") }
+        dismissTutorial()
+        let initialHUD = app.staticTexts["game-hud"].label
+        for crease in ["left-2", "bottom-4"] {
+            tap("fold-" + crease)
+            XCTAssertTrue(app.buttons["confirm-fold"].waitForExistence(timeout: 4))
+            shot("Motion-preview-" + crease)
+            tap("cancel-fold")
+            XCTAssertTrue(app.buttons["fold-" + crease].waitForExistence(timeout: 4))
+            XCTAssertEqual(app.staticTexts["game-hud"].label, initialHUD)
+        }
+        tap("fold-left-2")
+        XCUIDevice.shared.press(.home)
+        app.activate()
+        XCTAssertTrue(app.alerts["暂停"].waitForExistence(timeout: 5))
+        tap("继续")
+        XCTAssertFalse(app.buttons["confirm-fold"].exists)
+        XCTAssertEqual(app.staticTexts["game-hud"].label, initialHUD)
+
+        action(solutions[7][0])
+        tap("pause")
+        tap("继续")
+        tap("undo")
+        XCTAssertEqual(app.staticTexts["game-hud"].label, initialHUD)
+        tap("pause")
+        tap("设置")
+        XCTAssertTrue(reduced.waitForExistence(timeout: 3))
+        reduced.tap()
+        shot("Motion-settings-page")
+        tap("settings-back")
+        tap("fold-left-2")
+        tap("cancel-fold")
+        XCTAssertTrue(app.buttons["fold-left-2"].waitForExistence(timeout: 4))
+        XCTAssertEqual(app.staticTexts["game-hud"].label, initialHUD)
+        tap("pause")
+        tap("设置")
+        reduced.tap()
+        tap("settings-back")
+        tap("返回关卡册")
+        tap("图鉴")
+        tap("creature-0")
+        tap("再次展开")
+        tap("再次展开")
+        Thread.sleep(forTimeInterval: 2)
+        shot("Motion-creature-settled")
+        XCTAssertTrue(app.staticTexts["制作完成 · 2 / 2"].exists)
+        if wasReduced {
+            tap("返回")
+            tap("首页")
+            tap("settings")
+            reduced.tap()
+            tap("settings-back")
+        }
     }
 
 }

@@ -1,7 +1,7 @@
 import AppKit
 import ImageIO
 
-// QA contact sheet only. Original generated PNGs are copied without pixel edits.
+// QA contact sheet only, using the optimized runtime PNGs.
 let root = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
 let ids = ["paper-butterfly", "folded-bird", "paper-fish", "paper-rabbit", "paper-fox", "paper-deer"]
 let width = 1200
@@ -34,6 +34,7 @@ for (row, id) in ids.enumerated() {
         NSGraphicsContext.restoreGraphicsState()
     }
 }
+try FileManager.default.createDirectory(at: root.appendingPathComponent("artifacts"), withIntermediateDirectories: true)
 let bitmap = NSBitmapImageRep(cgImage: context.makeImage()!)
 try bitmap.representation(using: .png, properties: [:])!.write(to: root.appendingPathComponent("artifacts/CFV-Artwork-18-Stages.png"))
 print("Rendered 18 PNG assets on paper for visual QA")

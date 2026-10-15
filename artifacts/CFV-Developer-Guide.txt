@@ -2,7 +2,7 @@ Paperkin 1.0 development handoff
 
 Open Crealfanvar.xcodeproj. Use shared scheme Crealfanvar for the app, CFVValidation for UI tests.
 The existing app Bundle ID, Debug/Release build settings, signing configuration and iOS 15.0 target have not been changed. A separate UI-test target and shared schemes were added.
-The project directory was not a Git checkout at the start of work. No commit, branch or PR was created. An original project-file snapshot is retained in artifacts/validation/CFV-Original-project.pbxproj.
+The project now uses Git. Generated archives, test results, screenshots, videos and save fixtures are excluded; regenerate them locally when needed. Keep accepted prototypes, source code, resource provenance and level witnesses in source control.
 
 Architecture:
 - GameCore/CFVGameCore.swift: UIKit-free tile identity, projection stacks, match union, deterministic turns, terminal outcomes and bounded/cancellable hint search.
@@ -27,7 +27,7 @@ Use a dedicated clean simulator for full-journey tests. They preserve app progre
 
 Resources:
 - 12 frozen level JSON files; runtime never randomizes them.
-- 18 imagegen-authored transparent PNG creature stages in Resources/Creatures. Stage 0: ivory locked appearance; stage 1: partially folded; stage 2: completed color artwork. The shared view replays these authored stages and respects Reduce Motion.
+- 18 imagegen-authored transparent PNG creature stages in Resources/Creatures. Stage 0: ivory locked appearance; stage 1: partially folded; stage 2: completed color artwork. The shared view uses the current stage image for continuous hinged unfolding, avoids crossfading different silhouettes, and respects Reduce Motion.
 - 7 generated original audio resources (6 effects + 1 loop).
 - English / Simplified Chinese Localizable.strings and InfoPlist.strings.
 - AppIcon + PrivacyInfo.xcprivacy.
@@ -36,8 +36,9 @@ Authoring scripts are offline developer tools. Do not run CFVBuildLevels.py casu
 Rebuild localization with tools/CFVBuildLocalization.py after copy changes. Keys include the English and Chinese pair to prevent short navigation labels from colliding with long page titles.
 
 Release preparation:
-- Unsigned device archive: artifacts/CFV-Paperkin-Artwork-Unsigned.xcarchive.
-- Check packaged content: python3 tools/CFVReleaseCheck.py.
+- Build archives outside the source tree, or in the ignored artifacts directory.
+- Check packaged content: python3 tools/CFVReleaseCheck.py --app /path/to/Crealfanvar.app.
+- Before GitHub sync: python3 tools/CFVCheckProjectSize.py. Also pass --app /path/to/Crealfanvar.app to check the built app size.
 - --strict intentionally fails while genuine external release conditions remain.
 - Configure genuine HTTPS CFVPrivacyURL and CFVSupportURL in Info.plist only after their pages are deployed. Local descriptions remain readable offline.
 - Store drafts, review notes, policy/support drafts and provenance are in artifacts/release-materials.
@@ -45,3 +46,14 @@ Release preparation:
 - Do not submit the unsigned archive. Complete the external gates in the acceptance record, sign using the existing authorized team, run TestFlight, then have the developer approve submission.
 
 Artwork revision: generated with built-in imagegen using the v2 prototype as reference. Prompt set and exact source paths are retained in artifacts/CFV-Artwork-Prompts.json. Run swift -module-cache-path /tmp/CFVSwiftCache tools/CFVRenderArtwork.swift to regenerate the QA contact sheet. CFVBuildArtwork.py now regenerates audio only; it cannot overwrite the creature art. The prior app icon remains unchanged.
+
+Motion: CFVMotion.swift owns an elapsed-time CADisplayLink with explicit cancellation and a weak target. CFVBoardView keeps interactive fold progress through release, renders separate front/reverse textures, fades matched tiles, then unfolds the saved result. CFVCreatureView opens two masked panels from one illustration. Backgrounding/removal cancels visual callbacks. Settings uses the main navigation stack and preserves the originating game.
+
+Size optimization — 2026-10-15:
+- Runtime creature PNGs use a 1152px maximum edge (largest detail view is 380pt at 3x), 256-color palettes and transparent alpha. This is a lossy size optimization; it preserves the existing illustrations and paper texture rather than replacing artwork. All 18 stages were inspected on the app's paper background.
+- Creature sources: 23,220,462 -> 5,337,946 bytes. Unsigned Release app: 28,364,699 -> 7,483,401 bytes. These are uncompressed bundle sizes, not App Store download estimates.
+- Per-file source/output hashes and settings: artifacts/CFV-Artwork-Optimization.json. The hashes in CFV-Artwork-Prompts.json describe the original generated files, before optimization.
+- tools/CFVOptimizeArtwork.cjs is an optional offline authoring tool using sharp/imagequant. It is not an application dependency and is not required to build. Set CFV_SHARP_MODULE to an installed sharp module if it is not on Node's module path. Always provide the original generated PNG directory as input and a separate output directory; never repeatedly compress optimized artwork.
+- Size budgets: runtime resources <= 8 MiB, creature art <= 7 MiB, uncompressed Release app <= 12 MiB, individual tracked files and unpublished blobs <= 20 MiB. Reassess deliberately when content grows.
+- Removed generated output and obsolete planning archives, original full-resolution PNGs, and a verified complete pre-cleanup Git bundle are temporarily backed up in /private/tmp/CFV-Slim-Backup-20261015. This system temporary directory is not permanent archival storage; retain the original generation files or move the backup to durable storage if needed.
+- Previously published Git history is preserved. Only the unpushed animation commit is rewritten to remove large QA files; a normal fast-forward push is sufficient. Local Git recovery objects may still occupy disk space until normal Git maintenance expires them.

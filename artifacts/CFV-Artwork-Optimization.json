@@ -1,0 +1,171 @@
+{
+  "method": "1152px maximum edge, sRGB, 256-color PNG with alpha, dithering 0.8",
+  "sharp": "0.35.5",
+  "imagequant": "2.4.1",
+  "assets": [
+    {
+      "file": "CFV-paper-butterfly-0.png",
+      "originalBytes": 1420010,
+      "optimizedBytes": 460170,
+      "width": 1152,
+      "height": 1152,
+      "originalSHA256": "8ce3b07322753838a59e7c7c270fcc9c882f6db2cb64dc68f39713a625f012d6",
+      "optimizedSHA256": "854b598e090125c40f0893f2c9abe732bee547cda4af098c8ff9638613e7e3f5"
+    },
+    {
+      "file": "CFV-paper-butterfly-1.png",
+      "originalBytes": 1064211,
+      "optimizedBytes": 262394,
+      "width": 1152,
+      "height": 1152,
+      "originalSHA256": "3977c8400868a9494e4cb458c845081d9a69aec3f957a6b31a81eb9bd8d7a5c1",
+      "optimizedSHA256": "01265eef72ae621e2d5365ef0be008ab23ef3a5c4cd9f341f775eb9f97e5ea92"
+    },
+    {
+      "file": "CFV-paper-butterfly-2.png",
+      "originalBytes": 1565868,
+      "optimizedBytes": 394009,
+      "width": 1152,
+      "height": 1152,
+      "originalSHA256": "6f7ae9006d54e44eb2ac4fd4016d2301a9055f7975a21d0c5eb8b31a3a890b8a",
+      "optimizedSHA256": "62a8989f0f84e952b8e6acfe7a0b80bfcca71e9314ebdef514d5c75809ec70ff"
+    },
+    {
+      "file": "CFV-folded-bird-0.png",
+      "originalBytes": 981909,
+      "optimizedBytes": 335942,
+      "width": 1152,
+      "height": 1152,
+      "originalSHA256": "4d2931b135182dbfac5c78d3f19fe16624a82eea274bf3641d50a1b1fdfbbfca",
+      "optimizedSHA256": "82486332d9e25f8375aacd895f5fc2debd54a27a97924e7fc2e4c2c97c4b2dd7"
+    },
+    {
+      "file": "CFV-folded-bird-1.png",
+      "originalBytes": 941423,
+      "optimizedBytes": 227854,
+      "width": 1152,
+      "height": 1152,
+      "originalSHA256": "c52222c752374687062443f6e509c6be5535609a31570eac106e1ae946c8c587",
+      "optimizedSHA256": "c8ff45496babc3014e370edeedcf94804e3da2cade40db275dd94c248601cf3c"
+    },
+    {
+      "file": "CFV-folded-bird-2.png",
+      "originalBytes": 1393748,
+      "optimizedBytes": 283295,
+      "width": 1152,
+      "height": 1152,
+      "originalSHA256": "6691861c3d5b27f9d94bee3709a75e991ef79f383c1691eee44ecac21698c792",
+      "optimizedSHA256": "202edcaed05da06a0287d3cc52b5791ebe160b491925ab0be969c087ff2d457f"
+    },
+    {
+      "file": "CFV-paper-fish-0.png",
+      "originalBytes": 2176097,
+      "optimizedBytes": 358007,
+      "width": 1152,
+      "height": 768,
+      "originalSHA256": "5dd8a2a557f89f335e435e5d1bbd877637b5815cd1015e8ef64c3cf96b0e20a7",
+      "optimizedSHA256": "15d27b8551fc5f6ef54967d5ef179923e5ee73b0493b4b997d82e3aba9d785a8"
+    },
+    {
+      "file": "CFV-paper-fish-1.png",
+      "originalBytes": 2161309,
+      "optimizedBytes": 245682,
+      "width": 1152,
+      "height": 768,
+      "originalSHA256": "16678d8ecb20ea49563e3acc54cf2c08dd55dd307613cd3fce82c2138f9741f0",
+      "optimizedSHA256": "ecf46eebb311829a35adcaece68d83669f94b6456286906c080ec18a0c1d8606"
+    },
+    {
+      "file": "CFV-paper-fish-2.png",
+      "originalBytes": 2392700,
+      "optimizedBytes": 291872,
+      "width": 1152,
+      "height": 768,
+      "originalSHA256": "0d64ebf66c58a6a5141501a7729a5203c3dd2288e23500a733e74d4681c00b02",
+      "optimizedSHA256": "2bfddec260e0f59f4217a07171045dbb1e189f7910768659fb027fc42848c87d"
+    },
+    {
+      "file": "CFV-paper-rabbit-0.png",
+      "originalBytes": 842758,
+      "optimizedBytes": 270233,
+      "width": 1152,
+      "height": 1041,
+      "originalSHA256": "15af83e0c732a463b75d5f906ac86ecd31fd0c9a1c003b6af8fc5b747e9d79f0",
+      "optimizedSHA256": "85f258c6f67a18624d7715e73b86c0b376958fb5a384de15e97c48f6ac857aae"
+    },
+    {
+      "file": "CFV-paper-rabbit-1.png",
+      "originalBytes": 1043832,
+      "optimizedBytes": 280759,
+      "width": 1152,
+      "height": 1041,
+      "originalSHA256": "d674d04761768740916f6a71c515f42e8991eaa426ef1fad42510800d7cd9fbd",
+      "optimizedSHA256": "db25ce7317afce419868e797b2720748391147bc090e5d4a685e4040cf572de4"
+    },
+    {
+      "file": "CFV-paper-rabbit-2.png",
+      "originalBytes": 1038027,
+      "optimizedBytes": 265798,
+      "width": 1152,
+      "height": 1041,
+      "originalSHA256": "50f071f547596ebfab5549e83fb1d49ffad0034ac4a4db3c051ac38d5201c1dd",
+      "optimizedSHA256": "0f26896a9b011466fc022543c36a6a351459bcbf18eaba6ebc57d46cbe48e945"
+    },
+    {
+      "file": "CFV-paper-fox-0.png",
+      "originalBytes": 1192927,
+      "optimizedBytes": 380528,
+      "width": 1152,
+      "height": 1053,
+      "originalSHA256": "35b5ee87924852095ea472c1811874e660bb0ecd05d04c6eea37cadc7eaa3631",
+      "optimizedSHA256": "1d31da7184d02a01adb3181ef97a240faacccfab54096fb275b0d87360f6c980"
+    },
+    {
+      "file": "CFV-paper-fox-1.png",
+      "originalBytes": 1228261,
+      "optimizedBytes": 302439,
+      "width": 1152,
+      "height": 1053,
+      "originalSHA256": "0ffa52cae7c05dc06fecf4c7edeb25ec349968213038e77ff177aefd31b29f53",
+      "optimizedSHA256": "53c0312e3a71dd1a3dd2272d981690ae786b80285f5de7dacf2d77c0b75b13bf"
+    },
+    {
+      "file": "CFV-paper-fox-2.png",
+      "originalBytes": 1322529,
+      "optimizedBytes": 326628,
+      "width": 1152,
+      "height": 1053,
+      "originalSHA256": "58303748604c22c6b29aa7fc30aa5a78fbfb01af4ba07f718a219c00bdaff01c",
+      "optimizedSHA256": "e1786dae88c7826f77e136cd62c3163c596891dcbe653378f87bcc48e9cb1572"
+    },
+    {
+      "file": "CFV-paper-deer-0.png",
+      "originalBytes": 659182,
+      "optimizedBytes": 193954,
+      "width": 1152,
+      "height": 1017,
+      "originalSHA256": "8d2ac03f19524aa14dd1c509ceb0ca2efe66a553a978561f56180d3409384f82",
+      "optimizedSHA256": "b40842c95d53454a8dd07e962927b6eb02f4d4e9fa06b642dfc8a2cf2009dbc9"
+    },
+    {
+      "file": "CFV-paper-deer-1.png",
+      "originalBytes": 942707,
+      "optimizedBytes": 242973,
+      "width": 1152,
+      "height": 1017,
+      "originalSHA256": "3eaa6807bbc304cd7c905123716a938d92105e518874f27db983179acd6e64bf",
+      "optimizedSHA256": "ff545f28e532ad96e31474f1392b87998a1baa4d4a34b3c81a8dd5b276fa1559"
+    },
+    {
+      "file": "CFV-paper-deer-2.png",
+      "originalBytes": 852964,
+      "optimizedBytes": 215409,
+      "width": 1152,
+      "height": 1017,
+      "originalSHA256": "937e5b17c6db5dd673d18c5efae3d88281e45317cb090c8dd9c67e7ba92cd1e2",
+      "optimizedSHA256": "2afcf4a18b1cc3c09da612ea03eb2558c98921923757e141822f9090be367ec8"
+    }
+  ],
+  "originalBytes": 23220462,
+  "optimizedBytes": 5337946
+}

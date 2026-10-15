@@ -98,6 +98,10 @@ final class CFVCreatureView: UIView {
     }()
 
     private let imageView = UIImageView()
+    private let motion = CFVMotion()
+    private var animationLayers = [CALayer]()
+    private var replayPending = false
+    private var isReplaying = false
     private var renderedPixelSize = 0
     private(set) var creatureID: String
     private(set) var stage: Int
@@ -109,6 +113,8 @@ final class CFVCreatureView: UIView {
         isUserInteractionEnabled = false
         imageView.contentMode = .scaleAspectFit
         addSubview(imageView)
+        NotificationCenter.default.addObserver(self, selector: #selector(finishReplay), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(motionPreferenceChanged), name: UIAccessibility.reduceMotionStatusDidChangeNotification, object: nil)
     }
 
     required init?(coder: NSCoder) {
@@ -120,9 +126,15 @@ final class CFVCreatureView: UIView {
         imageView.frame = bounds
         let scale = window?.screen.scale ?? traitCollection.displayScale
         let requiredSize = min(1536, Int(ceil(min(bounds.width, bounds.height) * scale / 128)) * 128)
-        guard requiredSize > 0, requiredSize != renderedPixelSize else { return }
-        renderedPixelSize = requiredSize
-        imageView.image = image(for: stage)
+        if requiredSize > 0, requiredSize != renderedPixelSize {
+            if isReplaying { finishReplay() }
+            renderedPixelSize = requiredSize
+            imageView.image = image(for: stage)
+        }
+        if replayPending, window != nil, requiredSize > 0 {
+            replayPending = false
+            DispatchQueue.main.async { [weak self] in self?.replay() }
+        }
     }
 
     private func image(for stage: Int) -> UIImage? {
@@ -150,27 +162,90 @@ final class CFVCreatureView: UIView {
         return image
     }
 
-    func replay() {
-        layoutIfNeeded()
-        imageView.layer.removeAllAnimations()
-        guard !CFVSettings.shared.reduceMotion, stage > 0 else { return }
-        let frames = (0...stage).compactMap { image(for: $0)?.cgImage }
-        guard frames.count == stage + 1 else { return }
-
-        // Replay the authored making stages without distorting the paper illustration.
-        let unfolding = CAKeyframeAnimation(keyPath: "contents")
-        unfolding.values = frames
-        unfolding.keyTimes = stage == 2 ? [0, 0.45, 0.8] : [0, 0.7]
-        unfolding.calculationMode = .discrete
-        unfolding.duration = stage == 2 ? 1.5 : 0.8
-        imageView.layer.add(unfolding, forKey: "makingStages")
-
-        let reveal = CABasicAnimation(keyPath: "opacity")
-        reveal.fromValue = 0.4
-        reveal.toValue = 1
-        reveal.duration = 0.3
-        imageView.layer.add(reveal, forKey: "reveal")
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if window == nil { finishReplay() }
     }
+
+    @objc private func motionPreferenceChanged() {
+        if CFVSettings.shared.reduceMotion { finishReplay() }
+    }
+
+    @objc private func finishReplay() {
+        motion.cancel()
+        animationLayers.forEach { $0.removeFromSuperlayer() }
+        animationLayers.removeAll()
+        imageView.isHidden = false
+        imageView.alpha = 1
+        isReplaying = false
+        replayPending = false
+    }
+
+    func replay() {
+        guard !isReplaying else { return }
+        guard window != nil, renderedPixelSize > 0 else {
+            replayPending = true
+            setNeedsLayout()
+            return
+        }
+        guard !CFVSettings.shared.reduceMotion, stage > 0 else {
+            finishReplay()
+            return
+        }
+        guard let finalImage = image(for: stage) else { return }
+        isReplaying = true
+        imageView.isHidden = true
+
+        // Animate one illustration throughout: different silhouettes must not crossfade.
+        let fit = min(bounds.width / finalImage.size.width, bounds.height / finalImage.size.height)
+        let size = CGSize(width: finalImage.size.width * fit, height: finalImage.size.height * fit)
+        var panels = [CALayer]()
+        var shades = [CAGradientLayer]()
+        for index in 0..<2 {
+            let panel = CALayer()
+            panel.bounds = CGRect(x: 0, y: 0, width: size.width / 2, height: size.height)
+            panel.anchorPoint = CGPoint(x: index == 0 ? 1 : 0, y: 0.5)
+            panel.position = CGPoint(x: bounds.midX, y: bounds.midY)
+            panel.contents = finalImage.cgImage
+            panel.contentsRect = CGRect(x: CGFloat(index) / 2, y: 0, width: 0.5, height: 1)
+            panel.opacity = 0
+            layer.addSublayer(panel)
+            animationLayers.append(panel)
+            panels.append(panel)
+
+            let shade = CAGradientLayer()
+            shade.frame = panel.bounds
+            shade.colors = [UIColor.black.withAlphaComponent(0.18).cgColor, UIColor.clear.cgColor]
+            shade.startPoint = CGPoint(x: index == 0 ? 1 : 0, y: 0.5)
+            shade.endPoint = CGPoint(x: index == 0 ? 0 : 1, y: 0.5)
+            let silhouette = CALayer()
+            silhouette.frame = shade.bounds
+            silhouette.contents = finalImage.cgImage
+            silhouette.contentsRect = panel.contentsRect
+            shade.mask = silhouette
+            panel.addSublayer(shade)
+            shades.append(shade)
+        }
+        motion.start(duration: 1.35, update: { progress in
+            let opening = CFVMotion.phase(progress, from: 0, to: 0.92)
+            let reveal = CFVMotion.phase(progress, from: 0, to: 0.18)
+            let settle = CFVMotion.ease(progress)
+            for (index, panel) in panels.enumerated() {
+                var transform = CATransform3DIdentity
+                transform.m34 = -1 / 1400
+                transform = CATransform3DTranslate(transform, 0, 7 * (1 - settle), 0)
+                transform = CATransform3DRotate(transform, (index == 0 ? 1 : -1) * 1.05 * (1 - opening), 0, 1, 0)
+                panel.transform = transform
+                panel.opacity = Float(reveal)
+                shades[index].opacity = Float(1 - opening)
+            }
+        }, completion: { [weak self] in
+            self?.finishReplay()
+        })
+    }
+
+    deinit { NotificationCenter.default.removeObserver(self) }
+
 }
 
 final class CFVTileButton: UIButton {
