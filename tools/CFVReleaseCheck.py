@@ -13,11 +13,13 @@ assert info['UIDeviceFamily']==[1]
 assert info['UISupportedInterfaceOrientations']==['UIInterfaceOrientationPortrait']
 assert len(list(app.glob('CFV-Level-*.json')))==12
 assert len(list(app.glob('CFV-paper-*.png')))+len(list(app.glob('CFV-folded-bird-*.png')))==18
+assert (app/'CFV-Paper-Garden.jpg').is_file(), 'Missing home scenery'
 assert len(list(app.glob('CFV-*.wav')))==7
 assert (app/'PrivacyInfo.xcprivacy').exists()
 for language in ['en','zh-Hans']:assert (app/(language+'.lproj')/'Localizable.strings').exists()
 assert not list(app.glob('*.png')) or (app/'Assets.car').exists()
 report=dict(bundleID=info['CFBundleIdentifier'],minimumOS=info['MinimumOSVersion'],sdk=info['DTSDKName'],xcode=info['DTXcode'],levels=12,creatures=6,stages=18,audioFiles=7,bundleBytes=sum(p.stat().st_size for p in app.rglob('*') if p.is_file()),signed=False,uploaded=False)
+report['sceneryFiles']=1
 report['externalBlockers']=['Developer signing identity and provisioning','Real-device iOS 15 and current-system QA','VoiceOver task completion and audio interruption on device','First-time-user observation (5–8 people, two rounds for levels 1–4 and blank-paper comprehension)','Instruments performance and long-session memory measurements','TestFlight regression and signed upload validation','Developer identity, name rights, regions and applicable regional materials','App Store age rating, pricing, privacy labels and final screenshot selection']
 for key in ['CFVPrivacyURL','CFVSupportURL']:
     if not info.get(key,'').startswith('https://'):report['externalBlockers'].append('Missing genuine HTTPS '+key)

@@ -1,0 +1,10 @@
+{
+  "mode": "Built-in image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: landscape environment illustration for the home hero of an elegant origami puzzle game, 1536x1024 landscape composition. Create a charming, inviting miniature world made entirely of folded and layered textured washi paper: a sage-green woodland and meadow, a winding pale turquoise paper stream curling around a large warm ivory clearing in the center foreground, tiny lavender folded flowers, terracotta buds, scalloped paper hills and distant mountains. Two or three sculptural paper trees and leafy branches frame the far left and far right. The center 50% must stay calm, open, light ivory with very few details so a separately rendered paper animal can sit there. The ground clearing occupies the lower center, with open warm cream sky in the upper center. Rich tactile cut-paper edges, visible fibers, delicate folds, soft layered shadows, sophisticated handcrafted diorama, premium cozy puzzle game art. Gentle morning light from upper left, nuanced sage, warm ivory, muted lavender and restrained terracotta palette, no bright primary colors. Camera slightly above the scene looking into the miniature world, generous depth. The environment fills the full rectangular image, no border. No animals, no characters, no text, no lettering, no logos, no UI, no button, no watermarks. Opaque background.",
+  "source": "/Users/mac/.codex/generated_images/01a13dbd-9c5a-74e2-bc77-257c2abffb2e/exec-b7118b13-a999-4376-9259-c65d315b33f8.png",
+  "runtimeAsset": "Crealfanvar/Resources/Scenery/CFV-Paper-Garden.jpg",
+  "encoding": "JPEG quality 84, original 1536x1024 dimensions",
+  "purpose": "Home scenery; creature artwork remains an independent native overlay.",
+  "runtimeSHA256": "fbf5655078b2bc270edbebeba0970e51cb3498f9d201efb49cb626ab7108e14c",
+  "runtimeBytes": 644915
+}

@@ -1,15 +1,16 @@
 "%d targets remain. Undo or restart for free.|还有 %d 枚目标。可以免费撤销或重玩。" = "%d targets remain. Undo or restart for free.";
 "01 · Swap|01 · 交换" = "01 · Swap";
-"01–04 First folds\n05–08 New directions\n09–12 Clever overlaps|01—04 初次展开\n05—08 换个方向\n09—12 巧妙遮挡" = "01–04 First folds\n05–08 New directions\n09–12 Clever overlaps";
 "02 · Fold|02 · 折叠" = "02 · Fold";
 "03 · Overlap|03 · 遮挡" = "03 · Overlap";
 "04 · Diamond targets|04 · 菱形目标" = "04 · Diamond targets";
 "A different direction|换个方向" = "A different direction";
 "A little diamond|初见菱形" = "A little diamond";
-"A new creature after every two levels\n12 puzzles · 6 paper creatures|每完成 2 关，解锁一种生物\n12 关 · 6 种纸雕生物" = "A new creature after every two levels\n12 puzzles · 6 paper creatures";
+"A new paper companion every two levels|每两关，遇见一位新的纸间伙伴" = "A new paper companion every two levels";
 "A page, complete|这一页，完成了" = "A page, complete";
 "A small fold. A new perspective.|折起一角，让图案相遇" = "A small fold. A new perspective.";
+"Album|图鉴" = "Album";
 "All levels · Completed %d / 12|全部关卡 · 已完成 %d / 12" = "All levels · Completed %d / 12";
+"All six paper companions collected|六位纸间伙伴，已全部收集" = "All six paper companions collected";
 "Another possibility|再试一次" = "Another possibility";
 "Available|可游玩" = "Available";
 "Back to level book|返回关卡册" = "Back to level book";
@@ -19,9 +20,11 @@
 "Blank paper cannot be swapped, and still covers the lower layer.|空白纸格不能交换，仍会遮挡下层。" = "Blank paper cannot be swapped, and still covers the lower layer.";
 "Blank paper still covers tiles. Preview and cancel to inspect the hidden targets.|空白纸格仍遮挡下层。预览并取消，看看哪些目标被盖住。" = "Blank paper still covers tiles. Preview and cancel to inspect the hidden targets.";
 "Bottom %d rows|下方 %d 行" = "Bottom %d rows";
+"COLLECTED|珍藏" = "COLLECTED";
 "Cancel|取消" = "Cancel";
 "Check available device storage. This result could not be fully saved. Previously saved progress is kept.|请检查设备可用空间。本次结果未完成保存；已保存的进度会保留。" = "Check available device storage. This result could not be fully saved. Previously saved progress is kept.";
 "Clear %d tiles, including %d targets\nTop paper covers the lower layer, even when blank|可消除 %d 枚，其中目标 %d 枚\n上层纸面遮挡下层，空白也遮挡" = "Clear %d tiles, including %d targets\nTop paper covers the lower layer, even when blank";
+"Clever overlaps|巧妙遮挡" = "Clever overlaps";
 "Collection|图鉴" = "Collection";
 "Collection|生物图鉴" = "Collection";
 "Committed moves are saved automatically.|已提交的动作会自动保存。" = "Committed moves are saved automatically.";
@@ -38,6 +41,7 @@
 "Current moves will be cleared. Completed levels and creatures are kept.|本局操作将清空，已完成关卡和图鉴会保留。" = "Current moves will be cleared. Completed levels and creatures are kept.";
 "Discovered %d / 6|已发现 %d / 6" = "Discovered %d / 6";
 "Done|完成" = "Done";
+"First folds|初次展开" = "First folds";
 "Fold upward from the bottom. The same overlap rule applies.|从下边缘向上折。横向折痕也遵循同样的遮挡规则。" = "Fold upward from the bottom. The same overlap rule applies.";
 "Folded Bird|折翼鸟" = "Folded Bird";
 "Free and offline · No account, ads or purchases|免费离线 · 无账号 · 无广告 · 无内购" = "Free and offline · No account, ads or purchases";
@@ -49,6 +53,7 @@
 "Horizontal and vertical folds reveal different surfaces. Look before committing.|水平与竖直折叠有不同的表面。先检查，再行动。" = "Horizontal and vertical folds reveal different surfaces. Look before committing.";
 "How to play|玩法帮助" = "How to play";
 "Invalid swap|无效交换" = "Invalid swap";
+"Keep every encounter in your paper collection|把每次相遇，收进纸间珍藏" = "Keep every encounter in your paper collection";
 "Language|语言" = "Language";
 "Later|稍后再看" = "Later";
 "Left %d cols|左侧 %d 列" = "Left %d cols";
@@ -67,6 +72,7 @@
 "Moves used %d   ·   Targets %d / %d\nCollection %d / 6|使用步数 %d   ·   目标 %d / %d\n生物图鉴 %d / 6" = "Moves used %d   ·   Targets %d / %d\nCollection %d / 6";
 "Moving paper lies on top. Only visible patterns match; covered tiles remain. Even blank paper covers the lower layer. The sheet unfolds after each move. Tiles never fall, refill or chain after unfolding.|移动纸面在上，只匹配表面图案。被盖住的棋子保留。空白纸面也遮挡下层。结算后自动展开，没有掉落、补充或二次连锁。" = "Moving paper lies on top. Only visible patterns match; covered tiles remain. Even blank paper covers the lower layer. The sheet unfolds after each move. Tiles never fall, refill or chain after unfolding.";
 "Music|背景音乐" = "Music";
+"New directions|换个方向" = "New directions";
 "Next level|下一关" = "Next level";
 "Next move|下一步" = "Next move";
 "Next|下一页" = "Next";
@@ -86,6 +92,7 @@
 "Paper Fish|纸鱼" = "Paper Fish";
 "Paper Fox|纸狐" = "Paper Fox";
 "Paper Rabbit|纸兔" = "Paper Rabbit";
+"Paper journey  %d / 12|纸间旅程  %d / 12" = "Paper journey  %d / 12";
 "Paper unfolded. Target progress saved.|纸面已展开。目标进度已保存。" = "Paper unfolded. Target progress saved.";
 "Paperkin|折叠生物" = "Paperkin";
 "Paused|暂停" = "Paused";
@@ -144,11 +151,12 @@
 "Try a fold next.|下一步试试折叠。" = "Try a fold next.";
 "Try a swap next.|下一步先交换。" = "Try a swap next.";
 "Twelve encounters. Six paper companions.\nThank you for unfolding their world.|十二次相遇，六位纸间伙伴。\n谢谢你，为它们展开世界。" = "Twelve encounters. Six paper companions.\nThank you for unfolding their world.";
+"UNDISCOVERED|待发现" = "UNDISCOVERED";
 "Undo last move|撤销上一步" = "Undo last move";
 "Undo|撤销" = "Undo";
 "Unfold again|再次展开" = "Unfold again";
 "Unfolded|已解锁" = "Unfolded";
-"Unfolding · %@\nCompleted %d / 12   ·   Discovered %d / 6|正在折叠 · %@\n已完成 %d / 12   ·   已发现 %d / 6" = "Unfolding · %@\nCompleted %d / 12   ·   Discovered %d / 6";
+"Unfolding · %@   /   %d creatures found|正在折叠 · %@   /   已发现 %d 种生物" = "Unfolding · %@   /   %d creatures found";
 "Unlock after level %02d. Making progress %d / 2.|完成第 %02d 关后解锁。制作进度 %d / 2。" = "Unlock after level %02d. Making progress %d / 2.";
 "Use Hint, Undo or Restart when stuck. If a save is damaged, the app tries its backup. Completion records are stored separately.\n\nThe developer must provide a support contact and public support URL before release.|遇到困难时可使用提示、撤销或重新开始。存档异常时会优先尝试备份，已完成记录独立保存。\n\n支持联系方式与公开支持地址尚待开发者提供，发布前必须补齐。" = "Use Hint, Undo or Restart when stuck. If a save is damaged, the app tries its backup. Completion records are stored separately.\n\nThe developer must provide a support contact and public support URL before release.";
 "View complete collection|查看完整图鉴" = "View complete collection";

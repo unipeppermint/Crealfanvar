@@ -36,14 +36,16 @@ enum CFVTheme {
     }
 
     static func button(_ text: String, symbol: String? = nil, primary: Bool = false, action: @escaping () -> Void) -> UIButton {
-        let button = UIButton(type: .system)
+        let button = CFVPaperButton(type: .system)
         var configuration = UIButton.Configuration.filled()
         configuration.title = text
-        configuration.baseBackgroundColor = primary ? green : card
+        configuration.baseBackgroundColor = primary ? green : UIColor(hex: "F7F3E8")
         configuration.baseForegroundColor = primary ? .white : ink
         configuration.cornerStyle = .large
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12)
         configuration.imagePadding = 8
+        configuration.background.strokeColor = primary ? UIColor(hex: "465A40") : line.withAlphaComponent(0.55)
+        configuration.background.strokeWidth = 1
         if let symbol, text.isEmpty || !UIApplication.shared.preferredContentSizeCategory.isAccessibilityCategory {
             let imageConfiguration = UIImage.SymbolConfiguration(pointSize: text.isEmpty ? 22 : 18, weight: .regular)
             configuration.image = UIImage(systemName: symbol, withConfiguration: imageConfiguration)
@@ -55,6 +57,10 @@ enum CFVTheme {
             return attributes
         }
         button.configuration = configuration
+        button.layer.shadowColor = (primary ? UIColor(hex: "344A30") : ink).cgColor
+        button.layer.shadowOpacity = primary ? 0.18 : 0.055
+        button.layer.shadowOffset = CGSize(width: 0, height: primary ? 4 : 2)
+        button.layer.shadowRadius = primary ? 0 : 4
         button.titleLabel?.numberOfLines = 0
         button.imageView?.adjustsImageSizeForAccessibilityContentSizeCategory = false
         button.heightAnchor.constraint(greaterThanOrEqualToConstant: 48).isActive = true
@@ -72,10 +78,15 @@ extension UIColor {
 }
 
 final class CFVPaperView: UIView {
+    var atmosphere: CFVAtmosphere = .quiet {
+        didSet { setNeedsDisplay() }
+    }
+
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         CFVTheme.paper.setFill()
         context.fill(bounds)
+        atmosphere.draw(in: context, bounds: bounds)
         context.setStrokeColor(UIColor(hex: "B4A88F").withAlphaComponent(0.06).cgColor)
         context.setLineWidth(0.5)
         for index in 0..<Int(bounds.height * bounds.width / 100) {

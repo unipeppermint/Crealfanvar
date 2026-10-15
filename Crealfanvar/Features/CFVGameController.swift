@@ -35,7 +35,11 @@ final class CFVGameController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    override func loadView() { view = CFVPaperView() }
+    override func loadView() {
+        let paper = CFVPaperView()
+        paper.atmosphere = .play
+        view = paper
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +73,9 @@ final class CFVGameController: UIViewController {
         header.addArrangedSubview(pause)
         column.addArrangedSubview(header)
         hud.accessibilityIdentifier = "game-hud"
+        hud.backgroundColor = UIColor.white.withAlphaComponent(0.6)
+        hud.layer.cornerRadius = 12
+        hud.clipsToBounds = true
         hud.heightAnchor.constraint(greaterThanOrEqualToConstant: compact ? 28 : 38).isActive = true
         if UIScreen.main.bounds.height > 700 {
             let hudRow = UIStackView()
@@ -87,6 +94,10 @@ final class CFVGameController: UIViewController {
             column.addArrangedSubview(messageLabel)
         }
         let boardHolder = UIView()
+        boardHolder.backgroundColor = UIColor(hex: "E3D9C3")
+        boardHolder.layer.cornerRadius = 10
+        boardHolder.layer.borderColor = UIColor.white.withAlphaComponent(0.8).cgColor
+        boardHolder.layer.borderWidth = 2
         board.translatesAutoresizingMaskIntoConstraints = false
         boardHolder.addSubview(board)
         column.addArrangedSubview(boardHolder)

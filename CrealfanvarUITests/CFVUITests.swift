@@ -24,6 +24,11 @@ final class CFVUITests: XCTestCase {
         attachment.lifetime = .keepAlways
         add(attachment)
     }
+    func waitForArtwork() {
+        let settled = expectation(description: "Creature display link has settled")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) { settled.fulfill() }
+        wait(for: [settled], timeout: 4)
+    }
     func tap(_ id: String) {
         let button = app.buttons[id]
         XCTAssertTrue(button.waitForExistence(timeout: 6), id)
@@ -167,13 +172,73 @@ final class CFVUITests: XCTestCase {
         tap("confirm-fold")
         tap("下一关")
         for move in solutions[5] { action(move) }
+        XCTAssertTrue(app.staticTexts["第 06 关完成"].waitForExistence(timeout: 5))
+        // The artwork uses CADisplayLink, outside XCTest's UIKit animation tracking.
+        waitForArtwork()
         shot("Release-05-completion-zh")
         tap("返回关卡册")
         tap("图鉴")
         shot("Release-06-collection-zh")
         tap("creature-2")
         tap("再次展开")
+        waitForArtwork()
         shot("Release-07-fish-detail-zh")
+    }
+
+    func testCreatureDisplayAfterReplay() {
+        app.launchArguments = ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"]
+        app.launch()
+        tap("生物图鉴")
+        tap("creature-2")
+        waitForArtwork()
+        tap("再次展开")
+        waitForArtwork()
+        XCTAssertTrue(app.staticTexts["制作完成 · 2 / 2"].exists)
+        shot("Scenery-creature-settled")
+    }
+
+    func testGamePresentationSmallScreen() {
+        app.launchArguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
+        app.launch()
+        shot("Scenery-small-home")
+        tap("settings")
+        let reduced = app.switches["Reduce motion"]
+        XCTAssertTrue(reduced.waitForExistence(timeout: 3))
+        let originalReduced = reduced.value as? String == "1"
+        if !originalReduced { reduced.tap() }
+        tap("settings-back")
+        tap("Level book")
+        shot("Scenery-small-chapters")
+        for number in 1...12 {
+            let stop = app.buttons["level-\(number)"]
+            XCTAssertTrue(stop.exists)
+            XCTAssertGreaterThanOrEqual(stop.frame.width, 44)
+            XCTAssertGreaterThanOrEqual(stop.frame.height, 44)
+        }
+        tap("level-1")
+        if app.alerts["Replace the current game?"].waitForExistence(timeout: 1) { tap("Continue") }
+        // A repeat run can resume the previous completed session's reward page.
+        var levelIndex = 0
+        if app.staticTexts["Level 01 complete"].waitForExistence(timeout: 1) {
+            tap("Next level")
+            levelIndex = 1
+        }
+        if app.alerts.buttons["Let's try"].waitForExistence(timeout: 1) { tap("Let's try") }
+        XCTAssertTrue(app.buttons["cell-0"].waitForExistence(timeout: 5))
+        XCTAssertGreaterThanOrEqual(app.buttons["cell-0"].frame.width, 44)
+        shot("Scenery-small-game")
+        for move in solutions[levelIndex] { action(move) }
+        XCTAssertTrue(app.staticTexts[String(format: "Level %02d complete", levelIndex + 1)].waitForExistence(timeout: 5))
+        shot("Scenery-small-reward")
+        tap("Back to level book")
+        tap("Collection")
+        shot("Scenery-small-collection")
+        tap("Home")
+        // The redesigned cards and dock must still lead back to the same settings page.
+        tap("settings")
+        if !originalReduced { reduced.tap() }
+        tap("settings-back")
+        XCTAssertTrue(app.buttons["home-start"].exists)
     }
 
     func testSmallLayoutRegression() {

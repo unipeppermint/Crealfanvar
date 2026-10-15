@@ -11,6 +11,7 @@ Architecture:
 - Features/CFVAppCoordinator.swift: home, level book, collection, detail and completion flows.
 - Features/CFVGameController.swift / CFVBoardView.swift: state-driven native board, selection/swipes, crease hit zones, interactive edge folds, previews, commits, undo, hints and interruption handling.
 - Features/CFVVisuals.swift: paper texture, shape-distinct tiles and shared, size-aware PNG creature presentation.
+- Features/CFVGameAtmosphere.swift: illustrated home stage, chapter routes, collection/reward display, progress ribbons, tactile buttons and finite paper confetti. The scenery JPEG lives in Resources/Scenery; prompt/provenance is in artifacts/CFV-Scenery-Prompt.json.
 - Features/CFVSettingsController.swift: settings, paged offline help, privacy/support information.
 - Services/CFVSettings.swift: per-app UserDefaults preferences and AVFoundation audio.
 
@@ -57,3 +58,11 @@ Size optimization — 2026-10-15:
 - Size budgets: runtime resources <= 8 MiB, creature art <= 7 MiB, uncompressed Release app <= 12 MiB, individual tracked files and unpublished blobs <= 20 MiB. Reassess deliberately when content grows.
 - Removed generated output and obsolete planning archives, original full-resolution PNGs, and a verified complete pre-cleanup Git bundle are temporarily backed up in /private/tmp/CFV-Slim-Backup-20261015. This system temporary directory is not permanent archival storage; retain the original generation files or move the backup to durable storage if needed.
 - Previously published Git history is preserved. Only the unpushed animation commit is rewritten to remove large QA files; a normal fast-forward push is sufficient. Local Git recovery objects may still occupy disk space until normal Git maintenance expires them.
+
+Game presentation revision — 2026-10-15:
+- Home now displays its current creature in an illustrated paper woodland with a journey progress ribbon.
+- The level book groups the same 12 levels into three chapter routes with completion counts; accessibility identifiers and unlock rules are unchanged.
+- Collection cards show specimen numbers, discovery status and paper borders. Creature detail and completion screens use a framed display with a subtle halo and ground shadow.
+- Gameplay uses a low-contrast paper landscape around the board and a distinct HUD panel. Buttons have finite press feedback; first-time completion presentation emits paper confetti for 0.4 seconds and removes the particles by 3.2 seconds. Reduce Motion, backgrounding and removal stop the effect.
+- The unsigned, uncompressed Release app after the scenery addition is 8,164,973 bytes. Existing size budgets still pass. The original 18 creature illustrations, game rules, saves, Bundle ID and signing settings are unchanged by this visual revision.
+- Verified with Release archive, Chinese journey/gestures on iPhone 17 Pro, English navigation/44pt hit targets/Reduce Motion on iPhone SE with large text, and a separate settled creature replay capture. UI preview: artifacts/screenshots/CFV-Game-Atmosphere-Preview.jpg (generated, ignored by Git). The compact English dock uses Album, retaining Collection as its accessibility label.

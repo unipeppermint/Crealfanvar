@@ -7,9 +7,10 @@
   "creatures": 6,
   "stages": 18,
   "audioFiles": 7,
-  "bundleBytes": 7483401,
+  "bundleBytes": 8164973,
   "signed": false,
   "uploaded": false,
+  "sceneryFiles": 1,
   "externalBlockers": [
     "Developer signing identity and provisioning",
     "Real-device iOS 15 and current-system QA",
