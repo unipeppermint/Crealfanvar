@@ -233,6 +233,11 @@ final class CFVCreatureView: UIView {
         replayPending = false
     }
 
+    func settle() {
+        finishReplay()
+        transform = .identity
+    }
+
     func replay() {
         guard !isReplaying else { return }
         guard window != nil, renderedPixelSize > 0 else {

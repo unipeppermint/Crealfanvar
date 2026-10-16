@@ -5,10 +5,31 @@ nonisolated struct CFVCatalog: Codable {
     let totalCreatures: Int
     let levelIDs: [String]
     let creatures: [CFVCreature]
+    let learningStages: [CFVChapter]
 
     func stage(_ creature: CFVCreature, completed: Set<String>) -> Int {
         creature.requiredLevelIDs.filter { completed.contains($0) }.count
     }
+
+    func creature(for level: CFVLevel) -> CFVCreature {
+        if let earned = creatures.first(where: { $0.requiredLevelIDs.contains(level.levelID) }) {
+            return earned
+        }
+        // Advanced chapters have a companion without adding duplicate collection rewards.
+        let chapter = learningStages.first { $0.id == level.learningStage }!
+        return creatures.first { $0.id == chapter.companionID }!
+    }
+}
+
+nonisolated struct CFVChapter: Codable {
+    let id: String
+    let name: String
+    let nameEN: String
+    let startLevel: Int
+    let endLevel: Int
+    let companionID: String
+
+    var levelIndices: Range<Int> { (startLevel - 1)..<endLevel }
 }
 
 nonisolated struct CFVCreature: Codable {
@@ -48,9 +69,19 @@ nonisolated struct CFVRepository {
         func require(_ condition: Bool, _ message: String) throws {
             if !condition { throw CFVContentError.invalid(message) }
         }
-        try require(catalog.totalLevels == 12 && catalog.totalCreatures == 6 && levels.map(\.levelID) == catalog.levelIDs, "catalog")
-        try require(Set(catalog.levelIDs).count == 12 && catalog.creatures.count == 6, "unique catalog")
-        try require(catalog.creatures.flatMap(\.requiredLevelIDs) == catalog.levelIDs, "creature coverage")
+        try require(catalog.totalLevels >= 12 && catalog.totalCreatures == 6 && levels.map(\.levelID) == catalog.levelIDs, "catalog")
+        try require(Set(catalog.levelIDs).count == catalog.totalLevels && catalog.creatures.count == 6, "unique catalog")
+        try require(catalog.levelIDs == (1...catalog.totalLevels).map { String(format: "level-%02d", $0) }, "level order")
+        try require(catalog.creatures.flatMap(\.requiredLevelIDs) == Array(catalog.levelIDs.prefix(12)), "original creature coverage")
+        try require(Set(catalog.creatures.map(\.id)).count == catalog.creatures.count, "unique creatures")
+        try require(Set(catalog.learningStages.map(\.id)).count == catalog.learningStages.count, "unique chapters")
+        for chapter in catalog.learningStages {
+            try require(chapter.startLevel > 0 && chapter.endLevel >= chapter.startLevel && chapter.endLevel <= catalog.totalLevels, "chapter bounds")
+            try require(chapter.levelIndices.count <= 4 && !chapter.name.isEmpty && !chapter.nameEN.isEmpty, "chapter presentation")
+            try require(catalog.creatures.contains { $0.id == chapter.companionID }, "chapter companion")
+            try require(chapter.levelIndices.allSatisfy { levels[$0].learningStage == chapter.id }, "chapter membership")
+        }
+        try require(catalog.learningStages.flatMap { Array($0.levelIndices) } == Array(levels.indices), "chapter coverage")
         for (index, creature) in catalog.creatures.enumerated() {
             try require(creature.unlockLevel == (index + 1) * 2 && creature.requiredLevelIDs.count == 2, "unlock mapping")
         }

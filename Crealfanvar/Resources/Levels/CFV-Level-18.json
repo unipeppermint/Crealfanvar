@@ -1,0 +1,72 @@
+{
+  "levelID": "level-18",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "winding-folds",
+  "titleZH": "藏在涟漪下",
+  "titleEN": "Under the ripples",
+  "purposeZH": "先清理表面，再沿另一条折痕寻找留下的目标。",
+  "purposeEN": "Clear the surface, then use the other crease to reach the remaining targets.",
+  "initialRows": [
+    "TCLLT.",
+    "LCCLTL",
+    "LTLCCT",
+    "CCLTLL",
+    "TLTLCL",
+    "CTLCTC"
+  ],
+  "targetCells": [
+    4,
+    8,
+    9,
+    14,
+    15,
+    20,
+    23,
+    29,
+    32,
+    34
+  ],
+  "moveLimit": 5,
+  "folds": [
+    {
+      "creaseID": "bottom-4",
+      "axis": "horizontal",
+      "boundary": 4,
+      "movingSide": "bottom"
+    },
+    {
+      "creaseID": "left-1",
+      "axis": "vertical",
+      "boundary": 1,
+      "movingSide": "left"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "fold",
+      "creaseID": "bottom-4"
+    },
+    {
+      "type": "swap",
+      "first": 9,
+      "second": 15
+    },
+    {
+      "type": "swap",
+      "first": 11,
+      "second": 17
+    },
+    {
+      "type": "fold",
+      "creaseID": "left-1"
+    },
+    {
+      "type": "swap",
+      "first": 25,
+      "second": 26
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": null
+}

@@ -1,0 +1,79 @@
+{
+  "levelID": "level-22",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "deep-forest",
+  "titleZH": "远处的星点",
+  "titleEN": "Distant diamonds",
+  "purposeZH": "目标散落在纸面两侧，用六步把它们全部找回。",
+  "purposeEN": "Targets lie on both sides of the paper. Reach them all in six moves.",
+  "initialRows": [
+    "TLTTCL",
+    "CTLTCT",
+    "TTCLLT",
+    "LLTCLL",
+    "LLTCC.",
+    "CTLLCL"
+  ],
+  "targetCells": [
+    0,
+    2,
+    8,
+    10,
+    12,
+    15,
+    18,
+    19,
+    20,
+    25,
+    28,
+    32
+  ],
+  "moveLimit": 6,
+  "folds": [
+    {
+      "creaseID": "left-2",
+      "axis": "vertical",
+      "boundary": 2,
+      "movingSide": "left"
+    },
+    {
+      "creaseID": "bottom-4",
+      "axis": "horizontal",
+      "boundary": 4,
+      "movingSide": "bottom"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "fold",
+      "creaseID": "left-2"
+    },
+    {
+      "type": "swap",
+      "first": 14,
+      "second": 20
+    },
+    {
+      "type": "fold",
+      "creaseID": "bottom-4"
+    },
+    {
+      "type": "swap",
+      "first": 1,
+      "second": 7
+    },
+    {
+      "type": "swap",
+      "first": 9,
+      "second": 15
+    },
+    {
+      "type": "swap",
+      "first": 25,
+      "second": 31
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": null
+}

@@ -1,0 +1,79 @@
+{
+  "levelID": "level-21",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "deep-forest",
+  "titleZH": "层间微光",
+  "titleEN": "Light between layers",
+  "purposeZH": "六步之内完成目标，每次预览都检查目标所在层。",
+  "purposeEN": "Finish in six moves. Inspect the target layer in every preview.",
+  "initialRows": [
+    "CLTCLL",
+    "LCTLTT",
+    "CTLCLC",
+    "TCTTLC",
+    "LLCCTL",
+    "TTCCTT"
+  ],
+  "targetCells": [
+    3,
+    7,
+    8,
+    14,
+    16,
+    19,
+    20,
+    22,
+    24,
+    30,
+    31,
+    33
+  ],
+  "moveLimit": 6,
+  "folds": [
+    {
+      "creaseID": "right-4",
+      "axis": "vertical",
+      "boundary": 4,
+      "movingSide": "right"
+    },
+    {
+      "creaseID": "top-2",
+      "axis": "horizontal",
+      "boundary": 2,
+      "movingSide": "top"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "swap",
+      "first": 13,
+      "second": 14
+    },
+    {
+      "type": "fold",
+      "creaseID": "top-2"
+    },
+    {
+      "type": "swap",
+      "first": 28,
+      "second": 29
+    },
+    {
+      "type": "fold",
+      "creaseID": "right-4"
+    },
+    {
+      "type": "swap",
+      "first": 12,
+      "second": 13
+    },
+    {
+      "type": "swap",
+      "first": 18,
+      "second": 24
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": null
+}

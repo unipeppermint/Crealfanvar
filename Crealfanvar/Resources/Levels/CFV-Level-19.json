@@ -1,0 +1,73 @@
+{
+  "levelID": "level-19",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "winding-folds",
+  "titleZH": "一枚伏笔",
+  "titleEN": "One piece for later",
+  "purposeZH": "交换不能跨过空格，保留后续折叠需要的图案。",
+  "purposeEN": "Swaps cannot cross empty cells. Keep patterns needed for later folds.",
+  "initialRows": [
+    "CCTTCL",
+    "LTTLTL",
+    "LTLLTT",
+    ".CTTLC",
+    "CC.CLL",
+    "LLTLCL"
+  ],
+  "targetCells": [
+    0,
+    1,
+    2,
+    13,
+    14,
+    15,
+    20,
+    21,
+    28,
+    35
+  ],
+  "moveLimit": 5,
+  "folds": [
+    {
+      "creaseID": "left-2",
+      "axis": "vertical",
+      "boundary": 2,
+      "movingSide": "left"
+    },
+    {
+      "creaseID": "right-5",
+      "axis": "vertical",
+      "boundary": 5,
+      "movingSide": "right"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "swap",
+      "first": 14,
+      "second": 20
+    },
+    {
+      "type": "swap",
+      "first": 34,
+      "second": 35
+    },
+    {
+      "type": "fold",
+      "creaseID": "left-2"
+    },
+    {
+      "type": "swap",
+      "first": 20,
+      "second": 21
+    },
+    {
+      "type": "swap",
+      "first": 19,
+      "second": 20
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": null
+}

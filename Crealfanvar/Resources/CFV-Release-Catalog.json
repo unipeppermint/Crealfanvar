@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "releasePlanRevision": 2,
-  "purpose": "首版范围与解锁关系规划；不含实际棋盘数据",
-  "totalLevels": 12,
+  "releasePlanRevision": 3,
+  "purpose": "24 关运行时目录；前 12 关制作收藏，后 12 关为进阶挑战",
+  "totalLevels": 24,
   "totalCreatures": 6,
   "board": {
     "rows": 6,
     "columns": 6
   },
   "levelSelection": {
-    "layout": "single-page",
-    "columns": 3,
-    "rows": 4,
+    "layout": "scrollable-chapter-routes",
+    "columns": 4,
+    "rows": 6,
     "chapterGates": false
   },
   "levelIDs": [
@@ -26,26 +26,68 @@
     "level-09",
     "level-10",
     "level-11",
-    "level-12"
+    "level-12",
+    "level-13",
+    "level-14",
+    "level-15",
+    "level-16",
+    "level-17",
+    "level-18",
+    "level-19",
+    "level-20",
+    "level-21",
+    "level-22",
+    "level-23",
+    "level-24"
   ],
   "learningStages": [
     {
       "id": "first-folds",
       "name": "初次展开",
       "startLevel": 1,
-      "endLevel": 4
+      "endLevel": 4,
+      "nameEN": "First folds",
+      "companionID": "paper-butterfly"
     },
     {
       "id": "new-directions",
       "name": "换个方向",
       "startLevel": 5,
-      "endLevel": 8
+      "endLevel": 8,
+      "nameEN": "New directions",
+      "companionID": "paper-fish"
     },
     {
       "id": "clever-overlaps",
       "name": "巧妙遮挡",
       "startLevel": 9,
-      "endLevel": 12
+      "endLevel": 12,
+      "nameEN": "Clever overlaps",
+      "companionID": "paper-deer"
+    },
+    {
+      "id": "edge-whispers",
+      "name": "纸边微光",
+      "nameEN": "Paper edges",
+      "startLevel": 13,
+      "endLevel": 16,
+      "companionID": "paper-butterfly"
+    },
+    {
+      "id": "winding-folds",
+      "name": "回环折痕",
+      "nameEN": "Winding folds",
+      "startLevel": 17,
+      "endLevel": 20,
+      "companionID": "paper-fox"
+    },
+    {
+      "id": "deep-forest",
+      "name": "森林深处",
+      "nameEN": "Deep forest",
+      "startLevel": 21,
+      "endLevel": 24,
+      "companionID": "paper-deer"
     }
   ],
   "creatures": [

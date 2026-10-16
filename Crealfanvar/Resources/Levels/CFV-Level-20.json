@@ -1,0 +1,72 @@
+{
+  "levelID": "level-20",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "winding-folds",
+  "titleZH": "回身一折",
+  "titleEN": "A returning fold",
+  "purposeZH": "折后展开不是补充，重新观察剩下的相邻关系。",
+  "purposeEN": "Unfolding adds no new tiles. Inspect the neighbors that remain.",
+  "initialRows": [
+    "LCTLCC",
+    "CTTCCL",
+    "LTCTTC",
+    "LCLCCL",
+    "CTTLLC",
+    "LTCLCC"
+  ],
+  "targetCells": [
+    0,
+    7,
+    8,
+    13,
+    18,
+    20,
+    21,
+    27,
+    29,
+    34
+  ],
+  "moveLimit": 5,
+  "folds": [
+    {
+      "creaseID": "top-1",
+      "axis": "horizontal",
+      "boundary": 1,
+      "movingSide": "top"
+    },
+    {
+      "creaseID": "bottom-4",
+      "axis": "horizontal",
+      "boundary": 4,
+      "movingSide": "bottom"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "swap",
+      "first": 20,
+      "second": 26
+    },
+    {
+      "type": "fold",
+      "creaseID": "bottom-4"
+    },
+    {
+      "type": "swap",
+      "first": 8,
+      "second": 14
+    },
+    {
+      "type": "fold",
+      "creaseID": "top-1"
+    },
+    {
+      "type": "swap",
+      "first": 17,
+      "second": 23
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": null
+}

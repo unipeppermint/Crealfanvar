@@ -69,50 +69,54 @@ specs=[
 ('留下关键一枚','Save a key piece','并非每次三消都有帮助。保留后续折叠需要的图案。','Not every match helps. Save the patterns needed by a later fold.',[R2,B2],['swap','fold','swap']),
 ('散落的星点','Scattered diamonds','目标分布在不同位置。在三步之内让它们相遇。','Targets are scattered across the paper. Reach them in three moves.',[L2,B2],['fold','swap','fold']),
 ('最后一页','The final page','安排交换、折叠和遮挡顺序，展开最后一只纸鹿。','Plan swaps, folds and overlaps to unfold the final paper deer.',[R2,T2],['swap','fold','swap','fold'])]
-report=[]
-for n,(zh,en,pzh,pen,folds,sequence) in enumerate(specs,1):
-    for attempt in range(25000):
-        b=[(random.choice('LTC'),i) for i in range(36)]
-        if n==9:
-            for i in (4,10,29):b[i]=None
-        if matches(b):continue
-        current=b[:];path=[];removed=[];states=[b[:]]
-        for typ in sequence:
-            opts=actions(current,folds,typ)
-            if not opts:break
-            a,c,rm=random.choice(opts)
-            ids=[c[i][1] for i in rm]
-            path.append(a);removed.append(ids);current=apply(c,rm);states.append(current)
-        if len(path)!=len(sequence):continue
-        if n==5 and path[-1]['creaseID'] in [a['creaseID'] for a,c,r in actions(b,folds,'fold')]:continue
-        if n==7 and len(actions(b,folds,'fold'))!=1:continue
-        if n in (8,9,12) and path[-1].get('creaseID')==path[-2].get('creaseID'):continue
-        targets=[random.choice(ids) for ids in removed]
-        if n>=9:
-            targets+=random.sample(removed[-1],min(2,len(removed[-1])))
-        targets=sorted(set(targets))
-        if n==3:
-            f=folds[0]; hidden=set(range(36))-set(x for x in project(f) if x is not None)-set(i for i in range(36) if moving(i,f))
-            possible=set(removed[1])&hidden
-            if not possible:continue
-            targets=[random.choice(removed[0]),random.choice(sorted(possible))]
-        if n==9:
-            covered=[i for i in range(36) if not moving(i,R2) and project(R2)[i] is not None and b[project(R2)[i]] is None and b[i]]
-            if not covered:continue
-            if not any(i in sum(removed,[]) for i in covered):continue
-            targets=sorted(set(targets+[next(i for i in covered if i in sum(removed,[]))]))
-        if n>=4 and solvable(b,set(targets),folds,len(sequence)-1,set()):continue
-        # Save a concrete tempting branch which cannot win within the remaining budget.
-        trap=None
-        if n in (4,10,12):
-            for a,c,rm in actions(b,folds):
-                if a!=path[0] and not solvable(apply(c,rm),set(targets),folds,len(sequence)-1,set()):trap=a;break
-            if trap is None:continue
-        rows=[''.join(t[0] if t else '.' for t in b[r*6:r*6+6]) for r in range(6)]
-        level=dict(levelID=f'level-{n:02}',contentVersion=1,rulesVersion=1,learningStage=['first-folds','new-directions','clever-overlaps'][(n-1)//4],titleZH=zh,titleEN=en,purposeZH=pzh,purposeEN=pen,initialRows=rows,targetCells=targets,moveLimit=len(sequence),folds=folds,referenceSolution=path,tutorialCells=[path[0]['first'],path[0]['second']] if path[0]['type']=='swap' else [],tutorialCrease=path[0].get('creaseID'))
-        (ROOT/'Crealfanvar/Resources/Levels'/f'CFV-Level-{n:02}.json').write_text(json.dumps(level,ensure_ascii=False,indent=2)+'\n')
-        report.append(dict(level=n,attempt=attempt,targets=targets,solution=path,temptingLosingAction=trap,initialBlankCoveredTargets=covered if n==9 else []))
-        print(n,rows,targets,path,flush=True)
-        break
-    else:raise RuntimeError(f'No design for {n}')
-(ROOT/'artifacts/validation/CFV-Level-Design-Witnesses.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+def main():
+    report=[]
+    for n,(zh,en,pzh,pen,folds,sequence) in enumerate(specs,1):
+        for attempt in range(25000):
+            b=[(random.choice('LTC'),i) for i in range(36)]
+            if n==9:
+                for i in (4,10,29):b[i]=None
+            if matches(b):continue
+            current=b[:];path=[];removed=[];states=[b[:]]
+            for typ in sequence:
+                opts=actions(current,folds,typ)
+                if not opts:break
+                a,c,rm=random.choice(opts)
+                ids=[c[i][1] for i in rm]
+                path.append(a);removed.append(ids);current=apply(c,rm);states.append(current)
+            if len(path)!=len(sequence):continue
+            if n==5 and path[-1]['creaseID'] in [a['creaseID'] for a,c,r in actions(b,folds,'fold')]:continue
+            if n==7 and len(actions(b,folds,'fold'))!=1:continue
+            if n in (8,9,12) and path[-1].get('creaseID')==path[-2].get('creaseID'):continue
+            targets=[random.choice(ids) for ids in removed]
+            if n>=9:
+                targets+=random.sample(removed[-1],min(2,len(removed[-1])))
+            targets=sorted(set(targets))
+            if n==3:
+                f=folds[0]; hidden=set(range(36))-set(x for x in project(f) if x is not None)-set(i for i in range(36) if moving(i,f))
+                possible=set(removed[1])&hidden
+                if not possible:continue
+                targets=[random.choice(removed[0]),random.choice(sorted(possible))]
+            if n==9:
+                covered=[i for i in range(36) if not moving(i,R2) and project(R2)[i] is not None and b[project(R2)[i]] is None and b[i]]
+                if not covered:continue
+                if not any(i in sum(removed,[]) for i in covered):continue
+                targets=sorted(set(targets+[next(i for i in covered if i in sum(removed,[]))]))
+            if n>=4 and solvable(b,set(targets),folds,len(sequence)-1,set()):continue
+            # Save a concrete tempting branch which cannot win within the remaining budget.
+            trap=None
+            if n in (4,10,12):
+                for a,c,rm in actions(b,folds):
+                    if a!=path[0] and not solvable(apply(c,rm),set(targets),folds,len(sequence)-1,set()):trap=a;break
+                if trap is None:continue
+            rows=[''.join(t[0] if t else '.' for t in b[r*6:r*6+6]) for r in range(6)]
+            level=dict(levelID=f'level-{n:02}',contentVersion=1,rulesVersion=1,learningStage=['first-folds','new-directions','clever-overlaps'][(n-1)//4],titleZH=zh,titleEN=en,purposeZH=pzh,purposeEN=pen,initialRows=rows,targetCells=targets,moveLimit=len(sequence),folds=folds,referenceSolution=path,tutorialCells=[path[0]['first'],path[0]['second']] if path[0]['type']=='swap' else [],tutorialCrease=path[0].get('creaseID'))
+            (ROOT/'Crealfanvar/Resources/Levels'/f'CFV-Level-{n:02}.json').write_text(json.dumps(level,ensure_ascii=False,indent=2)+'\n')
+            report.append(dict(level=n,attempt=attempt,targets=targets,solution=path,temptingLosingAction=trap,initialBlankCoveredTargets=covered if n==9 else []))
+            print(n,rows,targets,path,flush=True)
+            break
+        else:raise RuntimeError(f'No design for {n}')
+    (ROOT/'artifacts/validation/CFV-Level-Design-Witnesses.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+
+if __name__ == "__main__":
+    main()

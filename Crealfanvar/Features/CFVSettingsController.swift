@@ -13,6 +13,7 @@ final class CFVSettingsController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60
         tableView.separatorColor = CFVTheme.line.withAlphaComponent(0.5)
+        buildHeader()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -29,6 +30,68 @@ final class CFVSettingsController: UITableViewController {
             action: #selector(close)
         )
         navigationItem.leftBarButtonItem?.accessibilityIdentifier = "settings-back"
+    }
+
+    private func buildHeader() {
+        let container = UIView()
+        let note = CFVNoteCard(kicker: CFVText("PAPERKIN · 你的节奏", "PAPERKIN · YOUR OWN PACE"),
+                               title: CFVText("让森林刚刚好", "Make yourself at home"),
+                               body: CFVText("留一点音乐，或享受安静；让每一次折叠，都按你喜欢的方式发生。", "Keep a little music, or enjoy the quiet. Let each fold happen in a way that feels right to you."),
+                               accent: CFVTheme.green)
+        note.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(note)
+        NSLayoutConstraint.activate([
+            note.topAnchor.constraint(equalTo: container.topAnchor, constant: 12),
+            note.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -8),
+            note.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20),
+            note.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20)
+        ])
+        container.accessibilityIdentifier = "settings-introduction"
+        tableView.tableHeaderView = container
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard let header = tableView.tableHeaderView else { return }
+        let width = tableView.bounds.width
+        let size = header.systemLayoutSizeFitting(
+            CGSize(width: width, height: UIView.layoutFittingCompressedSize.height),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel)
+        if abs(header.frame.height - size.height) > 0.5 || header.frame.width != width {
+            header.frame = CGRect(x: 0, y: 0, width: width, height: size.height)
+            tableView.tableHeaderView = header
+        }
+    }
+
+    private func sectionTitle(_ section: Int) -> String {
+        [CFVText("声音与感受", "Sound and comfort"),
+         CFVText("游玩方式", "Play your way"),
+         CFVText("关于纸间", "About your forest")][section]
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
+        let label = CFVTheme.label(sectionTitle(section), size: 13, color: CFVTheme.green)
+        label.textAlignment = .left
+        label.accessibilityTraits = .header
+        label.translatesAutoresizingMaskIntoConstraints = false
+        header.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 32),
+            label.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -32),
+            label.topAnchor.constraint(equalTo: header.topAnchor, constant: 12),
+            label.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -8)
+        ])
+        return header
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let textSize = (sectionTitle(section) as NSString).boundingRect(
+            with: CGSize(width: max(1, tableView.bounds.width - 64), height: .greatestFiniteMagnitude),
+            options: .usesLineFragmentOrigin,
+            attributes: [.font: CFVTheme.font(13)], context: nil)
+        return ceil(textSize.height) + 20
     }
 
     @objc private func close() {
@@ -86,6 +149,7 @@ final class CFVSettingsController: UITableViewController {
                     CFVSettings.shared.language = code
                     guard let self else { return }
                     self.configureNavigation()
+                    self.buildHeader()
                     self.tableView.reloadData()
                     self.app.refreshSettingsOrigin()
                 })
@@ -97,7 +161,7 @@ final class CFVSettingsController: UITableViewController {
             let title = [CFVText("隐私说明", "Privacy"), CFVText("支持", "Support"), CFVText("本地数据", "Local data")][indexPath.row]
             let privacy = CFVText("花园布置、关卡、收藏和设置保存在本设备。本应用不创建账号，不包含广告或分析 SDK，不上传游玩数据。删除应用可能删除本地进度。\n\n公开隐私政策地址尚待开发者配置，发布前必须补齐。", "Garden arrangements, levels, collection and settings are stored on this device. The app has no accounts, advertising or analytics SDKs and does not upload gameplay data. Deleting the app may delete local progress.\n\nThe developer must configure a public privacy policy URL before release.")
             let support = CFVText("遇到困难时可使用提示、撤销或重新开始。存档异常时会优先尝试备份，已完成记录独立保存。\n\n支持联系方式与公开支持地址尚待开发者提供，发布前必须补齐。", "Use Hint, Undo or Restart when stuck. If a save is damaged, the app tries its backup. Completion records are stored separately.\n\nThe developer must provide a support contact and public support URL before release.")
-            let local = CFVText("只保存一个活动对局。进入其他关卡会先询问是否替换。本机收藏不会因重玩或撤销减少。首版不提供跨设备同步。", "One active game is saved. Starting another level asks before replacing it. Replaying or undoing never removes collected creatures. Cross-device sync is not available in this release.")
+            let local = CFVText("花园会记住当前布置，也可另外收藏三份完整风景。关卡只保存一个活动对局，进入其他关卡会先询问是否替换。已获得的生物与礼物不会因重玩或撤销减少。所有记录保存在本机，首版不提供跨设备同步。", "The garden remembers your current arrangement and up to three saved scenes. One active puzzle is saved; starting another asks before replacing it. Replaying or undoing never removes earned creatures or gifts. All records stay on this device. Cross-device sync is not available in this release.")
             let controller = CFVTextController(title: title, body: indexPath.row == 0 ? privacy : indexPath.row == 1 ? support : local)
             let key = indexPath.row == 0 ? "CFVPrivacyURL" : "CFVSupportURL"
             if indexPath.row < 2, let value = Bundle.main.object(forInfoDictionaryKey: key) as? String, let url = URL(string: value), url.scheme == "https" {

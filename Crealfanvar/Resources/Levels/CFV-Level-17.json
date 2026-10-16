@@ -1,0 +1,69 @@
+{
+  "levelID": "level-17",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "winding-folds",
+  "titleZH": "双向足迹",
+  "titleEN": "Two-way tracks",
+  "purposeZH": "看似能消除的开局，不一定能清完所有目标。",
+  "purposeEN": "An opening match may leave targets unreachable. Compare the routes.",
+  "initialRows": [
+    "CTTCLC",
+    "TCLCCT",
+    "TLTLLT",
+    "LLTTCL",
+    "CTLTLL",
+    "TCTCLT"
+  ],
+  "targetCells": [
+    5,
+    6,
+    9,
+    10,
+    18,
+    21,
+    28
+  ],
+  "moveLimit": 5,
+  "folds": [
+    {
+      "creaseID": "right-4",
+      "axis": "vertical",
+      "boundary": 4,
+      "movingSide": "right"
+    },
+    {
+      "creaseID": "top-2",
+      "axis": "horizontal",
+      "boundary": 2,
+      "movingSide": "top"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "swap",
+      "first": 0,
+      "second": 6
+    },
+    {
+      "type": "fold",
+      "creaseID": "right-4"
+    },
+    {
+      "type": "swap",
+      "first": 14,
+      "second": 15
+    },
+    {
+      "type": "fold",
+      "creaseID": "top-2"
+    },
+    {
+      "type": "swap",
+      "first": 5,
+      "second": 11
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": null
+}

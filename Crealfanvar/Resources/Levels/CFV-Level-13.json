@@ -1,0 +1,62 @@
+{
+  "levelID": "level-13",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "edge-whispers",
+  "titleZH": "窄边来信",
+  "titleEN": "A narrow note",
+  "purposeZH": "先整理边缘图案，再比较一列与两列的折面。",
+  "purposeEN": "Arrange the edge patterns, then compare one-column and two-column folds.",
+  "initialRows": [
+    "LLTTCT",
+    "LTTCLL",
+    "CCLLCT",
+    "CLCLLT",
+    "TTLTTC",
+    "TCLTCL"
+  ],
+  "targetCells": [
+    5,
+    6,
+    13,
+    15,
+    17
+  ],
+  "moveLimit": 4,
+  "folds": [
+    {
+      "creaseID": "right-5",
+      "axis": "vertical",
+      "boundary": 5,
+      "movingSide": "right"
+    },
+    {
+      "creaseID": "left-2",
+      "axis": "vertical",
+      "boundary": 2,
+      "movingSide": "left"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "swap",
+      "first": 28,
+      "second": 29
+    },
+    {
+      "type": "fold",
+      "creaseID": "right-5"
+    },
+    {
+      "type": "swap",
+      "first": 26,
+      "second": 27
+    },
+    {
+      "type": "fold",
+      "creaseID": "left-2"
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": null
+}

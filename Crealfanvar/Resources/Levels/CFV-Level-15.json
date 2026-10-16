@@ -1,0 +1,63 @@
+{
+  "levelID": "level-15",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "edge-whispers",
+  "titleZH": "错开的叶影",
+  "titleEN": "Offset leaves",
+  "purposeZH": "目标不在同一条线上，交换为后续折叠留出图案。",
+  "purposeEN": "Targets sit on different lines. Keep patterns for the later fold.",
+  "initialRows": [
+    "LTLCTC",
+    "LCTLTC",
+    "TTLLC.",
+    "CTC.LT",
+    "LLTCLC",
+    "LTCLCL"
+  ],
+  "targetCells": [
+    8,
+    13,
+    20,
+    34,
+    35
+  ],
+  "moveLimit": 4,
+  "folds": [
+    {
+      "creaseID": "left-1",
+      "axis": "vertical",
+      "boundary": 1,
+      "movingSide": "left"
+    },
+    {
+      "creaseID": "bottom-4",
+      "axis": "horizontal",
+      "boundary": 4,
+      "movingSide": "bottom"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "swap",
+      "first": 34,
+      "second": 35
+    },
+    {
+      "type": "fold",
+      "creaseID": "bottom-4"
+    },
+    {
+      "type": "swap",
+      "first": 26,
+      "second": 27
+    },
+    {
+      "type": "swap",
+      "first": 7,
+      "second": 8
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": null
+}

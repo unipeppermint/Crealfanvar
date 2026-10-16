@@ -1,0 +1,79 @@
+{
+  "levelID": "level-24",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "deep-forest",
+  "titleZH": "森林长卷",
+  "titleEN": "The forest unfolds",
+  "purposeZH": "综合安排六步。随时预览、撤销，让整段旅程从容展开。",
+  "purposeEN": "Plan all six moves. Preview and undo freely as the journey unfolds.",
+  "initialRows": [
+    "LTTCLT",
+    "TLTLTT",
+    "CCLTTL",
+    "CTCCLC",
+    "TTCTCT",
+    "CCLTCL"
+  ],
+  "targetCells": [
+    1,
+    2,
+    5,
+    7,
+    9,
+    13,
+    15,
+    20,
+    29,
+    31,
+    33,
+    34
+  ],
+  "moveLimit": 6,
+  "folds": [
+    {
+      "creaseID": "left-2",
+      "axis": "vertical",
+      "boundary": 2,
+      "movingSide": "left"
+    },
+    {
+      "creaseID": "top-2",
+      "axis": "horizontal",
+      "boundary": 2,
+      "movingSide": "top"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "swap",
+      "first": 15,
+      "second": 21
+    },
+    {
+      "type": "fold",
+      "creaseID": "top-2"
+    },
+    {
+      "type": "swap",
+      "first": 0,
+      "second": 6
+    },
+    {
+      "type": "fold",
+      "creaseID": "left-2"
+    },
+    {
+      "type": "swap",
+      "first": 8,
+      "second": 9
+    },
+    {
+      "type": "swap",
+      "first": 14,
+      "second": 20
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": null
+}

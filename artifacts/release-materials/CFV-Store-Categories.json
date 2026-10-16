@@ -4,8 +4,8 @@
   "primaryCategory": "ENTERTAINMENT",
   "secondaryCategory": "GAMES",
   "gameSubcategories": ["GAMES_PUZZLE"],
-  "primaryExperience": "Freely arrange and interact with six paper creatures in an offline garden, with three lighting moods and saved composition.",
-  "secondaryExperience": "Twelve optional folding puzzles with independent earned collection progress.",
+  "primaryExperience": "Freely arrange up to three of six paper creatures together in an offline garden, with individual greetings, basic props, three lighting moods and three saved scenes.",
+  "secondaryExperience": "Twenty-four optional folding puzzles: twelve collection levels followed by twelve advanced challenges that award garden scenery at levels 16, 20 and 24.",
   "submissionNote": "Apply these fields in App Store Connect when preparing the actual submission. This file does not change the account or guarantee category acceptance.",
   "reference": "https://developer.apple.com/app-store/categories/"
 }

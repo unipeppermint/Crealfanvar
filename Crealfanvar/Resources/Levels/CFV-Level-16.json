@@ -1,0 +1,62 @@
+{
+  "levelID": "level-16",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "edge-whispers",
+  "titleZH": "边缘留白",
+  "titleEN": "Blank edges",
+  "purposeZH": "有空白的折面仍会盖住下层，先预览再安排顺序。",
+  "purposeEN": "Blank folded cells still cover the lower layer. Preview before choosing an order.",
+  "initialRows": [
+    "LLTTCT",
+    "L.LTTC",
+    "CLCLCL",
+    "LTTCCL",
+    "L.TTLC",
+    ".CCTCC"
+  ],
+  "targetCells": [
+    8,
+    16,
+    18,
+    22,
+    31
+  ],
+  "moveLimit": 4,
+  "folds": [
+    {
+      "creaseID": "right-4",
+      "axis": "vertical",
+      "boundary": 4,
+      "movingSide": "right"
+    },
+    {
+      "creaseID": "top-1",
+      "axis": "horizontal",
+      "boundary": 1,
+      "movingSide": "top"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "swap",
+      "first": 8,
+      "second": 14
+    },
+    {
+      "type": "fold",
+      "creaseID": "right-4"
+    },
+    {
+      "type": "swap",
+      "first": 6,
+      "second": 12
+    },
+    {
+      "type": "fold",
+      "creaseID": "top-1"
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": null
+}

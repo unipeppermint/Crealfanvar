@@ -1,0 +1,589 @@
+{
+  "originalLevelSHA256": {
+    "CFV-Level-01.json": "e4a0d4c9253927fb8a1b843978183acbd69032ef6958629be4a13505d9300a0e",
+    "CFV-Level-02.json": "c056c4a03bb26fc36c9062174e698844b769e16019dfcaf72fe33aef4fae0e84",
+    "CFV-Level-03.json": "a7ef7751a4c4b1c03586a8f0a6a2d4be2c1d75b742afd288affb78a1fa258c86",
+    "CFV-Level-04.json": "fd208f39763498c99eedde0829ad0cff0d3eabc623b6554adbb4101adf529be1",
+    "CFV-Level-05.json": "5ec0ca520eaf9565b460fa6be763237d2aef26f25235df320861d9008ee66a81",
+    "CFV-Level-06.json": "010ec2372a5653223107a5d753307747ee031fd8fe024a418a9b3b66757605c7",
+    "CFV-Level-07.json": "59d44a9f9166ba8e95a1a222351ba31c2f853980754e9693e2bffe45ba90899b",
+    "CFV-Level-08.json": "e26186a4fdb2150d5a51c66aaba26b008affb67e3c1906e2111e466559e89a52",
+    "CFV-Level-09.json": "906aca06356e8445a4092850eb6a3b8ef356b7fff069c1e3d4516dc7791c7a6d",
+    "CFV-Level-10.json": "5d10fe1362425805aa1760077b37febe4d8752245530efadd0da58a6a3795c95",
+    "CFV-Level-11.json": "4104dea72898461d96bb866c5ccdffca3cb08b1f1f23f1bc052cfb006526a9f1",
+    "CFV-Level-12.json": "b4458ddc44fc2a5edf873c5cbedf5646332b78fb1fabb503b34d27571c377455"
+  },
+  "levels": [
+    {
+      "level": 13,
+      "attempt": 925,
+      "minimumMoves": 4,
+      "proofNodes": 257,
+      "targets": [
+        5,
+        6,
+        13,
+        15,
+        17
+      ],
+      "solution": [
+        {
+          "type": "swap",
+          "first": 28,
+          "second": 29
+        },
+        {
+          "type": "fold",
+          "creaseID": "right-5"
+        },
+        {
+          "type": "swap",
+          "first": 26,
+          "second": 27
+        },
+        {
+          "type": "fold",
+          "creaseID": "left-2"
+        }
+      ],
+      "temptingLosingAction": {
+        "type": "fold",
+        "creaseID": "left-2"
+      },
+      "initialBlankCount": 0
+    },
+    {
+      "level": 14,
+      "attempt": 1333,
+      "minimumMoves": 4,
+      "proofNodes": 725,
+      "targets": [
+        6,
+        10,
+        19,
+        22,
+        28,
+        34
+      ],
+      "solution": [
+        {
+          "type": "fold",
+          "creaseID": "top-1"
+        },
+        {
+          "type": "swap",
+          "first": 19,
+          "second": 20
+        },
+        {
+          "type": "swap",
+          "first": 7,
+          "second": 13
+        },
+        {
+          "type": "fold",
+          "creaseID": "bottom-4"
+        }
+      ],
+      "temptingLosingAction": {
+        "type": "swap",
+        "first": 0,
+        "second": 1
+      },
+      "initialBlankCount": 1
+    },
+    {
+      "level": 15,
+      "attempt": 63,
+      "minimumMoves": 4,
+      "proofNodes": 184,
+      "targets": [
+        8,
+        13,
+        20,
+        34,
+        35
+      ],
+      "solution": [
+        {
+          "type": "swap",
+          "first": 34,
+          "second": 35
+        },
+        {
+          "type": "fold",
+          "creaseID": "bottom-4"
+        },
+        {
+          "type": "swap",
+          "first": 26,
+          "second": 27
+        },
+        {
+          "type": "swap",
+          "first": 7,
+          "second": 8
+        }
+      ],
+      "temptingLosingAction": {
+        "type": "fold",
+        "creaseID": "bottom-4"
+      },
+      "initialBlankCount": 2
+    },
+    {
+      "level": 16,
+      "attempt": 271,
+      "minimumMoves": 4,
+      "proofNodes": 341,
+      "targets": [
+        8,
+        16,
+        18,
+        22,
+        31
+      ],
+      "solution": [
+        {
+          "type": "swap",
+          "first": 8,
+          "second": 14
+        },
+        {
+          "type": "fold",
+          "creaseID": "right-4"
+        },
+        {
+          "type": "swap",
+          "first": 6,
+          "second": 12
+        },
+        {
+          "type": "fold",
+          "creaseID": "top-1"
+        }
+      ],
+      "temptingLosingAction": {
+        "type": "swap",
+        "first": 4,
+        "second": 5
+      },
+      "initialBlankCount": 3
+    },
+    {
+      "level": 17,
+      "attempt": 1243,
+      "minimumMoves": 5,
+      "proofNodes": 1755,
+      "targets": [
+        5,
+        6,
+        9,
+        10,
+        18,
+        21,
+        28
+      ],
+      "solution": [
+        {
+          "type": "swap",
+          "first": 0,
+          "second": 6
+        },
+        {
+          "type": "fold",
+          "creaseID": "right-4"
+        },
+        {
+          "type": "swap",
+          "first": 14,
+          "second": 15
+        },
+        {
+          "type": "fold",
+          "creaseID": "top-2"
+        },
+        {
+          "type": "swap",
+          "first": 5,
+          "second": 11
+        }
+      ],
+      "temptingLosingAction": {
+        "type": "swap",
+        "first": 2,
+        "second": 8
+      },
+      "initialBlankCount": 0
+    },
+    {
+      "level": 18,
+      "attempt": 1492,
+      "minimumMoves": 5,
+      "proofNodes": 869,
+      "targets": [
+        4,
+        8,
+        9,
+        14,
+        15,
+        20,
+        23,
+        29,
+        32,
+        34
+      ],
+      "solution": [
+        {
+          "type": "fold",
+          "creaseID": "bottom-4"
+        },
+        {
+          "type": "swap",
+          "first": 9,
+          "second": 15
+        },
+        {
+          "type": "swap",
+          "first": 11,
+          "second": 17
+        },
+        {
+          "type": "fold",
+          "creaseID": "left-1"
+        },
+        {
+          "type": "swap",
+          "first": 25,
+          "second": 26
+        }
+      ],
+      "temptingLosingAction": {
+        "type": "swap",
+        "first": 2,
+        "second": 8
+      },
+      "initialBlankCount": 1
+    },
+    {
+      "level": 19,
+      "attempt": 254,
+      "minimumMoves": 5,
+      "proofNodes": 1134,
+      "targets": [
+        0,
+        1,
+        2,
+        13,
+        14,
+        15,
+        20,
+        21,
+        28,
+        35
+      ],
+      "solution": [
+        {
+          "type": "swap",
+          "first": 14,
+          "second": 20
+        },
+        {
+          "type": "swap",
+          "first": 34,
+          "second": 35
+        },
+        {
+          "type": "fold",
+          "creaseID": "left-2"
+        },
+        {
+          "type": "swap",
+          "first": 20,
+          "second": 21
+        },
+        {
+          "type": "swap",
+          "first": 19,
+          "second": 20
+        }
+      ],
+      "temptingLosingAction": {
+        "type": "swap",
+        "first": 1,
+        "second": 2
+      },
+      "initialBlankCount": 2
+    },
+    {
+      "level": 20,
+      "attempt": 1847,
+      "minimumMoves": 5,
+      "proofNodes": 3410,
+      "targets": [
+        0,
+        7,
+        8,
+        13,
+        18,
+        20,
+        21,
+        27,
+        29,
+        34
+      ],
+      "solution": [
+        {
+          "type": "swap",
+          "first": 20,
+          "second": 26
+        },
+        {
+          "type": "fold",
+          "creaseID": "bottom-4"
+        },
+        {
+          "type": "swap",
+          "first": 8,
+          "second": 14
+        },
+        {
+          "type": "fold",
+          "creaseID": "top-1"
+        },
+        {
+          "type": "swap",
+          "first": 17,
+          "second": 23
+        }
+      ],
+      "temptingLosingAction": {
+        "type": "swap",
+        "first": 1,
+        "second": 2
+      },
+      "initialBlankCount": 0
+    },
+    {
+      "level": 21,
+      "attempt": 699,
+      "minimumMoves": 6,
+      "proofNodes": 2889,
+      "targets": [
+        3,
+        7,
+        8,
+        14,
+        16,
+        19,
+        20,
+        22,
+        24,
+        30,
+        31,
+        33
+      ],
+      "solution": [
+        {
+          "type": "swap",
+          "first": 13,
+          "second": 14
+        },
+        {
+          "type": "fold",
+          "creaseID": "top-2"
+        },
+        {
+          "type": "swap",
+          "first": 28,
+          "second": 29
+        },
+        {
+          "type": "fold",
+          "creaseID": "right-4"
+        },
+        {
+          "type": "swap",
+          "first": 12,
+          "second": 13
+        },
+        {
+          "type": "swap",
+          "first": 18,
+          "second": 24
+        }
+      ],
+      "temptingLosingAction": {
+        "type": "fold",
+        "creaseID": "right-4"
+      },
+      "initialBlankCount": 0
+    },
+    {
+      "level": 22,
+      "attempt": 279,
+      "minimumMoves": 6,
+      "proofNodes": 2250,
+      "targets": [
+        0,
+        2,
+        8,
+        10,
+        12,
+        15,
+        18,
+        19,
+        20,
+        25,
+        28,
+        32
+      ],
+      "solution": [
+        {
+          "type": "fold",
+          "creaseID": "left-2"
+        },
+        {
+          "type": "swap",
+          "first": 14,
+          "second": 20
+        },
+        {
+          "type": "fold",
+          "creaseID": "bottom-4"
+        },
+        {
+          "type": "swap",
+          "first": 1,
+          "second": 7
+        },
+        {
+          "type": "swap",
+          "first": 9,
+          "second": 15
+        },
+        {
+          "type": "swap",
+          "first": 25,
+          "second": 31
+        }
+      ],
+      "temptingLosingAction": {
+        "type": "swap",
+        "first": 0,
+        "second": 1
+      },
+      "initialBlankCount": 1
+    },
+    {
+      "level": 23,
+      "attempt": 1874,
+      "minimumMoves": 6,
+      "proofNodes": 2339,
+      "targets": [
+        2,
+        3,
+        6,
+        9,
+        15,
+        19,
+        20,
+        22,
+        25,
+        33,
+        34,
+        35
+      ],
+      "solution": [
+        {
+          "type": "swap",
+          "first": 19,
+          "second": 20
+        },
+        {
+          "type": "swap",
+          "first": 7,
+          "second": 13
+        },
+        {
+          "type": "fold",
+          "creaseID": "right-5"
+        },
+        {
+          "type": "swap",
+          "first": 3,
+          "second": 4
+        },
+        {
+          "type": "fold",
+          "creaseID": "bottom-4"
+        },
+        {
+          "type": "swap",
+          "first": 2,
+          "second": 8
+        }
+      ],
+      "temptingLosingAction": {
+        "type": "fold",
+        "creaseID": "bottom-4"
+      },
+      "initialBlankCount": 2
+    },
+    {
+      "level": 24,
+      "attempt": 1421,
+      "minimumMoves": 6,
+      "proofNodes": 5302,
+      "targets": [
+        1,
+        2,
+        5,
+        7,
+        9,
+        13,
+        15,
+        20,
+        29,
+        31,
+        33,
+        34
+      ],
+      "solution": [
+        {
+          "type": "swap",
+          "first": 15,
+          "second": 21
+        },
+        {
+          "type": "fold",
+          "creaseID": "top-2"
+        },
+        {
+          "type": "swap",
+          "first": 0,
+          "second": 6
+        },
+        {
+          "type": "fold",
+          "creaseID": "left-2"
+        },
+        {
+          "type": "swap",
+          "first": 8,
+          "second": 9
+        },
+        {
+          "type": "swap",
+          "first": 14,
+          "second": 20
+        }
+      ],
+      "temptingLosingAction": {
+        "type": "fold",
+        "creaseID": "left-2"
+      },
+      "initialBlankCount": 0
+    }
+  ]
+}

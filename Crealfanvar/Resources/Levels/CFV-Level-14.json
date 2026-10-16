@@ -1,0 +1,63 @@
+{
+  "levelID": "level-14",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "edge-whispers",
+  "titleZH": "上下呼应",
+  "titleEN": "Above and below",
+  "purposeZH": "上下两条窄折痕会覆盖不同的目标。",
+  "purposeEN": "The two horizontal folds cover different targets.",
+  "initialRows": [
+    "LTLLTC",
+    "TLTTLT",
+    "CTLTT.",
+    "TLTLTL",
+    "TCLTLC",
+    "CLCTLT"
+  ],
+  "targetCells": [
+    6,
+    10,
+    19,
+    22,
+    28,
+    34
+  ],
+  "moveLimit": 4,
+  "folds": [
+    {
+      "creaseID": "top-1",
+      "axis": "horizontal",
+      "boundary": 1,
+      "movingSide": "top"
+    },
+    {
+      "creaseID": "bottom-4",
+      "axis": "horizontal",
+      "boundary": 4,
+      "movingSide": "bottom"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "fold",
+      "creaseID": "top-1"
+    },
+    {
+      "type": "swap",
+      "first": 19,
+      "second": 20
+    },
+    {
+      "type": "swap",
+      "first": 7,
+      "second": 13
+    },
+    {
+      "type": "fold",
+      "creaseID": "bottom-4"
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": null
+}

@@ -1,0 +1,79 @@
+{
+  "levelID": "level-23",
+  "contentVersion": 1,
+  "rulesVersion": 1,
+  "learningStage": "deep-forest",
+  "titleZH": "最后的留白",
+  "titleEN": "The last blank",
+  "purposeZH": "空白层会改变每次投影，确认前检查最后一组图案。",
+  "purposeEN": "Blank layers change each projection. Inspect the final group before committing.",
+  "initialRows": [
+    "TCTLTT",
+    "TLCTLC",
+    "CTLTCC",
+    "CCLCCL",
+    "TL.T.C",
+    "CCTTLT"
+  ],
+  "targetCells": [
+    2,
+    3,
+    6,
+    9,
+    15,
+    19,
+    20,
+    22,
+    25,
+    33,
+    34,
+    35
+  ],
+  "moveLimit": 6,
+  "folds": [
+    {
+      "creaseID": "right-5",
+      "axis": "vertical",
+      "boundary": 5,
+      "movingSide": "right"
+    },
+    {
+      "creaseID": "bottom-4",
+      "axis": "horizontal",
+      "boundary": 4,
+      "movingSide": "bottom"
+    }
+  ],
+  "referenceSolution": [
+    {
+      "type": "swap",
+      "first": 19,
+      "second": 20
+    },
+    {
+      "type": "swap",
+      "first": 7,
+      "second": 13
+    },
+    {
+      "type": "fold",
+      "creaseID": "right-5"
+    },
+    {
+      "type": "swap",
+      "first": 3,
+      "second": 4
+    },
+    {
+      "type": "fold",
+      "creaseID": "bottom-4"
+    },
+    {
+      "type": "swap",
+      "first": 2,
+      "second": 8
+    }
+  ],
+  "tutorialCells": [],
+  "tutorialCrease": null
+}

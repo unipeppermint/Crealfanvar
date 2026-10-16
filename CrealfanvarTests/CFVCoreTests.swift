@@ -11,6 +11,7 @@ struct CFVCoreTests {
     static func main() throws {
         let root = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
         let repo = try CFVRepository(directory: root.appendingPathComponent("Crealfanvar/Resources"))
+        check(repo.levels.count == 24 && repo.catalog.learningStages.count == 6, "24 levels across six chapters")
         for level in repo.levels {
             var session = CFVSession(level: level)
             check(CFVEngine.matches(session.state).isEmpty, "initial match")
@@ -84,10 +85,10 @@ struct CFVCoreTests {
         progress = try store.reconcile(session, progress: progress)
         check(progress.completed.count == 1 && progress.completionIDs.count == 1, "idempotent reward")
         check(repo.catalog.stage(repo.catalog.creatures[1], completed: progress.completed) == 1, "missing prior no unlock")
-        for count in 0...12 {
+        for count in 0...repo.levels.count {
             let completed = Set(repo.catalog.levelIDs.prefix(count))
             let stages = repo.catalog.creatures.map { repo.catalog.stage($0, completed: completed) }
-            check(stages.filter { $0 == 2 }.count == count / 2, "catalog progress \(count)")
+            check(stages.filter { $0 == 2 }.count == min(6, count / 2), "catalog progress \(count)")
         }
         var incompatible = session
         incompatible.rulesVersion = 9
@@ -134,6 +135,57 @@ struct CFVCoreTests {
             if case .provenNoSolution = CFVHintSolver.solve(level: level, state: turn.state, seconds: 3) { checks += 1 }
             else { fatalError("losing branch must be proven unsolvable") }
         }
+        // Independently prove the new levels cannot be completed with one fewer move.
+        // This deliberately bypasses the reference-path shortcut in the production solver.
+        struct ExpansionWitnesses: Decodable {
+            let levels: [Witness]
+        }
+        let expansionData = try Data(contentsOf: root.appendingPathComponent("artifacts/validation/CFV-Expansion-Design-Witnesses.json"))
+        let expansion = try JSONDecoder().decode(ExpansionWitnesses.self, from: expansionData)
+        check(expansion.levels.count == 12, "twelve expansion witnesses")
+        for witness in expansion.levels {
+            let advanced = repo.levels[witness.level - 1]
+            check(advanced.moveLimit == 4 + (witness.level - 13) / 4, "graduated minimum moves")
+            var shorter = advanced.initialState
+            shorter.remainingMoves -= 1
+            if case .provenNoSolution = CFVHintSolver.solve(level: advanced, state: shorter, nodeLimit: 300_000, seconds: 60) {
+                checks += 1
+            } else { fatalError("shortest route must be proven: " + advanced.levelID) }
+            let trap = CFVEngine.apply(advanced, advanced.initialState, witness.temptingLosingAction!)!
+            if case .provenNoSolution = CFVHintSolver.solve(level: advanced, state: trap.state, nodeLimit: 300_000, seconds: 60) {
+                checks += 1
+            } else { fatalError("advanced losing branch: " + advanced.levelID) }
+            check(repo.catalog.creatures.contains { $0.id == repo.catalog.creature(for: advanced).id }, "advanced companion resolves")
+            print("PASS \(advanced.levelID): shortest path and losing opening verified")
+        }
+        // The first twelve boards and save schema stay unchanged. Load an old-format
+        // completed journey and an in-progress original level through the expanded repo.
+        let legacyDirectory = root.appendingPathComponent("artifacts/validation/legacy-12-" + UUID().uuidString)
+        try FileManager.default.createDirectory(at: legacyDirectory, withIntermediateDirectories: true)
+        var legacy = CFVProgress()
+        legacy.completed = Set(repo.catalog.levelIDs.prefix(12))
+        legacy.bestMoves = Dictionary(uniqueKeysWithValues: repo.levels.prefix(12).map { ($0.levelID, $0.referenceSolution.count) })
+        legacy.completionIDs = ["existing-completion"]
+        legacy.seenTutorials = ["level-01", "level-12"]
+        var originalSession = CFVSession(level: repo.levels[4])
+        let originalAction = repo.levels[4].referenceSolution[0]
+        originalSession.commit(CFVEngine.apply(repo.levels[4], originalSession.state, originalAction)!, action: originalAction)
+        try JSONEncoder().encode(legacy).write(to: legacyDirectory.appendingPathComponent("progress.json"))
+        try JSONEncoder().encode(originalSession).write(to: legacyDirectory.appendingPathComponent("session.json"))
+        let upgradedStore = try CFVSaveStore(directory: legacyDirectory, repository: repo)
+        let loadedLegacy = upgradedStore.loadProgress()
+        check(loadedLegacy.completed == legacy.completed && loadedLegacy.bestMoves == legacy.bestMoves && loadedLegacy.completionIDs == legacy.completionIDs && loadedLegacy.seenTutorials == legacy.seenTutorials, "legacy progress unchanged")
+        check(upgradedStore.loadSession() == originalSession && upgradedStore.notices.isEmpty, "legacy active game unchanged")
+        check(repo.catalog.levelIDs.first { !loadedLegacy.completed.contains($0) } == "level-13", "old journey continues at 13")
+        check(repo.catalog.creatures.allSatisfy { repo.catalog.stage($0, completed: loadedLegacy.completed) == 2 }, "old collection stays unlocked")
+        var advancedSession = CFVSession(level: repo.levels[12])
+        for action in repo.levels[12].referenceSolution {
+            advancedSession.commit(CFVEngine.apply(repo.levels[12], advancedSession.state, action)!, action: action)
+        }
+        try upgradedStore.saveSession(advancedSession)
+        let expandedProgress = try upgradedStore.reconcile(advancedSession, progress: loadedLegacy)
+        check(expandedProgress.completed.count == 13 && repo.catalog.creatures.allSatisfy { repo.catalog.stage($0, completed: expandedProgress.completed) == 2 }, "advanced win preserves six rewards")
+        check(upgradedStore.loadSession() == advancedSession, "advanced game save roundtrip")
         // Simulate an interruption after the won-session write but before any progress write.
         let crashDirectory = root.appendingPathComponent("artifacts/validation/crash-fixtures-" + UUID().uuidString)
         let interruptedStore = try CFVSaveStore(directory: crashDirectory, repository: repo)
@@ -160,6 +212,6 @@ struct CFVCoreTests {
         let restarted = recoveryStore.loadSession()!
         check(restarted.levelID == level.levelID && restarted.state == level.initialState, "unsupported board version restarts known level")
         check(recoveryStore.notices.contains("session:restarted"), "restart is explicitly reported")
-        print("PASS \(checks) checks; all 12 reference solutions replayed by production Swift.")
+        print("PASS \(checks) checks; all \(repo.levels.count) reference solutions replayed by production Swift.")
     }
 }

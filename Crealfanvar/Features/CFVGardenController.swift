@@ -32,6 +32,16 @@ final class CFVGardenController: UIViewController {
     private var positionButtons = [UIButton]()
     private let greeting = CFVMotion()
     private let sizeSlider = UISlider()
+    private var slotButtons = [UIButton]()
+    private var decorationButtons = [CFVGardenDecoration: UIButton]()
+    private var backdropButtons = [CFVGardenBackdrop: UIButton]()
+    private var album = CFVGardenAlbum.load()
+    private var albumLoadButtons = [UIButton]()
+    private var albumLabels = [UILabel]()
+    private var removeButton: UIButton!
+    private var helloButton: UIButton!
+    private var unfoldButton: UIButton!
+    private let status = CFVTheme.label("", size: 13, color: CFVTheme.gold)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +59,7 @@ final class CFVGardenController: UIViewController {
         header.addArrangedSubview(title)
         display.addArrangedSubview(header)
 
-        if !app.repository.catalog.creatures.contains(where: { $0.id == composition.creatureID }) {
-            composition.creatureID = "paper-deer"
-        }
+        composition = composition.available(completed: app.progress.completed)
         stage = CFVScenicStage(id: composition.creatureID, stage: 2, style: .garden)
         stage.heightAnchor.constraint(equalToConstant: min(290, UIScreen.main.bounds.height * 0.30)).isActive = true
         stage.isUserInteractionEnabled = true
@@ -59,7 +67,7 @@ final class CFVGardenController: UIViewController {
         stage.accessibilityTraits = .button
         stage.accessibilityIdentifier = "garden-scene"
         stage.accessibilityHint = CFVText("轻点打个招呼，也可使用下方按钮", "Tap to say hello, or use the button below")
-        stage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sayHello)))
+        stage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchScene(_:))))
         stage.accessibilityCustomActions = [UIAccessibilityCustomAction(name: CFVText("打个招呼", "Say hello"), target: self, selector: #selector(accessibleHello))]
         display.addArrangedSubview(stage)
         caption.accessibilityIdentifier = "garden-caption"
@@ -67,6 +75,7 @@ final class CFVGardenController: UIViewController {
 
         let actions = row()
         let hello = CFVTheme.button(CFVText("打个招呼", "Say hello"), symbol: "sparkles", primary: true, tone: .honey) { [weak self] in self?.sayHello() }
+        helloButton = hello
         hello.accessibilityIdentifier = "garden-greet"
         actions.addArrangedSubview(hello)
         let unfold = CFVTheme.button(CFVText("看它展开", "Unfold"), symbol: "wind", tone: .lavender) { [weak self] in
@@ -74,13 +83,36 @@ final class CFVGardenController: UIViewController {
             self?.stage.creature.replay()
             CFVAudio.shared.play("fold")
         }
+        unfoldButton = unfold
         unfold.accessibilityIdentifier = "garden-unfold"
         actions.addArrangedSubview(unfold)
         column.addArrangedSubview(actions)
         column.addArrangedSubview(CFVTheme.label(
-            CFVText("没有步数，也不用通关。选一位伙伴，让它陪你待一会儿。", "No moves to count, no levels to clear. Choose a companion and stay a while."),
+            CFVText("一起住进森林。选一个位置，再放入伙伴；轻点场景，与它打招呼。", "Make room for friends. Select a place, add a companion, then tap the scene to say hello."),
             size: 13, color: CFVTheme.muted))
 
+        section(CFVText("三人小聚 · 选择要布置的位置", "A gathering of three · Choose a place"))
+        let slots = row()
+        for index in 0..<3 {
+            let button = CFVTheme.button(positionTitles[index], tone: .lavender) { [weak self] in
+                guard let self else { return }
+                self.stopGreeting()
+                self.composition.selectedSlot = index
+                self.applyComposition()
+            }
+            button.accessibilityIdentifier = "garden-slot-\(index)"
+            slotButtons.append(button)
+            slots.addArrangedSubview(button)
+        }
+        column.addArrangedSubview(slots)
+        removeButton = CFVTheme.button(CFVText("移走这位伙伴", "Remove this companion")) { [weak self] in
+            guard let self else { return }
+            self.stopGreeting()
+            self.composition.removeSelected()
+            self.applyComposition()
+        }
+        removeButton.accessibilityIdentifier = "garden-remove"
+        column.addArrangedSubview(removeButton)
         section(CFVText("选一位伙伴 · 六种都可自由展示", "Choose a companion · All six are available"))
         for start in stride(from: 0, to: app.repository.catalog.creatures.count, by: 2) {
             let choices = row()
@@ -90,7 +122,6 @@ final class CFVGardenController: UIViewController {
                     guard let self else { return }
                     self.stopGreeting()
                     self.composition.creatureID = creature.id
-                    self.stage.showCreature(id: creature.id)
                     self.applyComposition()
                     CFVAudio.shared.play("select")
                 }
@@ -101,6 +132,7 @@ final class CFVGardenController: UIViewController {
             column.addArrangedSubview(choices)
         }
 
+        buildSceneryControls()
         section(CFVText("林间光色", "Forest light"))
         let lights = row()
         for light in CFVGardenLight.allCases {
@@ -142,6 +174,9 @@ final class CFVGardenController: UIViewController {
         column.addArrangedSubview(CFVTheme.label(
             CFVText("布置会自动保存在本机。关卡挑战与图鉴制作进度独立保留。", "Your arrangement is saved on this device. Puzzle and collection progress stay separate."),
             size: 12, color: CFVTheme.muted))
+        buildAlbumControls()
+        status.accessibilityIdentifier = "garden-status"
+        column.addArrangedSubview(status)
         applyComposition(save: false)
         NotificationCenter.default.addObserver(self, selector: #selector(stopGreeting), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(motionChanged), name: UIAccessibility.reduceMotionStatusDidChangeNotification, object: nil)
@@ -193,20 +228,151 @@ final class CFVGardenController: UIViewController {
     }
 
     private func applyComposition(save: Bool = true) {
-        stage.gardenLight = composition.light
-        stage.creaturePosition = [0.28, 0.5, 0.72][composition.position]
-        stage.creatureSize = composition.size
-        let selected = app.repository.catalog.creatures.firstIndex { $0.id == composition.creatureID } ?? 0
-        let name = app.creatureName(app.repository.catalog.creatures[selected])
+        stage.showGarden(composition)
+        let resident = composition.residents[composition.selectedSlot]
+        let selected = app.repository.catalog.creatures.firstIndex { $0.id == resident?.creatureID }
+        let name = selected.map { app.creatureName(app.repository.catalog.creatures[$0]) }
+            ?? CFVText("空位 · 选一位伙伴加入", "Empty place · Add a companion")
         caption.text = name + " · " + composition.light.title
-        stage.accessibilityLabel = name + " · " + CFVText("打个招呼", "Say hello")
+        let names = composition.residents.compactMap { item -> String? in
+            guard let item, let creature = app.repository.catalog.creatures.first(where: { $0.id == item.creatureID }) else { return nil }
+            return app.creatureName(creature)
+        }
+        stage.accessibilityLabel = names.joined(separator: "、") + " · " + CFVText("打个招呼", "Say hello")
         stage.accessibilityValue = composition.light.title + " · " + positionTitles[composition.position]
+        stage.accessibilityHint = String(format: CFVText("花园里有 %d 位伙伴。轻点问好，或使用位置按钮选择伙伴。", "%d companions in the garden. Tap to greet, or select a place below."), composition.count)
         sizeSlider.value = Float(composition.size)
         sizeSlider.accessibilityValue = "\(Int(composition.size * 100))%"
-        mark(creatureButtons, selected: selected, tone: .honey)
+        sizeSlider.isEnabled = resident != nil
+        helloButton.isEnabled = resident != nil
+        unfoldButton.isEnabled = resident != nil
+        removeButton.isEnabled = resident != nil && composition.count > 1
+        mark(creatureButtons, selected: selected ?? -1, tone: .honey)
         mark(lightButtons, selected: CFVGardenLight.allCases.firstIndex(of: composition.light) ?? 0, tone: .lavender)
         mark(positionButtons, selected: composition.position, tone: .sage)
+        positionButtons.forEach { $0.isEnabled = resident != nil }
+        mark(slotButtons, selected: composition.selectedSlot, tone: .lavender)
+        for index in 0..<3 {
+            let item = composition.residents[index]
+            let label = item.flatMap { item in app.repository.catalog.creatures.first { $0.id == item.creatureID } }
+                .map(app.creatureName) ?? CFVText("空位", "Empty")
+            var configuration = slotButtons[index].configuration
+            configuration?.title = positionTitles[index] + " · " + label
+            configuration?.titleLineBreakMode = .byWordWrapping
+            slotButtons[index].configuration = configuration
+        }
+        for (decoration, button) in decorationButtons {
+            mark([button], selected: composition.decorations.contains(decoration) ? 0 : -1, tone: .honey)
+            button.accessibilityValue = decoration.isAvailable(completed: app.progress.completed)
+                ? (composition.decorations.contains(decoration) ? CFVText("已摆放", "Placed") : CFVText("未摆放", "Not placed"))
+                : CFVText("尚未解锁", "Locked")
+        }
+        for (backdrop, button) in backdropButtons {
+            mark([button], selected: composition.backdrop == backdrop ? 0 : -1, tone: .lavender)
+            button.accessibilityValue = backdrop.isAvailable(completed: app.progress.completed)
+                ? (composition.backdrop == backdrop ? CFVText("使用中", "In use") : CFVText("可使用", "Available"))
+                : CFVText("尚未解锁", "Locked")
+        }
+        updateAlbumLabels()
         if save { composition.save() }
+    }
+
+    private func buildSceneryControls() {
+        section(CFVText("纸间摆件 · 自由组合", "Paper props · Mix and match"))
+        for start in stride(from: 0, to: CFVGardenDecoration.allCases.count, by: 2) {
+            let choices = row()
+            for decoration in CFVGardenDecoration.allCases[start..<start + 2] {
+                let available = decoration.isAvailable(completed: app.progress.completed)
+                let suffix = available ? "" : String(format: CFVText(" · 第 %d 关", " · Level %d"), decoration.requiredLevel!)
+                let button = CFVTheme.button(decoration.title + suffix, symbol: available ? "leaf" : "lock", tone: .honey) { [weak self] in
+                    guard let self else { return }
+                    guard available else {
+                        self.rewardHint(level: decoration.requiredLevel!)
+                        return
+                    }
+                    self.stopGreeting()
+                    if !self.composition.decorations.insert(decoration).inserted {
+                        self.composition.decorations.remove(decoration)
+                    }
+                    self.applyComposition()
+                }
+                button.accessibilityIdentifier = "garden-prop-" + decoration.rawValue
+                decorationButtons[decoration] = button
+                choices.addArrangedSubview(button)
+            }
+            column.addArrangedSubview(choices)
+        }
+        section(CFVText("林间风景", "A place in the forest"))
+        let backgrounds = row()
+        for backdrop in CFVGardenBackdrop.allCases {
+            let available = backdrop.isAvailable(completed: app.progress.completed)
+            let title = backdrop.title + (available ? "" : CFVText(" · 第 20 关", " · Level 20"))
+            let button = CFVTheme.button(title, symbol: available ? "mountain.2" : "lock", tone: .lavender) { [weak self] in
+                guard let self else { return }
+                guard available else { self.rewardHint(level: 20); return }
+                self.stopGreeting()
+                self.composition.backdrop = backdrop
+                self.applyComposition()
+            }
+            button.accessibilityIdentifier = "garden-backdrop-" + backdrop.rawValue
+            backdropButtons[backdrop] = button
+            backgrounds.addArrangedSubview(button)
+        }
+        column.addArrangedSubview(backgrounds)
+        column.addArrangedSubview(CFVTheme.label(CFVText("森林礼物：16 关纸灯 · 20 关池畔 · 24 关星光。已有通关记录会自动获得。", "Forest gifts: lantern at 16 · pond at 20 · stars at 24. Existing completions count."), size: 12, color: CFVTheme.muted))
+    }
+
+    private func rewardHint(level: Int) {
+        status.text = String(format: CFVText("完成第 %d 关后，这份森林礼物就能用于布置。", "Complete level %d to use this forest gift."), level)
+        UIAccessibility.post(notification: .announcement, argument: status.text)
+        app.message(CFVText("森林礼物", "Forest gift"), status.text ?? "")
+    }
+
+    private func buildAlbumControls() {
+        section(CFVText("收藏我的布置 · 三份小小风景", "Saved arrangements · Three little scenes"))
+        column.addArrangedSubview(CFVTheme.label(CFVText("保存会更新对应收藏；换上收藏即可恢复整套布置。", "Save updates that slot. Load restores the complete arrangement."), size: 12, color: CFVTheme.muted))
+        for index in 0..<3 {
+            let summary = CFVTheme.label("", size: 12, color: CFVTheme.muted)
+            summary.textAlignment = .left
+            summary.accessibilityIdentifier = "garden-saved-summary-\(index)"
+            albumLabels.append(summary)
+            column.addArrangedSubview(summary)
+            let controls = row()
+            let save = CFVTheme.button(String(format: CFVText("保存布置 %d", "Save scene %d"), index + 1), symbol: "bookmark", tone: .honey) { [weak self] in
+                guard let self else { return }
+                self.album.scenes[index] = self.composition
+                self.album.save()
+                self.updateAlbumLabels()
+                self.status.text = String(format: CFVText("布置 %d 已收藏", "Scene %d saved"), index + 1)
+                UIAccessibility.post(notification: .announcement, argument: self.status.text)
+            }
+            save.accessibilityIdentifier = "garden-save-\(index)"
+            controls.addArrangedSubview(save)
+            let load = CFVTheme.button(String(format: CFVText("换上布置 %d", "Load scene %d"), index + 1), symbol: "arrow.uturn.backward") { [weak self] in
+                guard let self, let saved = self.album.scenes[index] else { return }
+                self.stopGreeting()
+                self.composition = saved.available(completed: self.app.progress.completed)
+                self.applyComposition()
+                self.status.text = String(format: CFVText("已换上布置 %d", "Scene %d restored"), index + 1)
+                UIAccessibility.post(notification: .announcement, argument: self.status.text)
+            }
+            load.accessibilityIdentifier = "garden-load-\(index)"
+            albumLoadButtons.append(load)
+            controls.addArrangedSubview(load)
+            column.addArrangedSubview(controls)
+        }
+    }
+
+    private func updateAlbumLabels() {
+        for index in 0..<3 {
+            albumLoadButtons[index].isEnabled = album.scenes[index] != nil
+            guard let saved = album.scenes[index] else {
+                albumLabels[index].text = String(format: CFVText("布置 %d · 尚未收藏", "Scene %d · Not saved yet"), index + 1)
+                continue
+            }
+            albumLabels[index].text = String(format: CFVText("布置 %d · %d 位伙伴", "Scene %d · %d companions"), index + 1, saved.count)
+                + " · " + saved.light.title + " · " + saved.backdrop.title
+        }
     }
 
     private func mark(_ buttons: [UIButton], selected: Int, tone: CFVTheme.ButtonTone) {
@@ -232,23 +398,61 @@ final class CFVGardenController: UIViewController {
         return true
     }
 
+    @objc private func touchScene(_ gesture: UITapGestureRecognizer) {
+        if let slot = stage.gardenSlot(at: gesture.location(in: stage)) {
+            stopGreeting()
+            composition.selectedSlot = slot
+            applyComposition()
+        }
+        sayHello()
+    }
+
     @objc private func sayHello() {
+        guard composition.residents[composition.selectedSlot] != nil else { return }
         stopGreeting()
         CFVAudio.shared.play("select")
-        caption.text = CFVText("听见啦，纸间的朋友在向你问好。", "A little hello from your paper companion.")
+        let id = composition.creatureID
+        switch id {
+        case "paper-butterfly": caption.text = CFVText("纸蝶轻轻扑翼，向你问好。", "The butterfly flutters a little hello.")
+        case "folded-bird": caption.text = CFVText("折翼鸟振翅跃起，向你问好。", "The bird lifts its wings with a hello.")
+        case "paper-fish": caption.text = CFVText("纸鱼悠悠摆动，向你问好。", "The fish swishes a gentle hello.")
+        case "paper-rabbit": caption.text = CFVText("纸兔蹦了两下，向你问好。", "The rabbit hops twice to say hello.")
+        case "paper-fox": caption.text = CFVText("纸狐侧身探望，向你问好。", "The fox peeks around to say hello.")
+        default: caption.text = CFVText("纸鹿轻轻俯身，向你问好。", "The deer bows a quiet hello.")
+        }
         UIAccessibility.post(notification: .announcement, argument: caption.text)
         guard !CFVSettings.shared.reduceMotion else { return }
         let creature = stage.creature
-        greeting.start(duration: 1.2, update: { progress in
-            let wave = sin(progress * .pi * 2) * (1 - progress)
-            let lift = sin(progress * .pi) * 9
-            creature.transform = CGAffineTransform(translationX: 0, y: -lift).rotated(by: wave * 0.08)
+        greeting.start(duration: 1.8, update: { progress in
+            let envelope = pow(sin(progress * .pi), 2)
+            let wave = sin(progress * .pi * 4) * envelope
+            switch id {
+            case "paper-butterfly":
+                creature.transform = CGAffineTransform(translationX: wave * 4, y: -envelope * 14)
+                    .scaledBy(x: 1 - abs(wave) * 0.22, y: 1)
+            case "folded-bird":
+                creature.transform = CGAffineTransform(translationX: envelope * 6, y: -envelope * 20)
+                    .rotated(by: wave * 0.08).scaledBy(x: 1 - abs(wave) * 0.1, y: 1)
+            case "paper-fish":
+                creature.transform = CGAffineTransform(translationX: wave * 15, y: -envelope * 3)
+                    .rotated(by: wave * 0.09)
+            case "paper-rabbit":
+                let hop = pow(sin(progress * .pi * 2), 2)
+                creature.transform = CGAffineTransform(translationX: 0, y: -hop * 20)
+                    .scaledBy(x: 1 + hop * 0.03, y: 1 - hop * 0.04)
+            case "paper-fox":
+                creature.transform = CGAffineTransform(translationX: envelope * 11, y: 0)
+                    .rotated(by: -envelope * 0.12)
+            default:
+                creature.transform = CGAffineTransform(translationX: envelope * 3, y: envelope * 5)
+                    .rotated(by: envelope * 0.1)
+            }
         }, completion: { creature.transform = .identity })
     }
 
     @objc private func stopGreeting() {
         greeting.cancel()
-        stage?.creature.transform = .identity
+        stage?.settleGarden()
     }
 
     @objc private func motionChanged() {

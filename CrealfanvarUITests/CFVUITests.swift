@@ -15,7 +15,19 @@ final class CFVUITests: XCTestCase {
         [("swap", 24, 25, ""), ("fold", 0, 0, "top-2"), ("fold", 0, 0, "right-4")],
         [("swap", 28, 29, ""), ("fold", 0, 0, "bottom-4"), ("swap", 20, 26, "")],
         [("fold", 0, 0, "bottom-4"), ("swap", 3, 4, ""), ("fold", 0, 0, "left-2")],
-        [("swap", 1, 2, ""), ("fold", 0, 0, "top-2"), ("swap", 26, 32, ""), ("fold", 0, 0, "right-4")]
+        [("swap", 1, 2, ""), ("fold", 0, 0, "top-2"), ("swap", 26, 32, ""), ("fold", 0, 0, "right-4")],
+        [("swap", 28, 29, ""), ("fold", 0, 0, "right-5"), ("swap", 26, 27, ""), ("fold", 0, 0, "left-2")],
+        [("fold", 0, 0, "top-1"), ("swap", 19, 20, ""), ("swap", 7, 13, ""), ("fold", 0, 0, "bottom-4")],
+        [("swap", 34, 35, ""), ("fold", 0, 0, "bottom-4"), ("swap", 26, 27, ""), ("swap", 7, 8, "")],
+        [("swap", 8, 14, ""), ("fold", 0, 0, "right-4"), ("swap", 6, 12, ""), ("fold", 0, 0, "top-1")],
+        [("swap", 0, 6, ""), ("fold", 0, 0, "right-4"), ("swap", 14, 15, ""), ("fold", 0, 0, "top-2"), ("swap", 5, 11, "")],
+        [("fold", 0, 0, "bottom-4"), ("swap", 9, 15, ""), ("swap", 11, 17, ""), ("fold", 0, 0, "left-1"), ("swap", 25, 26, "")],
+        [("swap", 14, 20, ""), ("swap", 34, 35, ""), ("fold", 0, 0, "left-2"), ("swap", 20, 21, ""), ("swap", 19, 20, "")],
+        [("swap", 20, 26, ""), ("fold", 0, 0, "bottom-4"), ("swap", 8, 14, ""), ("fold", 0, 0, "top-1"), ("swap", 17, 23, "")],
+        [("swap", 13, 14, ""), ("fold", 0, 0, "top-2"), ("swap", 28, 29, ""), ("fold", 0, 0, "right-4"), ("swap", 12, 13, ""), ("swap", 18, 24, "")],
+        [("fold", 0, 0, "left-2"), ("swap", 14, 20, ""), ("fold", 0, 0, "bottom-4"), ("swap", 1, 7, ""), ("swap", 9, 15, ""), ("swap", 25, 31, "")],
+        [("swap", 19, 20, ""), ("swap", 7, 13, ""), ("fold", 0, 0, "right-5"), ("swap", 3, 4, ""), ("fold", 0, 0, "bottom-4"), ("swap", 2, 8, "")],
+        [("swap", 15, 21, ""), ("fold", 0, 0, "top-2"), ("swap", 0, 6, ""), ("fold", 0, 0, "left-2"), ("swap", 8, 9, ""), ("swap", 14, 20, "")]
     ]
     override func setUpWithError() throws { continueAfterFailure = false }
     func shot(_ name: String) {
@@ -195,6 +207,322 @@ final class CFVUITests: XCTestCase {
         waitForArtwork()
         XCTAssertTrue(app.staticTexts["制作完成 · 2 / 2"].exists)
         shot("Scenery-creature-settled")
+    }
+
+    private func tapLevel(_ number: Int) {
+        let button = app.buttons["level-\(number)"]
+        let scroll = app.scrollViews.firstMatch
+        for _ in 0..<10 where !button.isHittable {
+            let upward = button.frame.midY > scroll.frame.midY
+            let start = scroll.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: upward ? 0.8 : 0.25))
+            let end = scroll.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: upward ? 0.35 : 0.7))
+            start.press(forDuration: 0.05, thenDragTo: end)
+        }
+        tap("level-\(number)")
+    }
+
+    func testAdvancedJourneyChinese() {
+        app.launchArguments = ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"]
+        app.launch()
+        tap("settings")
+        let reduced = app.switches["减少动态效果"]
+        let originallyReduced = reduced.value as? String == "1"
+        if !originallyReduced { reduced.tap() }
+        tap("settings-back")
+        tap("关卡册")
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'level-'")).count, 24)
+        tapLevel(12)
+        if app.alerts["替换当前对局？"].waitForExistence(timeout: 1) { tap("继续") }
+        if !app.staticTexts["第 12 关完成"].waitForExistence(timeout: 1) {
+            dismissTutorial()
+            for move in solutions[11] { action(move) }
+        }
+        XCTAssertTrue(app.staticTexts["第 12 关完成"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["查看完整图鉴"].exists)
+        tap("下一关")
+        for index in 12..<24 {
+            dismissTutorial()
+            XCTAssertTrue(app.staticTexts[String(format: "第 %02d 关", index + 1)].waitForExistence(timeout: 4))
+            if [12,16,20,23].contains(index) { shot("Expansion-game-\(index + 1)") }
+            for move in solutions[index] { action(move) }
+            XCTAssertTrue(app.staticTexts[String(format: "第 %02d 关完成", index + 1)].waitForExistence(timeout: 5))
+            if index < 23 { tap("下一关") }
+        }
+        XCTAssertFalse(app.buttons["下一关"].exists)
+        shot("Expansion-final-24")
+        tap("查看完整图鉴")
+        XCTAssertTrue(app.staticTexts["已发现 6 / 6"].waitForExistence(timeout: 4))
+        tap("关卡")
+        XCTAssertTrue(app.staticTexts["全部关卡 · 已完成 24 / 24"].waitForExistence(timeout: 4))
+        app.scrollViews.firstMatch.swipeUp()
+        shot("Expansion-all-chapters")
+        tap("首页")
+        tap("settings")
+        if !originallyReduced { reduced.tap() }
+        tap("settings-back")
+        XCTAssertTrue(app.buttons["重温关卡"].exists)
+    }
+
+    func testExpandedLevelBookSmallScreen() {
+        app.launchArguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
+        app.launch()
+        tap("Level book")
+        for number in 1...24 {
+            let button = app.buttons["level-\(number)"]
+            XCTAssertTrue(button.exists)
+            XCTAssertGreaterThanOrEqual(button.frame.width, 44)
+            XCTAssertGreaterThanOrEqual(button.frame.height, 44)
+        }
+        tapLevel(24)
+        XCTAssertTrue(app.alerts["Still folded"].waitForExistence(timeout: 3))
+        tap("OK")
+        shot("Expansion-small-chapters")
+        tapLevel(13)
+        if app.alerts["Replace the current game?"].waitForExistence(timeout: 1) { tap("Continue") }
+        if app.alerts.buttons["Let's try"].waitForExistence(timeout: 1) { tap("Let's try") }
+        XCTAssertTrue(app.buttons["cell-0"].waitForExistence(timeout: 4))
+        action(solutions[12][0])
+        let savedHUD = app.staticTexts["game-hud"].label
+        app.terminate()
+        app.launch()
+        tap("home-start")
+        XCTAssertEqual(app.staticTexts["game-hud"].label, savedHUD)
+        shot("Expansion-small-game-13")
+        for move in solutions[12].dropFirst() { action(move) }
+        XCTAssertTrue(app.staticTexts["Level 13 complete"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["Next level"].exists)
+    }
+
+    private func revealPageElement(_ element: XCUIElement) {
+        XCTAssertTrue(element.exists)
+        let scroll = app.scrollViews.firstMatch.exists ? app.scrollViews.firstMatch : app.tables.firstMatch
+        for _ in 0..<25 where !element.isHittable {
+            let upward = app.tables.firstMatch.exists || element.frame.isEmpty || element.frame.midY > scroll.frame.midY
+            scroll.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: upward ? 0.8 : 0.2))
+                .press(forDuration: 0.03, thenDragTo: scroll.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: upward ? 0.3 : 0.7)))
+        }
+        XCTAssertTrue(element.isHittable)
+    }
+
+    private func contentTap(_ id: String) {
+        let button = app.buttons[id]
+        revealPageElement(button)
+        button.tap()
+    }
+
+    func testContentPagesChinese() {
+        exerciseContentPages(chinese: true, allComplete: true)
+    }
+
+    func testContentPagesEnglishSmall() {
+        exerciseContentPages(chinese: false, allComplete: false)
+    }
+
+    private func exerciseContentPages(chinese: Bool, allComplete: Bool) {
+        app.launchArguments = ["-AppleLanguages", chinese ? "(zh-Hans)" : "(en)", "-AppleLocale", chinese ? "zh_CN" : "en_US"]
+        app.launch()
+        XCTAssertTrue(app.buttons["home-start"].waitForExistence(timeout: 3))
+        shot(chinese ? "Content-home-zh" : "Content-small-home")
+        contentTap("settings")
+        XCTAssertTrue(app.staticTexts[chinese ? "让森林刚刚好" : "Make yourself at home"].waitForExistence(timeout: 3))
+        shot(chinese ? "Content-settings-zh" : "Content-small-settings")
+        let motion = app.switches[chinese ? "减少动态效果" : "Reduce motion"]
+        revealPageElement(motion)
+        let original = motion.value as? String
+        motion.tap()
+        XCTAssertNotEqual(motion.value as? String, original)
+        motion.tap()
+        XCTAssertEqual(motion.value as? String, original)
+        tap("settings-back")
+        contentTap(chinese ? "生物图鉴" : "Collection")
+        shot(chinese ? "Content-collection-zh" : "Content-small-collection")
+        let gift = app.staticTexts["gift-status-16"]
+        revealPageElement(gift)
+        XCTAssertTrue(gift.label.contains(allComplete ? (chinese ? "已收入" : "Collected") : "16"))
+        revealPageElement(app.buttons["collection-garden"])
+        shot(chinese ? "Content-gift-cabinet-zh" : "Content-small-gifts")
+        contentTap("creature-4")
+        XCTAssertTrue(app.staticTexts[chinese ? "纸间档案" : "COMPANION NOTES"].exists)
+        revealPageElement(app.staticTexts[chinese ? "纸间档案" : "COMPANION NOTES"])
+        shot(chinese ? "Content-creature-notes-zh" : "Content-small-notes")
+        revealPageElement(app.buttons["detail-replay-10"])
+        XCTAssertTrue(app.staticTexts[chinese ? "素白" : "Ivory"].exists)
+        XCTAssertTrue(app.staticTexts[chinese ? "初成" : "Taking shape"].exists)
+        XCTAssertTrue(app.staticTexts[chinese ? "绽放" : "Unfolded"].exists)
+        shot(chinese ? "Content-making-stages-zh" : "Content-small-stages")
+        contentTap("detail-place-garden")
+        XCTAssertTrue(app.staticTexts["garden-caption"].label.contains(chinese ? "纸狐" : "Paper Fox"))
+        let residents = app.buttons["garden-scene"].label
+        gardenControl("garden-slot-0")
+        tap("garden-home")
+        contentTap(chinese ? "生物图鉴" : "Collection")
+        contentTap("creature-4")
+        contentTap("detail-place-garden")
+        XCTAssertEqual(app.buttons["garden-scene"].label, residents, "An existing companion should be selected without replacing a different one")
+        tap("garden-home")
+        contentTap(chinese ? "关卡册" : "Level book")
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'level-'")).count, 24)
+        shot(chinese ? "Content-chapter-notes-zh" : "Content-small-chapters")
+        tapLevel(1)
+        if app.alerts[chinese ? "替换当前对局？" : "Replace the current game?"].waitForExistence(timeout: 1) { tap(chinese ? "继续" : "Continue") }
+        let complete = app.staticTexts[chinese ? "第 01 关完成" : "Level 01 complete"]
+        if !complete.waitForExistence(timeout: 1) {
+            if app.alerts.buttons[chinese ? "试试看" : "Let's try"].waitForExistence(timeout: 1) { tap(chinese ? "试试看" : "Let's try") }
+            for move in solutions[0] { action(move) }
+        }
+        XCTAssertTrue(complete.waitForExistence(timeout: 5))
+        revealPageElement(app.staticTexts[chinese ? "这页的最佳记录" : "Your best on this page"])
+        shot(chinese ? "Content-win-record-zh" : "Content-small-win")
+        contentTap(chinese ? "返回关卡册" : "Back to level book")
+    }
+
+    private func gardenControl(_ id: String) {
+        let button = app.buttons[id]
+        let controls = app.scrollViews.firstMatch
+        XCTAssertTrue(button.exists, id)
+        for _ in 0..<30 where !button.isHittable {
+            let upward = button.frame.midY > controls.frame.midY
+            let start = controls.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: upward ? 0.8 : 0.2))
+            let end = controls.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: upward ? 0.3 : 0.7))
+            start.press(forDuration: 0.03, thenDragTo: end)
+        }
+        XCTAssertTrue(button.isHittable, id)
+        button.tap()
+    }
+
+    func testGardenExpansionFinalPresentation() {
+        app.launchArguments = ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"]
+        app.launch()
+        tap("home-garden")
+        XCTAssertEqual(app.buttons["garden-prop-lantern"].value as? String, "已摆放")
+        XCTAssertEqual(app.buttons["garden-backdrop-pond"].value as? String, "使用中")
+        waitForArtwork()
+        shot("Garden-expanded-three-companions")
+        tap("garden-home")
+        shot("Garden-expanded-home")
+    }
+
+    func testGardenExpansionUnlocked() {
+        app.launchArguments = ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"]
+        app.launch()
+        tap("home-garden")
+        let greetings = ["扑翼", "振翅", "摆动", "蹦", "探望", "俯身"]
+        for index in 0..<6 {
+            gardenControl("garden-creature-\(index)")
+            gardenControl("garden-greet")
+            XCTAssertTrue(app.staticTexts["garden-caption"].label.contains(greetings[index]))
+            waitForArtwork()
+        }
+        for (slot, creature) in [(0, 0), (1, 5), (2, 3)] {
+            gardenControl("garden-slot-\(slot)")
+            gardenControl("garden-creature-\(creature)")
+        }
+        XCTAssertTrue(app.buttons["garden-scene"].label.contains("纸蝶、纸鹿、纸兔"))
+        for prop in ["tree", "stones", "lantern", "stars"] {
+            let button = app.buttons["garden-prop-" + prop]
+            XCTAssertNotEqual(button.value as? String, "尚未解锁")
+            if button.value as? String != "已摆放" { gardenControl("garden-prop-" + prop) }
+        }
+        gardenControl("garden-backdrop-pond")
+        gardenControl("garden-light-moon")
+        gardenControl("garden-save-0")
+        XCTAssertEqual(app.staticTexts["garden-status"].label, "布置 1 已收藏")
+        gardenControl("garden-remove")
+        XCTAssertFalse(app.buttons["garden-scene"].label.contains("纸兔"))
+        gardenControl("garden-backdrop-woodland")
+        gardenControl("garden-save-1")
+        gardenControl("garden-load-0")
+        XCTAssertTrue(app.buttons["garden-scene"].label.contains("纸蝶、纸鹿、纸兔"))
+        XCTAssertEqual(app.buttons["garden-backdrop-pond"].value as? String, "使用中")
+        app.terminate()
+        app.launch()
+        tap("home-garden")
+        XCTAssertTrue(app.buttons["garden-scene"].label.contains("纸蝶、纸鹿、纸兔"))
+        XCTAssertEqual(app.buttons["garden-scene"].value as? String, "月夜 · 靠右")
+        XCTAssertEqual(app.buttons["garden-prop-stars"].value as? String, "已摆放")
+        gardenControl("garden-load-1")
+        XCTAssertFalse(app.buttons["garden-scene"].label.contains("纸兔"))
+        gardenControl("garden-load-0")
+        gardenControl("garden-slot-1")
+        gardenControl("garden-greet")
+        tap("garden-unfold")
+        XCUIDevice.shared.press(.home)
+        app.activate()
+        waitForArtwork()
+        shot("Garden-expanded-three-companions")
+        gardenControl("garden-save-2")
+        XCTAssertTrue(app.buttons["garden-load-2"].isEnabled)
+        tap("garden-home")
+        shot("Garden-expanded-home")
+        tap("生物图鉴")
+        XCTAssertTrue(app.staticTexts["已发现 6 / 6"].exists)
+    }
+
+    func testGardenExpansionLockedSmall() {
+        app.launchArguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
+        app.launch()
+        tap("home-garden")
+        for prop in ["lantern", "stars"] {
+            XCTAssertEqual(app.buttons["garden-prop-" + prop].value as? String, "Locked")
+            gardenControl("garden-prop-" + prop)
+            XCTAssertTrue(app.alerts["Forest gift"].waitForExistence(timeout: 2))
+            tap("OK")
+        }
+        gardenControl("garden-backdrop-pond")
+        XCTAssertTrue(app.alerts["Forest gift"].waitForExistence(timeout: 2))
+        tap("OK")
+        for (slot, creature) in [(0, 1), (1, 2), (2, 4)] {
+            gardenControl("garden-slot-\(slot)")
+            gardenControl("garden-creature-\(creature)")
+        }
+        for prop in ["tree", "stones"] {
+            if app.buttons["garden-prop-" + prop].value as? String != "Placed" { gardenControl("garden-prop-" + prop) }
+        }
+        gardenControl("garden-save-0")
+        gardenControl("garden-slot-1")
+        gardenControl("garden-greet")
+        waitForArtwork()
+        XCTAssertTrue(app.staticTexts["garden-caption"].label.contains("fish swishes"))
+        shot("Garden-expanded-small-three")
+        app.terminate()
+        app.launch()
+        tap("home-garden")
+        XCTAssertTrue(app.buttons["garden-scene"].label.contains("Folded Bird、Paper Fish、Paper Fox"))
+        XCTAssertEqual(app.buttons["garden-backdrop-pond"].value as? String, "Locked")
+        gardenControl("garden-save-2")
+        gardenControl("garden-load-0")
+        shot("Garden-expanded-small-album")
+        tap("garden-home")
+        tap("settings")
+        let reduced = app.switches["Reduce motion"]
+        let original = reduced.value as? String == "1"
+        if !original { reduced.tap() }
+        tap("settings-back")
+        tap("home-garden")
+        gardenControl("garden-greet")
+        XCTAssertTrue(app.staticTexts["garden-caption"].label.contains("hello"))
+        tap("garden-home")
+        tap("settings")
+        if !original { reduced.tap() }
+        tap("settings-back")
+    }
+
+    func testGardenMilestoneRewards() {
+        app.launchArguments = ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"]
+        app.launch()
+        tap("关卡册")
+        for index in [15, 19, 23] {
+            tapLevel(index + 1)
+            if app.alerts["替换当前对局？"].waitForExistence(timeout: 1) { tap("继续") }
+            dismissTutorial()
+            for move in solutions[index] { action(move) }
+            XCTAssertTrue(app.staticTexts["garden-reward"].waitForExistence(timeout: 5))
+            XCTAssertTrue(app.buttons["reward-garden"].exists)
+            if index < 23 { tap("返回关卡册") }
+        }
+        tap("reward-garden")
+        XCTAssertTrue(app.buttons["garden-scene"].waitForExistence(timeout: 3))
+        XCTAssertNotEqual(app.buttons["garden-prop-stars"].value as? String, "尚未解锁")
     }
 
     func testGardenChinese() {

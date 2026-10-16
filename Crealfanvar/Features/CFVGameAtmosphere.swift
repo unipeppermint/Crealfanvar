@@ -1,8 +1,6 @@
 import UIKit
 
-enum CFVGardenLight: String, Codable, CaseIterable {
-    case amber, dusk, moon
-
+extension CFVGardenLight {
     var title: String {
         switch self {
         case .amber: return CFVText("暖光", "Amber")
@@ -100,6 +98,43 @@ final class CFVScenicStage: UIView {
     private let dusk = CAGradientLayer()
     private let glow = CAGradientLayer()
     private let fireflies = CAShapeLayer()
+    private let props = CFVGardenScenery()
+    private var gardenComposition: CFVGardenComposition?
+    private var gardenCreatures = [Int: CFVCreatureView]()
+
+    func showGarden(_ composition: CFVGardenComposition) {
+        gardenComposition = composition
+        gardenLight = composition.light
+        props.composition = composition
+        for index in 0..<3 {
+            let id = composition.residents[index]?.creatureID
+            if gardenCreatures[index]?.creatureID != id {
+                gardenCreatures.removeValue(forKey: index)?.removeFromSuperview()
+                if let id {
+                    let resident = CFVCreatureView(id: id, stage: 2)
+                    gardenCreatures[index] = resident
+                    addSubview(resident)
+                }
+            }
+        }
+        if !gardenCreatures.values.contains(where: { $0 === creature }) {
+            creature.removeFromSuperview()
+        }
+        creature = gardenCreatures[composition.selectedSlot] ?? gardenCreatures.values.first!
+        for index in [0, 2, 1] {
+            if let resident = gardenCreatures[index] { bringSubviewToFront(resident) }
+        }
+        setNeedsLayout()
+    }
+
+    func settleGarden() {
+        gardenCreatures.values.forEach { $0.settle() }
+        creature.settle()
+    }
+
+    func gardenSlot(at point: CGPoint) -> Int? {
+        [1, 2, 0].first { gardenCreatures[$0]?.frame.contains(point) == true }
+    }
 
     init(id: String, stage: Int, style: Style) {
         self.style = style
@@ -126,6 +161,7 @@ final class CFVScenicStage: UIView {
             layer.addSublayer(glow)
             layer.addSublayer(fireflies)
             updateLight()
+            addSubview(props)
         }
         ground.fillColor = UIColor.black.withAlphaComponent(0.25).cgColor
         layer.addSublayer(ground)
@@ -171,6 +207,24 @@ final class CFVScenicStage: UIView {
                                                        width: radius * 2, height: radius * 2)))
         }
         fireflies.path = lights.cgPath
+        props.frame = bounds
+        if let composition = gardenComposition {
+            let shadows = UIBezierPath()
+            for index in 0..<3 {
+                guard let resident = gardenCreatures[index], let item = composition.residents[index] else { continue }
+                let multiple = composition.count > 1
+                let width = bounds.width * (multiple ? 0.43 : 0.7) * item.size
+                let height = (bounds.height - 34) * (multiple ? 0.78 : 1) * item.size
+                let desiredX = bounds.width * [0.22, 0.5, 0.78][index]
+                let x = min(bounds.width - width / 2 - 8, max(width / 2 + 8, desiredX))
+                let baseline = bounds.height - (index == 1 ? 22 : 30)
+                resident.bounds = CGRect(x: 0, y: 0, width: width, height: height)
+                resident.center = CGPoint(x: x, y: baseline - height / 2)
+                shadows.append(UIBezierPath(ovalIn: CGRect(x: x - width * 0.28, y: baseline - 7, width: width * 0.56, height: 10)))
+            }
+            ground.path = shadows.cgPath
+            return
+        }
         let inset = style == .garden ? bounds.width * 0.15 : 16
         let width = (bounds.width - inset * 2) * creatureSize
         let height = (bounds.height - (style == .garden ? 34 : 28)) * creatureSize

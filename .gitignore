@@ -30,6 +30,7 @@ xcuserdata/
 /artifacts/screenshots/
 /artifacts/validation/*
 !/artifacts/validation/CFV-Level-Design-Witnesses.json
+!/artifacts/validation/CFV-Expansion-Design-Witnesses.json
 !/artifacts/validation/CFV-Reference-Solutions.txt
 /artifacts/*.mp4
 /artifacts/*.mov
