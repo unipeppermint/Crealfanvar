@@ -1,7 +1,7 @@
 Privacy / submission preflight review — 2026-10-15 (Asia/Shanghai)
 
 Implementation inventory:
-- UserDefaults: only CFV.language, CFV.music, CFV.sound, CFV.haptics and CFV.reduceMotion, in the app's standard domain.
+- UserDefaults: only CFV.language, CFV.music, CFV.sound, CFV.haptics CFV.reduceMotion and CFV.garden (selected creature, light, placement and size), in the app's standard domain.
 - Required reason declaration: NSPrivacyAccessedAPICategoryUserDefaults / CA92.1, for information accessible to the app itself. No App Group or managed-configuration access.
 - Session/progress: local Codable JSON in Application Support/Paperkin; atomic writes, independent files, validated backups and preserved damaged files.
 - No account, networking client, telemetry SDK, ads, in-app purchase SDK or fingerprinting code.

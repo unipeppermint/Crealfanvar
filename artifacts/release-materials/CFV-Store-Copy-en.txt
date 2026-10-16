@@ -1,27 +1,29 @@
 Paperkin 1.0 — App Store copy draft
-Prepared 2026-10-15. Name rights, territories and final store fields require developer confirmation.
+Prepared 2026-10-16. Local draft; not applied to App Store Connect.
 
 Name: Paperkin
-Subtitle: Fold paper. Match patterns.
-Keywords: origami,puzzle,match,paper,fold,offline,relaxing,creatures,logic
-Suggested category: Games / Puzzle
+Subtitle: Your little paper forest
+Keywords: origami,garden,paper,creatures,relaxing,offline,arrange,light,collection,puzzle
+Primary category: Entertainment
+Secondary category: Games; game subcategory: Puzzle
+Category configuration: CFV-Store-Categories.json. Apply in App Store Connect at submission.
 Pricing baseline: Free. No purchases, advertisements, accounts or energy limits.
 
 Description:
-Discover a different way to match on a small sheet of paper.
+A little forest. A moment of your own.
 
-Swap adjacent patterns, or fold along a crease to bring distant patterns together. Plan around overlapping layers and complete each goal within the move limit.
+Enter Paper Garden and meet a butterfly, bird, fish, rabbit, fox and deer, all crafted from paper. All six companions are available to display from the start, without completing a puzzle. Choose a companion, adjust its position and size, and switch between Amber, Dusk and Moon lighting to arrange your little forest.
 
-Explore 12 fixed puzzles and unfold six paper creatures, unlocking one after every two levels. Meet a butterfly, bird, fish, rabbit, fox and deer, each with three stages of creation and an unfolding animation to revisit.
+Tap your companion to say hello, watch it unfold, and enjoy gentle background music. The garden has no move limits, timers or win conditions. Your arrangement is saved on this device for your next visit.
 
-There is no timer and no random refill. Take your time, undo a move, ask for a two-stage hint, and continue where you left off. Every puzzle works offline, with no account required.
+For a little challenge, open the separate level book. Swap neighboring patterns and fold the paper to bring distant patterns together. Explore 12 fixed puzzles with fold previews, free undo and two-stage hints. Every two completed levels add a finished creature to your puzzle collection. Earned collection progress is separate from the freely available garden companions.
 
-Available in English and Simplified Chinese. Patterns use both shape and color. Tapping can replace dragging, and sound, haptics and motion have separate controls.
+A deep forest palette, warm light and paper textures accompany English and Simplified Chinese interfaces. Everything works offline without an account. Adjust sound, haptics and motion independently, with tap controls, VoiceOver labels and text-size support.
 
-Progress stays on this device. Cross-device sync is not included in this release.
+Your garden arrangement and puzzle progress stay on this device. Cross-device sync is not included in this release.
 
 What's new:
-The first release includes all 12 puzzles, six paper creatures, fold previews, undo, hints and local progress saving.
+The first release includes Paper Garden, six freely available paper companions, three lighting moods, position and size controls, greeting and unfolding animations, plus 12 optional puzzles and a separate puzzle collection.
 
 Unfilled fields:
 Support URL, privacy URL, developer contact, copyright owner, age-rating questionnaire, release territories and name availability.

@@ -18,6 +18,7 @@ final class CFVAppCoordinator {
             do { progress = try store.reconcile(session, progress: progress) }
             catch { store.notices.append("progress:write-failed") }
         }
+        CFVTheme.styleNavigation(navigation)
         navigation.setNavigationBarHidden(true, animated: false)
         navigation.view.backgroundColor = CFVTheme.paper
     }
@@ -31,6 +32,7 @@ final class CFVAppCoordinator {
         return CFVText(creature.name, english[creature.id] ?? "")
     }
     func home() { navigation.setViewControllers([CFVHomeController(self)], animated: false) }
+    func garden() { navigation.pushViewController(CFVGardenController(app: self), animated: true) }
     func levels() { navigation.setViewControllers([CFVLevelsController(self)], animated: false) }
     func collection() { navigation.setViewControllers([CFVCollectionController(self)], animated: false) }
     func detail(_ creature: CFVCreature) { navigation.pushViewController(CFVCreatureController(self, creature: creature), animated: true) }
@@ -51,7 +53,11 @@ final class CFVAppCoordinator {
         }
         navigation.setViewControllers(pages, animated: false)
     }
-    func help(from controller: UIViewController) { controller.present(UINavigationController(rootViewController: CFVHelpController()), animated: true) }
+    func help(from controller: UIViewController) {
+        let helpNavigation = UINavigationController(rootViewController: CFVHelpController())
+        CFVTheme.styleNavigation(helpNavigation)
+        controller.present(helpNavigation, animated: true)
+    }
 
     func begin(_ index: Int, resume: Bool = false) {
         guard repository.levels.indices.contains(index) else { return }
@@ -143,7 +149,7 @@ class CFVPageController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.overrideUserInterfaceStyle = .light
+        overrideUserInterfaceStyle = .dark
         scroll.translatesAutoresizingMaskIntoConstraints = false
         column.translatesAutoresizingMaskIntoConstraints = false
         column.axis = .vertical
@@ -177,8 +183,8 @@ class CFVPageController: UIViewController {
             dock.isLayoutMarginsRelativeArrangement = true
             dock.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
             dock.layer.borderWidth = 1
-            dock.layer.borderColor = UIColor.white.cgColor
-            dock.layer.shadowColor = CFVTheme.ink.cgColor
+            dock.layer.borderColor = CFVTheme.line.withAlphaComponent(0.6).cgColor
+            dock.layer.shadowColor = UIColor.black.cgColor
             dock.layer.shadowOpacity = 0.08
             dock.layer.shadowRadius = 12
             dock.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -186,7 +192,7 @@ class CFVPageController: UIViewController {
             view.addSubview(dock)
             dock.addArrangedSubview(CFVTheme.button(CFVText("首页", "Home"), symbol: "house", primary: self is CFVHomeController) { [weak self] in self?.app.home() })
             dock.addArrangedSubview(CFVTheme.button(CFVText("关卡", "Levels"), symbol: "square.grid.2x2", primary: self is CFVLevelsController) { [weak self] in self?.app.levels() })
-            let collection = CFVTheme.button(CFVText("图鉴", "Album"), symbol: "book", primary: self is CFVCollectionController) { [weak self] in self?.app.collection() }
+            let collection = CFVTheme.button(CFVText("图鉴", "Album"), symbol: "book", primary: self is CFVCollectionController, tone: .lavender) { [weak self] in self?.app.collection() }
             collection.accessibilityLabel = CFVText("图鉴", "Collection")
             dock.addArrangedSubview(collection)
             NSLayoutConstraint.activate([
@@ -237,30 +243,35 @@ final class CFVHomeController: CFVPageController {
         top.addArrangedSubview(settings)
         column.addArrangedSubview(top)
         let index = app.nextIndex ?? 11
-        let creature = app.creature(for: app.repository.levels[index])
+        let composition = CFVGardenComposition.load()
+        let creature = app.repository.catalog.creatures.first { $0.id == composition.creatureID } ?? app.repository.catalog.creatures[0]
         column.addArrangedSubview(CFVTheme.label(CFVText("折叠生物", "Paperkin"), size: 36, serif: true))
-        column.addArrangedSubview(CFVTheme.label(CFVText("折起一角，让图案相遇", "A small fold. A new perspective."), size: 15, color: CFVTheme.muted, serif: true))
-        _ = art(creature, stage: app.stage(creature), height: min(290, UIScreen.main.bounds.height * 0.32), style: .garden)
-        let journey = String(format: CFVText("纸间旅程  %d / 12", "Paper journey  %d / 12"), app.progress.completed.count)
-        let discovery = app.nextIndex == nil
-            ? CFVText("六位纸间伙伴，已全部收集", "All six paper companions collected")
-            : String(format: CFVText("正在折叠 · %@   /   已发现 %d 种生物", "Unfolding · %@   /   %d creatures found"), app.creatureName(creature), app.unlockedCount)
-        column.addArrangedSubview(CFVProgressRibbon(title: journey, detail: discovery, completed: app.progress.completed.count, total: 12))
+        column.addArrangedSubview(CFVTheme.label(CFVText("在纸间森林，留一点自在时光", "A little forest. A moment of your own."), size: 15, color: CFVTheme.muted, serif: true))
+        let garden = CFVScenicStage(id: creature.id, stage: 2, style: .garden)
+        garden.gardenLight = composition.light
+        garden.creaturePosition = [0.28, 0.5, 0.72][composition.position]
+        garden.creatureSize = composition.size
+        garden.heightAnchor.constraint(equalToConstant: min(290, UIScreen.main.bounds.height * 0.32)).isActive = true
+        column.addArrangedSubview(garden)
+        let enter = CFVTheme.button(CFVText("进入纸间花园", "Enter Paper Garden"), symbol: "sparkles", primary: true, tone: .honey) { [weak self] in self?.app.garden() }
+        enter.accessibilityIdentifier = "home-garden"
+        enter.heightAnchor.constraint(greaterThanOrEqualToConstant: 58).isActive = true
+        column.addArrangedSubview(enter)
+        column.addArrangedSubview(CFVTheme.label(CFVText("六位伙伴 · 自由布置 · 光影与陪伴", "Six companions · Arrange, illuminate, unwind"), size: 12, color: CFVTheme.muted))
         let active = app.session.flatMap { saved in app.repository.catalog.levelIDs.firstIndex(of: saved.levelID) }
         let title = app.nextIndex == nil ? CFVText("重温关卡", "Revisit levels") : active.map { String(format: CFVText("继续第 %02d 关", "Continue level %02d"), $0 + 1) } ?? CFVText("开始折叠", "Start Folding")
-        let start = CFVTheme.button(title, symbol: "arrow.right", primary: true) { [weak self] in
+        let start = CFVTheme.button(title, symbol: "map") { [weak self] in
             guard let self else { return }
             if self.app.nextIndex == nil { self.app.levels() }
             else { self.app.begin(active ?? index, resume: active != nil) }
         }
         start.accessibilityIdentifier = "home-start"
-        start.heightAnchor.constraint(greaterThanOrEqualToConstant: 58).isActive = true
         column.addArrangedSubview(start)
         let row = UIStackView()
         row.distribution = .fillEqually
         row.spacing = 12
         row.addArrangedSubview(CFVTheme.button(CFVText("关卡册", "Level book"), symbol: "square.grid.2x2") { [weak self] in self?.app.levels() })
-        row.addArrangedSubview(CFVTheme.button(CFVText("生物图鉴", "Collection"), symbol: "book") { [weak self] in self?.app.collection() })
+        row.addArrangedSubview(CFVTheme.button(CFVText("生物图鉴", "Collection"), symbol: "book", tone: .lavender) { [weak self] in self?.app.collection() })
         column.addArrangedSubview(row)
         finish()
     }
@@ -288,7 +299,7 @@ final class CFVLevelsController: CFVPageController {
             detail: CFVText("每两关，遇见一位新的纸间伙伴", "A new paper companion every two levels"),
             completed: app.progress.completed.count, total: 12))
         let chapters = [CFVText("初次展开", "First folds"), CFVText("换个方向", "New directions"), CFVText("巧妙遮挡", "Clever overlaps")]
-        let colors = [UIColor(hex: "DEE6D3"), UIColor(hex: "E6DFED"), UIColor(hex: "EBDCCB")]
+        let colors = [UIColor(hex: "2B4034"), UIColor(hex: "353443"), UIColor(hex: "423A2F")]
         for chapter in 0..<3 {
             let card = UIStackView()
             card.axis = .vertical
@@ -296,7 +307,7 @@ final class CFVLevelsController: CFVPageController {
             card.backgroundColor = colors[chapter].withAlphaComponent(0.85)
             card.layer.cornerRadius = 22
             card.layer.borderWidth = 1
-            card.layer.borderColor = UIColor.white.cgColor
+            card.layer.borderColor = CFVTheme.line.withAlphaComponent(0.6).cgColor
             card.isLayoutMarginsRelativeArrangement = true
             card.layoutMargins = UIEdgeInsets(top: 15, left: 14, bottom: 12, right: 14)
             let header = UIStackView()
@@ -346,8 +357,8 @@ final class CFVCollectionController: CFVPageController {
         heading(CFVText("生物图鉴", "Collection"))
         column.addArrangedSubview(CFVProgressRibbon(
             title: String(format: CFVText("已发现 %d / 6", "Discovered %d / 6"), app.unlockedCount),
-            detail: CFVText("把每次相遇，收进纸间珍藏", "Keep every encounter in your paper collection"),
-            completed: app.unlockedCount, total: 6, accent: UIColor(hex: "9483A5")))
+            detail: CFVText("记录挑战中的制作进度；花园里六种伙伴均可自由展示", "Your puzzle creations; all six companions are freely available in the garden"),
+            completed: app.unlockedCount, total: 6, accent: CFVTheme.lavender))
         for rowIndex in 0..<3 {
             let row = UIStackView()
             row.distribution = .fillEqually
@@ -358,22 +369,22 @@ final class CFVCollectionController: CFVPageController {
                 let card = UIStackView()
                 card.axis = .vertical
                 card.spacing = 6
-                card.backgroundColor = UIColor(hex: stage == 2 ? "FCF9F0" : "EEEBDD")
+                card.backgroundColor = UIColor(hex: stage == 2 ? "2C3933" : "24312E")
                 card.layer.cornerRadius = 20
                 card.layer.borderWidth = 1.5
-                card.layer.borderColor = (stage == 2 ? UIColor(hex: "C7BA92") : CFVTheme.line.withAlphaComponent(0.4)).cgColor
-                card.layer.shadowColor = CFVTheme.ink.cgColor
+                card.layer.borderColor = (stage == 2 ? CFVTheme.gold.withAlphaComponent(0.55) : CFVTheme.line.withAlphaComponent(0.4)).cgColor
+                card.layer.shadowColor = UIColor.black.cgColor
                 card.layer.shadowOpacity = 0.07
                 card.layer.shadowOffset = CGSize(width: 0, height: 5)
                 card.layer.shadowRadius = 9
                 card.isLayoutMarginsRelativeArrangement = true
                 card.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 10, right: 8)
-                let serial = CFVTheme.label(String(format: "Nº %02d  ·  %@", index + 1, stage == 2 ? CFVText("珍藏", "COLLECTED") : CFVText("待发现", "UNDISCOVERED")), size: 10, color: stage == 2 ? UIColor(hex: "826D43") : CFVTheme.muted)
+                let serial = CFVTheme.label(String(format: "Nº %02d  ·  %@", index + 1, stage == 2 ? CFVText("珍藏", "COLLECTED") : CFVText("待发现", "UNDISCOVERED")), size: 10, color: stage == 2 ? CFVTheme.gold : CFVTheme.muted)
                 card.addArrangedSubview(serial)
                 let art = CFVCreatureView(id: creature.id, stage: stage)
                 art.heightAnchor.constraint(equalToConstant: min(145, UIScreen.main.bounds.width * 0.36)).isActive = true
                 card.addArrangedSubview(art)
-                let button = CFVTheme.button(app.creatureName(creature)) { [weak self] in
+                let button = CFVTheme.button(app.creatureName(creature), tone: .lavender) { [weak self] in
                     guard let self else { return }
                     if stage == 2 { self.app.detail(creature) }
                     else { self.app.message(self.app.creatureName(creature), String(format: CFVText("完成第 %02d 关后解锁。制作进度 %d / 2。", "Unlock after level %02d. Making progress %d / 2."), creature.unlockLevel, stage)) }
@@ -409,7 +420,7 @@ final class CFVCreatureController: CFVPageController {
         let description = descriptions[creature.id]!
         column.addArrangedSubview(CFVTheme.label(CFVText(description.0, description.1), size: 18, serif: true))
         column.addArrangedSubview(CFVTheme.label(CFVText("制作完成 · 2 / 2", "Complete · 2 / 2"), color: CFVTheme.muted))
-        column.addArrangedSubview(CFVTheme.button(CFVText("再次展开", "Unfold again"), symbol: "play", primary: true) { illustration.replay(); CFVAudio.shared.play("fold") })
+        column.addArrangedSubview(CFVTheme.button(CFVText("再次展开", "Unfold again"), symbol: "play", primary: true, tone: .lavender) { illustration.replay(); CFVAudio.shared.play("fold") })
         finish()
         illustration.replay()
     }

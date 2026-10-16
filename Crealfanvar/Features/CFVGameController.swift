@@ -43,7 +43,7 @@ final class CFVGameController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.overrideUserInterfaceStyle = .light
+        overrideUserInterfaceStyle = .dark
         column.axis = .vertical
         column.spacing = 8
         column.translatesAutoresizingMaskIntoConstraints = false
@@ -73,7 +73,7 @@ final class CFVGameController: UIViewController {
         header.addArrangedSubview(pause)
         column.addArrangedSubview(header)
         hud.accessibilityIdentifier = "game-hud"
-        hud.backgroundColor = UIColor.white.withAlphaComponent(0.6)
+        hud.backgroundColor = CFVTheme.card
         hud.layer.cornerRadius = 12
         hud.clipsToBounds = true
         hud.heightAnchor.constraint(greaterThanOrEqualToConstant: compact ? 28 : 38).isActive = true
@@ -94,9 +94,9 @@ final class CFVGameController: UIViewController {
             column.addArrangedSubview(messageLabel)
         }
         let boardHolder = UIView()
-        boardHolder.backgroundColor = UIColor(hex: "E3D9C3")
+        boardHolder.backgroundColor = CFVTheme.paper
         boardHolder.layer.cornerRadius = 10
-        boardHolder.layer.borderColor = UIColor.white.withAlphaComponent(0.8).cgColor
+        boardHolder.layer.borderColor = CFVTheme.line.cgColor
         boardHolder.layer.borderWidth = 2
         board.translatesAutoresizingMaskIntoConstraints = false
         boardHolder.addSubview(board)

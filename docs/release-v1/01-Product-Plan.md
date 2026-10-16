@@ -1,5 +1,7 @@
 # 折叠生物产品方案
 
+> 2026-10-16 实现更新：用户已将产品方向调整为娱乐优先。当前首页以无需通关的纸间花园为主，支持六种生物自由展示、光色切换、位置与大小调整、互动及本地布置恢复；原 12 关和挑战图鉴独立保留。主要类别准备为 Entertainment，次要类别 Games / Puzzle，尚未提交到 App Store Connect。下文保留原始规划基线；最新实现与上架资料见 [开发交接](../../artifacts/CFV-Developer-Guide.txt) 和 [商店文案](../../artifacts/release-materials/CFV-Store-Copy-zh-Hans.txt)。
+
 版本：1.0 规划基线 修订2  
 日期：2026年10月15日
 

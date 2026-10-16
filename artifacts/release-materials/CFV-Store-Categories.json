@@ -1,0 +1,11 @@
+{
+  "status": "local-draft-not-submitted",
+  "updated": "2026-10-16",
+  "primaryCategory": "ENTERTAINMENT",
+  "secondaryCategory": "GAMES",
+  "gameSubcategories": ["GAMES_PUZZLE"],
+  "primaryExperience": "Freely arrange and interact with six paper creatures in an offline garden, with three lighting moods and saved composition.",
+  "secondaryExperience": "Twelve optional folding puzzles with independent earned collection progress.",
+  "submissionNote": "Apply these fields in App Store Connect when preparing the actual submission. This file does not change the account or guarantee category acceptance.",
+  "reference": "https://developer.apple.com/app-store/categories/"
+}

@@ -11,12 +11,53 @@ func CFVText(_ chinese: String, _ english: String) -> String {
 }
 
 enum CFVTheme {
-    static let paper = UIColor(hex: "F5F1E7")
-    static let card = UIColor(hex: "EBE5D8")
-    static let ink = UIColor(hex: "26382F")
-    static let green = UIColor(hex: "596E52")
-    static let muted = UIColor(hex: "62695F")
-    static let line = UIColor(hex: "C7BEAA")
+    enum ButtonTone {
+        case sage, honey, lavender
+
+        var accent: UIColor {
+            switch self {
+            case .sage: return CFVTheme.green
+            case .honey: return CFVTheme.gold
+            case .lavender: return CFVTheme.lavender
+            }
+        }
+
+        var surface: UIColor {
+            switch self {
+            case .sage: return CFVTheme.raised
+            case .honey: return UIColor(hex: "493F2D")
+            case .lavender: return UIColor(hex: "3C374D")
+            }
+        }
+    }
+
+    static let paper = UIColor(hex: "14221F")
+    static let card = UIColor(hex: "24352F")
+    static let raised = UIColor(hex: "30463C")
+    static let ink = UIColor(hex: "F1EFE3")
+    static let green = UIColor(hex: "B6CDA0")
+    static let muted = UIColor(hex: "BCC5B8")
+    static let line = UIColor(hex: "52675A")
+    static let primaryInk = UIColor(hex: "1B3025")
+    static let lavender = UIColor(hex: "C4B2D6")
+    static let gold = UIColor(hex: "D9BF83")
+    static let boardPaper = UIColor(hex: "33443D")
+    static let foldedPaper = UIColor(hex: "42554B")
+
+    static func styleNavigation(_ navigation: UINavigationController) {
+        navigation.overrideUserInterfaceStyle = .dark
+        navigation.view.tintColor = green
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = paper
+        appearance.shadowColor = line.withAlphaComponent(0.5)
+        appearance.titleTextAttributes = [.foregroundColor: ink]
+        appearance.largeTitleTextAttributes = [.foregroundColor: ink]
+        navigation.navigationBar.standardAppearance = appearance
+        navigation.navigationBar.scrollEdgeAppearance = appearance
+        navigation.navigationBar.compactAppearance = appearance
+        navigation.navigationBar.tintColor = green
+    }
 
     static func font(_ size: CGFloat, weight: UIFont.Weight = .regular, serif: Bool = false) -> UIFont {
         let base = UIFont.systemFont(ofSize: size, weight: weight)
@@ -35,16 +76,16 @@ enum CFVTheme {
         return label
     }
 
-    static func button(_ text: String, symbol: String? = nil, primary: Bool = false, action: @escaping () -> Void) -> UIButton {
+    static func button(_ text: String, symbol: String? = nil, primary: Bool = false, tone: ButtonTone = .sage, action: @escaping () -> Void) -> UIButton {
         let button = CFVPaperButton(type: .system)
         var configuration = UIButton.Configuration.filled()
         configuration.title = text
-        configuration.baseBackgroundColor = primary ? green : UIColor(hex: "F7F3E8")
-        configuration.baseForegroundColor = primary ? .white : ink
+        configuration.baseBackgroundColor = primary ? tone.accent : tone.surface
+        configuration.baseForegroundColor = primary ? primaryInk : ink
         configuration.cornerStyle = .large
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12)
         configuration.imagePadding = 8
-        configuration.background.strokeColor = primary ? UIColor(hex: "465A40") : line.withAlphaComponent(0.55)
+        configuration.background.strokeColor = primary ? tone.accent : tone.accent.withAlphaComponent(0.28)
         configuration.background.strokeWidth = 1
         if let symbol, text.isEmpty || !UIApplication.shared.preferredContentSizeCategory.isAccessibilityCategory {
             let imageConfiguration = UIImage.SymbolConfiguration(pointSize: text.isEmpty ? 22 : 18, weight: .regular)
@@ -57,7 +98,7 @@ enum CFVTheme {
             return attributes
         }
         button.configuration = configuration
-        button.layer.shadowColor = (primary ? UIColor(hex: "344A30") : ink).cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = primary ? 0.18 : 0.055
         button.layer.shadowOffset = CGSize(width: 0, height: primary ? 4 : 2)
         button.layer.shadowRadius = primary ? 0 : 4
@@ -269,14 +310,14 @@ final class CFVTileButton: UIButton {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         let paper = bounds.insetBy(dx: 1, dy: 1)
         let outline = UIBezierPath(roundedRect: paper, cornerRadius: 3)
-        (topLayer ? UIColor(hex: "E4DCC9") : UIColor(hex: "F0EADC")).setFill()
+        (topLayer ? CFVTheme.foldedPaper : CFVTheme.boardPaper).setFill()
         outline.fill()
         (selectedPaper || highlightedPaper ? CFVTheme.green : CFVTheme.line).setStroke()
         outline.lineWidth = selectedPaper || highlightedPaper ? 3 : 0.7
         outline.stroke()
         context.saveGState()
         outline.addClip()
-        context.setStrokeColor(UIColor.white.withAlphaComponent(0.32).cgColor)
+        context.setStrokeColor(UIColor.white.withAlphaComponent(0.06).cgColor)
         context.setLineWidth(0.5)
         for y in stride(from: CGFloat(5), to: bounds.height, by: 7) {
             context.move(to: CGPoint(x: 0, y: y))
@@ -293,16 +334,16 @@ final class CFVTileButton: UIButton {
             path.move(to: CGPoint(x: box.minX, y: box.maxY))
             path.addQuadCurve(to: CGPoint(x: box.maxX, y: box.minY), controlPoint: CGPoint(x: box.minX - 3, y: box.minY))
             path.addQuadCurve(to: CGPoint(x: box.minX, y: box.maxY), controlPoint: CGPoint(x: box.maxX + 3, y: box.maxY))
-            color = UIColor(hex: "78896B")
+            color = UIColor(hex: "A9C48E")
         case .triangle:
             path.move(to: CGPoint(x: box.midX, y: box.minY))
             path.addLine(to: CGPoint(x: box.maxX, y: box.maxY))
             path.addLine(to: CGPoint(x: box.minX, y: box.maxY))
             path.close()
-            color = UIColor(hex: "AC9BBC")
+            color = UIColor(hex: "C4AFD6")
         case .circle:
             path.append(UIBezierPath(ovalIn: box))
-            color = UIColor(hex: "BD8165")
+            color = UIColor(hex: "DFA181")
         }
         context.setShadow(offset: CGSize(width: 0, height: 1.5), blur: 1.5, color: UIColor.black.withAlphaComponent(0.18).cgColor)
         color.setFill()
@@ -337,7 +378,7 @@ final class CFVTileButton: UIButton {
             diamond.addLine(to: CGPoint(x: x, y: y + 5))
             diamond.addLine(to: CGPoint(x: x - 5, y: y))
             diamond.close()
-            UIColor.white.setFill()
+            CFVTheme.paper.setFill()
             diamond.fill()
             CFVTheme.ink.setStroke()
             diamond.lineWidth = 1.7

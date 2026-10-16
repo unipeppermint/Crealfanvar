@@ -197,6 +197,83 @@ final class CFVUITests: XCTestCase {
         shot("Scenery-creature-settled")
     }
 
+    func testGardenChinese() {
+        exerciseGarden(chinese: true)
+    }
+
+    func testGardenEnglishSmallScreen() {
+        exerciseGarden(chinese: false)
+    }
+
+    func testGardenFirstInstall() {
+        exerciseGarden(chinese: true, expectedProgress: "已发现 0 / 6")
+    }
+
+    private func exerciseGarden(chinese: Bool, expectedProgress: String? = nil) {
+        app.launchArguments = ["-AppleLanguages", chinese ? "(zh-Hans)" : "(en)", "-AppleLocale", chinese ? "zh_CN" : "en_US"]
+        app.launch()
+        tap(chinese ? "生物图鉴" : "Collection")
+        let progressLabel = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", chinese ? "已发现 " : "Discovered ")).firstMatch
+        XCTAssertTrue(progressLabel.waitForExistence(timeout: 3))
+        let progress = progressLabel.label
+        if let expectedProgress { XCTAssertEqual(progress, expectedProgress) }
+        tap(chinese ? "首页" : "Home")
+        tap("home-garden")
+        XCTAssertTrue(app.buttons["garden-scene"].waitForExistence(timeout: 3))
+        let names = chinese ? ["纸蝶", "折翼鸟", "纸鱼", "纸兔", "纸狐", "纸鹿"] : ["Paper Butterfly", "Folded Bird", "Paper Fish", "Paper Rabbit", "Paper Fox", "Paper Deer"]
+        func gardenTap(_ id: String) {
+            let button = app.buttons[id]
+            let controls = app.scrollViews.firstMatch
+            for _ in 0..<10 where !button.isHittable {
+                let upward = button.frame.midY > controls.frame.midY
+                let start = controls.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: upward ? 0.75 : 0.25))
+                let end = controls.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: upward ? 0.35 : 0.65))
+                start.press(forDuration: 0.05, thenDragTo: end)
+            }
+            if !button.isHittable { shot("Garden-control-unreachable-" + id) }
+            XCTAssertTrue(button.isHittable, id)
+            button.tap()
+        }
+        for index in 0..<6 {
+            gardenTap("garden-creature-\(index)")
+            XCTAssertTrue(app.staticTexts["garden-caption"].label.contains(names[index]))
+        }
+        gardenTap("garden-creature-4")
+        gardenTap("garden-light-moon")
+        gardenTap("garden-position-2")
+        let slider = app.sliders["garden-size"]
+        for _ in 0..<3 where !slider.isHittable { app.scrollViews.firstMatch.swipeUp() }
+        slider.adjust(toNormalizedSliderPosition: 0.2)
+        let savedSize = slider.value as? String
+        XCTAssertTrue(app.buttons["garden-scene"].value as? String == (chinese ? "月夜 · 靠右" : "Moon · Right"))
+        shot(chinese ? "Garden-01-arrangement-zh" : "Garden-small-arrangement-en")
+        app.terminate()
+        app.launch()
+        tap("home-garden")
+        XCTAssertTrue(app.staticTexts["garden-caption"].label.contains(names[4]))
+        XCTAssertEqual(app.buttons["garden-scene"].value as? String, chinese ? "月夜 · 靠右" : "Moon · Right")
+        XCTAssertEqual(app.sliders["garden-size"].value as? String, savedSize)
+        tap("garden-greet")
+        waitForArtwork()
+        XCTAssertTrue(app.staticTexts["garden-caption"].label.contains(chinese ? "问好" : "hello"))
+        tap("garden-unfold")
+        waitForArtwork()
+        XCUIDevice.shared.press(.home)
+        app.activate()
+        XCTAssertTrue(app.buttons["garden-scene"].exists)
+        gardenTap("garden-creature-5")
+        gardenTap("garden-light-amber")
+        gardenTap("garden-position-1")
+        for _ in 0..<3 where !slider.isHittable { app.scrollViews.firstMatch.swipeUp() }
+        slider.adjust(toNormalizedSliderPosition: 0.75)
+        for _ in 0..<5 where !app.buttons["garden-greet"].isHittable { app.scrollViews.firstMatch.swipeDown() }
+        shot(chinese ? "Garden-02-companions-zh" : "Garden-small-companions-en")
+        tap("garden-home")
+        shot(chinese ? "Garden-03-home-zh" : "Garden-small-home-en")
+        tap(chinese ? "生物图鉴" : "Collection")
+        XCTAssertEqual(progressLabel.label, progress, "Garden arrangement must not grant or remove puzzle progress")
+    }
+
     func testGamePresentationSmallScreen() {
         app.launchArguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
         app.launch()
@@ -204,6 +281,7 @@ final class CFVUITests: XCTestCase {
         tap("settings")
         let reduced = app.switches["Reduce motion"]
         XCTAssertTrue(reduced.waitForExistence(timeout: 3))
+        shot("Theme-small-settings")
         let originalReduced = reduced.value as? String == "1"
         if !originalReduced { reduced.tap() }
         tap("settings-back")

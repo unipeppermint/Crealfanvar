@@ -20,7 +20,7 @@ final class CFVBoardView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layer.shadowColor = CFVTheme.ink.cgColor
+        layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.12
         layer.shadowOffset = CGSize(width: 0, height: 5)
         layer.shadowRadius = 8
@@ -398,7 +398,7 @@ private final class CFVFoldPresentation {
         layer.bounds = CGRect(origin: .zero, size: region.size)
         layer.anchorPoint = vertical ? CGPoint(x: low ? 1 : 0, y: 0.5) : CGPoint(x: 0.5, y: low ? 1 : 0)
         shadow.frame = layer.bounds
-        shadow.shadowColor = CFVTheme.ink.cgColor
+        shadow.shadowColor = UIColor.black.cgColor
         shadow.shadowPath = UIBezierPath(rect: layer.bounds).cgPath
         layer.addSublayer(shadow)
         for (index, image) in [front, back].enumerated() {

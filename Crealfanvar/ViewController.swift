@@ -3,9 +3,12 @@ import UIKit
 final class ViewController: UIViewController {
     private var coordinator: CFVAppCoordinator?
 
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        overrideUserInterfaceStyle = .light
+        overrideUserInterfaceStyle = .dark
+        view.backgroundColor = CFVTheme.paper
         let navigation = UINavigationController()
         addChild(navigation)
         navigation.view.frame = view.bounds

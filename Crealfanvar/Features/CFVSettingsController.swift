@@ -6,17 +6,18 @@ final class CFVSettingsController: UITableViewController {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.overrideUserInterfaceStyle = .light
+        overrideUserInterfaceStyle = .dark
         view.backgroundColor = CFVTheme.paper
         title = CFVText("设置", "Settings")
         configureNavigation()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60
+        tableView.separatorColor = CFVTheme.line.withAlphaComponent(0.5)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
-        navigationController?.navigationBar.tintColor = CFVTheme.ink
+        navigationController?.navigationBar.tintColor = CFVTheme.green
     }
 
     private func configureNavigation() {
@@ -94,7 +95,7 @@ final class CFVSettingsController: UITableViewController {
         } else if indexPath.section == 1 { navigationController?.pushViewController(CFVHelpController(), animated: true) }
         else if indexPath.section == 2 {
             let title = [CFVText("隐私说明", "Privacy"), CFVText("支持", "Support"), CFVText("本地数据", "Local data")][indexPath.row]
-            let privacy = CFVText("关卡、收藏和设置保存在本设备。本应用不创建账号，不包含广告或分析 SDK，不上传游玩数据。删除应用可能删除本地进度。\n\n公开隐私政策地址尚待开发者配置，发布前必须补齐。", "Levels, collection and settings are stored on this device. The app has no accounts, advertising or analytics SDKs and does not upload gameplay data. Deleting the app may delete local progress.\n\nThe developer must configure a public privacy policy URL before release.")
+            let privacy = CFVText("花园布置、关卡、收藏和设置保存在本设备。本应用不创建账号，不包含广告或分析 SDK，不上传游玩数据。删除应用可能删除本地进度。\n\n公开隐私政策地址尚待开发者配置，发布前必须补齐。", "Garden arrangements, levels, collection and settings are stored on this device. The app has no accounts, advertising or analytics SDKs and does not upload gameplay data. Deleting the app may delete local progress.\n\nThe developer must configure a public privacy policy URL before release.")
             let support = CFVText("遇到困难时可使用提示、撤销或重新开始。存档异常时会优先尝试备份，已完成记录独立保存。\n\n支持联系方式与公开支持地址尚待开发者提供，发布前必须补齐。", "Use Hint, Undo or Restart when stuck. If a save is damaged, the app tries its backup. Completion records are stored separately.\n\nThe developer must provide a support contact and public support URL before release.")
             let local = CFVText("只保存一个活动对局。进入其他关卡会先询问是否替换。本机收藏不会因重玩或撤销减少。首版不提供跨设备同步。", "One active game is saved. Starting another level asks before replacing it. Replaying or undoing never removes collected creatures. Cross-device sync is not available in this release.")
             let controller = CFVTextController(title: title, body: indexPath.row == 0 ? privacy : indexPath.row == 1 ? support : local)
@@ -115,7 +116,7 @@ class CFVTextController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = CFVTheme.paper
-        view.overrideUserInterfaceStyle = .light
+        overrideUserInterfaceStyle = .dark
         let text = UITextView()
         text.backgroundColor = .clear
         text.isEditable = false
@@ -126,6 +127,7 @@ class CFVTextController: UIViewController {
         text.text = body + (externalURL.map { "\n\n" + $0.absoluteString } ?? "")
         text.translatesAutoresizingMaskIntoConstraints = false
         text.dataDetectorTypes = .link
+        text.linkTextAttributes = [.foregroundColor: CFVTheme.green]
         view.addSubview(text)
         NSLayoutConstraint.activate([text.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), text.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor), text.leadingAnchor.constraint(equalTo: view.leadingAnchor), text.trailingAnchor.constraint(equalTo: view.trailingAnchor)])
     }
@@ -149,7 +151,7 @@ final class CFVHelpController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = CFVTheme.paper
-        view.overrideUserInterfaceStyle = .light
+        overrideUserInterfaceStyle = .dark
         title = CFVText("玩法帮助", "How to play")
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: CFVText("完成", "Done"), style: .done, target: self, action: #selector(done))
         let scroll = UIScrollView()

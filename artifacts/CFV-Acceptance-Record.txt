@@ -92,3 +92,14 @@ Debug 模拟器构建成功。Release 设备未签名归档成功。现有 Relea
 视觉复核：18 张素材总览及真实首页/图鉴截图已检查；纸张质感、透明背景和等比缩放正常。图鉴沿用可滚动两列布局。自动化导出的 Release-07-fish-detail-zh 截图在点击“再次展开”后立即取得，记录的是动画首个象牙白阶段，不代表最终彩色完成态。
 
 2026-10-15 设置与动画打磨：设置改为导航栈独立页；图鉴使用同一插画的连续折面展开，消除原三阶段跳帧与叠化重影；棋盘支持拖动接续、反向取消、动态图层阴影、交换平移、消除淡出后展开。原子保存先于动画，后台取消无过期回调。最终证据 CFV-UI-Motion-Final 两项 UI 回归 0 失败、CFV-Motion-Core-Results 353 检查通过、CFV-Motion-Archive 成功。最新归档 CFV-Paperkin-Motion-Unsigned.xcarchive。旧 Artwork 截图仅记录上一次素材版，动画版截图在 screenshots/Motion-Final。
+
+2026-10-16 娱乐定位与深色暖光更新（取代原游戏优先首页与浅色视觉约定）
+- 首页主入口为纸间花园；六种完整纸雕伙伴无需通关即可展示。支持暖光/暮色/月夜、左中右位置、大小调整、问好与展开动画。预览固定，控制区域可滚动。
+- 布置独立存入 CFV.garden，本地重启恢复；既有挑战存档和图鉴制作进度不变。打招呼为有限动画，减少动态效果、后台和离开页面均有处理。
+- 主界面为深森林绿，场景加入局部暖光与微光点；花园按钮暖金、图鉴按钮淡紫、挑战按钮鼠尾草绿。复用现有 JPEG/PNG，没有新增运行时图片或依赖。
+- 商店双语文案、审核说明及分类草稿更新：Entertainment 主要类别、Games / Puzzle 次要类别。仅本地材料；App Store Connect 未修改、未提审。
+- 中文花园（六种伙伴、布置/尺寸持久化、互动、后台恢复、进度不变）与既有关卡/折叠/帮助/失败恢复 UI 回归通过：/tmp/CFV-Garden-UI.xcresult。
+- 小屏、大字体关卡展示回归通过。花园小屏测试初次因自动化滚动越过目标失败；改为按目标位置短距离滚动后通过：/tmp/CFV-Garden-Small-Verified.xcresult。界面截图已人工核对。
+- 独立全新安装验证通过：/tmp/CFV-Garden-First-Install.xcresult。明确断言初始图鉴为 0/6，六种伙伴全部可用，布置后图鉴仍为 0/6。该测试必须在空白安装上运行，勿在已有通关记录的 QA 设备上重复。
+- 未签名 Release 归档成功：/tmp/CFV-Garden-Release.xcarchive。未压缩 app 8,204,817 字节（约 8.2 MB）；资源 6.60 MiB，尺寸预算检查通过。Bundle ID、签名和发布构建设置未更改。
+- 当前界面预览：artifacts/screenshots/CFV-Entertainment-Preview.jpg（生成文件，Git 忽略）。真机、TestFlight 等原有外部发布事项仍未完成。
